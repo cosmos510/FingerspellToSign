@@ -11,7 +11,7 @@ class CoreConfig(AppConfig):
         try:
             print("🚀 CoreConfig.ready() has started!")
             
-            model_path = os.path.join(settings.BASE_DIR, 'asl_monolith', 'model1.p')
+            model_path = os.path.join(settings.BASE_DIR, 'model1.p')
             print(f"Checking model path: {model_path}")
 
             if os.path.exists(model_path):
