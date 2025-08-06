@@ -1,17 +1,13 @@
 import cv2
 import pickle
 import numpy as np
-import mediapipe as mp
 import os
 from django.conf import settings
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-mp_hands = mp.solutions.hands
-hands = mp_hands.Hands()
 global_predicted_character = "No prediction"
-
 model = None
 
 def load_model():
@@ -54,38 +50,36 @@ def upload_frame(request):
             image = file.read()
             np_arr = np.frombuffer(image, np.uint8)
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-            frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            results = hands.process(frame_rgb)
+
+            # Convert to grayscale and threshold
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+            _, thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY_INV)
+
+            # Find contours
+            contours, _ = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            
+            if contours:
+                largest_contour = max(contours, key=cv2.contourArea)
+
+                # Use contour moments as features (example approach)
+                moments = cv2.moments(largest_contour)
+                hu_moments = cv2.HuMoments(moments).flatten()
+
+                if hu_moments.shape[0] == 7:
+                    data_aux_np = np.array(hu_moments).reshape(1, -1)
+                    prediction = model.predict(data_aux_np)
+                    global_predicted_character = prediction[0]
+                else:
+                    global_predicted_character = "Insufficient features"
+            else:
+                global_predicted_character = "No hand detected"
+        
         except Exception as e:
             print(f"❌ Error in upload_frame: {str(e)}")
             import traceback
             traceback.print_exc()
             return JsonResponse({'status': 'failed', 'error': f'Processing error: {str(e)}'}, status=500)
-            
-        if results.multi_hand_landmarks:
-            data_aux = []
-            x_ = []
-            y_ = []
-            
-            hand_landmarks = results.multi_hand_landmarks[0]
-            for i in range(len(hand_landmarks.landmark)):
-                x = hand_landmarks.landmark[i].x
-                y = hand_landmarks.landmark[i].y
-                x_.append(x)
-                y_.append(y)
-            
-            for i in range(len(hand_landmarks.landmark)):
-                x = hand_landmarks.landmark[i].x
-                y = hand_landmarks.landmark[i].y
-                data_aux.append(x - min(x_))
-                data_aux.append(y - min(y_))
-            
-            if len(data_aux) == 42:
-                data_aux_np = np.array(data_aux).reshape(1, -1)
-                prediction = model.predict(data_aux_np)
-                global_predicted_character = prediction[0]
-        else:
-            global_predicted_character = "No hand detected"
         
         return JsonResponse({'prediction': global_predicted_character})
     
