@@ -1,15 +1,22 @@
 import cv2
 import pickle
 import numpy as np
-import mediapipe as mp
 import os
 from django.conf import settings
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-mp_hands = mp.solutions.hands
-hands = mp_hands.Hands()
+# Try to import mediapipe, fallback if not available
+try:
+    import mediapipe as mp
+    mp_hands = mp.solutions.hands
+    hands = mp_hands.Hands()
+    MEDIAPIPE_AVAILABLE = True
+except ImportError:
+    MEDIAPIPE_AVAILABLE = False
+    hands = None
+
 global_predicted_character = "No prediction"
 
 model = None
@@ -38,6 +45,9 @@ def upload_frame(request):
     global global_predicted_character
     
     if request.method == 'POST':
+        if not MEDIAPIPE_AVAILABLE:
+            return JsonResponse({'status': 'failed', 'error': 'Hand detection not available on this platform'}, status=500)
+            
         if 'file' not in request.FILES:
             return JsonResponse({'status': 'failed', 'error': 'No file part'}, status=400)
         
