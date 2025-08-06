@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-Time ASL Recognition platform offering cutting-edge technology for recognizing American Sign Language in real-time.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About - Real-Time ASL Recognition</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <h1>ASL Recognition</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict">Predict</a>
+            <a href="/about">About</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>About ASL Recognition</h2>
+            <p>This platform utilizes advanced machine learning technology to recognize American Sign Language alphabet letters in real-time, making communication more accessible and inclusive.</p>
+            <p>Built with Django, OpenCV, MediaPipe, and scikit-learn, this system provides accurate real-time recognition of ASL hand gestures through your webcam.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 ASL Recognition. Built with Django.</p>
+    </footer>
+</body>
+</html>

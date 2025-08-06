@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-Time ASL Recognition platform offering cutting-edge technology for recognizing American Sign Language in real-time.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home - Real-Time ASL Recognition</title>
+    <link rel="stylesheet" href="{% load static %}{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <h1>ASL Recognition</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict">Predict</a>
+            <a href="/about">About</a>
+        </nav>
+    </header>
+    <nav class="page-nav">
+        <a href="#hero-section">Home</a>
+        <a href="#alphabet-section">ASL Alphabet</a>
+        <a href="#features-section">Features</a>
+        <a href="#about-section">About Us</a>
+        <a href="#cta-section">Join Us</a>
+    </nav>
+    <main>
+        <div class="container">
+            <section id="hero-section" class="hero">
+                <h2 class="title">Experience Real-Time American Sign Language Recognition</h2>
+                <img class="cover" src="{% static 'cover.jpg' %}" >
+                <p class="subtitle">Discover our innovative platform designed to translate American Sign Language alphabet gestures in real time. Leveraging advanced algorithms and state-of-the-art processing, our technology breaks down communication barriers, making interactions more accessible, inclusive, and seamless.</p>
+            </section>
+            <section id="alphabet-section" class="alphabet-section">
+                <h2>Discover the American Sign Language Alphabet</h2>
+                <p class="description">Explore each letter of the ASL alphabet and put your skills to the test! Dive into our interactive recognition tool below to start learning and practicing in real time.</p>
+                <img class="alpha" src="{% static 'asl.jpg' %}" alt="ASL Alphabet">
+                <br>
+                <a href="/predict" class="btn btn-primary">Get Started</a>
+            </section>
+            <h2 class="test">Features</h2>
+            <section id="features-section" class="features">
+                <div class="feature">
+                    <h3>Instant ASL Recognition</h3>
+                    <p>See each ASL letter detected in real time as you sign. A simple and effective tool for learning and practicing the ASL alphabet, enhancing accessibility one letter at a time.</p>
+                    <img class="img_ftr" src="{% static 'detect.png' %}">
+                </div>
+                <div class="feature">
+                    <h3>Precision in ASL Letter Detection</h3>
+                    <p>Powered by advanced machine learning, our system delivers high accuracy in recognizing each ASL letter you sign. Enjoy reliable feedback to support your learning journey.</p>
+                    <img class="img_ftr" src="{% static 'Figure_2.png' %}">
+                </div>
+                <div class="feature">
+                    <h3>User-Friendly Interface</h3>
+                    <p>Our platform is designed for effortless navigation, offering an intuitive and accessible experience for all users—no prior knowledge required.</p>
+                    <img class="img_ftr" src="{% static 'register.png' %}">
+                </div>
+            </section>
+            <h2 class="test">About Me</h2>
+            <section id="about-section" class="about">
+                <p>Driven by a passion for inclusivity, my journey began with a simple goal: to make communication accessible to everyone. Inspired by the challenges I've seen friends and family face in expressing themselves, I set out to create a tool that empowers users to communicate freely and effectively.</p>
+                <p>This project represents my commitment, hard work, and dedication to breaking down communication barriers, and I'm excited to share it with the world!</p>
+                <ul>
+                    <li>Maxime Martin - <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" class="social-button linkedin-button">LinkedIn</a> | <a href="https://github.com/cosmos510" class="social-button github-button">GitHub</a> | <a href="https://github.com/cosmos510/asl-recognition" class="repo-link">GitHub Repository</a></li>
+                </ul>
+            </section>
+            <section id="cta-section" class="cta">
+                <h2>Start Recognizing ASL!</h2>
+                <p>Ready to experience real-time ASL recognition? Try our system now and see the technology in action.</p>
+                <a href="/predict" class="btn btn-secondary">Try Now</a>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 ASL Recognition. Built with Django.</p>
+    </footer>
+</body>
+</html>
