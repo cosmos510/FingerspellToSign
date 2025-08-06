@@ -3,24 +3,26 @@ import pickle
 import numpy as np
 import mediapipe as mp
 import os
-from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse, StreamingHttpResponse
-from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
-# Load ML model
-model_path = os.path.join(settings.BASE_DIR, 'model1.p')
-model_dict = pickle.load(open(model_path, 'rb'))
-model = model_dict['model']
+from django.http import JsonResponse, StreamingHttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 global_predicted_character = "No prediction"
+
+model = None
+
+def load_model():
+    global model
+    if model is None:
+        model_path = os.path.join(settings.BASE_DIR, 'model1.p')
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found at {model_path}")
+        with open(model_path, 'rb') as f:
+            model_dict = pickle.load(f)
+        model = model_dict['model']
 
 def home(request):
     return render(request, 'index.html')
@@ -42,6 +44,11 @@ def upload_frame(request):
         file = request.FILES['file']
         if file.size == 0:
             return JsonResponse({'status': 'failed', 'error': 'Empty file'}, status=400)
+        
+        try:
+            load_model()
+        except FileNotFoundError as e:
+            return JsonResponse({'status': 'failed', 'error': str(e)}, status=500)
         
         image = file.read()
         np_arr = np.frombuffer(image, np.uint8)
@@ -95,8 +102,6 @@ def video_feed(request):
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
     
     return StreamingHttpResponse(generate(), content_type='multipart/x-mixed-replace; boundary=frame')
-
-
 
 def header_view(request):
     return render(request, 'header.html')
