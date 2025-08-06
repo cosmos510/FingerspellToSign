@@ -1,22 +1,15 @@
 import cv2
 import pickle
 import numpy as np
+import mediapipe as mp
 import os
 from django.conf import settings
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-# Try to import mediapipe, fallback if not available
-try:
-    import mediapipe as mp
-    mp_hands = mp.solutions.hands
-    hands = mp_hands.Hands()
-    MEDIAPIPE_AVAILABLE = True
-except ImportError:
-    MEDIAPIPE_AVAILABLE = False
-    hands = None
-
+mp_hands = mp.solutions.hands
+hands = mp_hands.Hands()
 global_predicted_character = "No prediction"
 
 model = None
@@ -45,26 +38,29 @@ def upload_frame(request):
     global global_predicted_character
     
     if request.method == 'POST':
-        if not MEDIAPIPE_AVAILABLE:
-            return JsonResponse({'status': 'failed', 'error': 'Hand detection not available on this platform'}, status=500)
-            
-        if 'file' not in request.FILES:
-            return JsonResponse({'status': 'failed', 'error': 'No file part'}, status=400)
-        
-        file = request.FILES['file']
-        if file.size == 0:
-            return JsonResponse({'status': 'failed', 'error': 'Empty file'}, status=400)
-        
         try:
-            load_model()
-        except FileNotFoundError as e:
-            return JsonResponse({'status': 'failed', 'error': str(e)}, status=500)
-        
-        image = file.read()
-        np_arr = np.frombuffer(image, np.uint8)
-        img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-        frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        results = hands.process(frame_rgb)
+            if 'file' not in request.FILES:
+                return JsonResponse({'status': 'failed', 'error': 'No file part'}, status=400)
+            
+            file = request.FILES['file']
+            if file.size == 0:
+                return JsonResponse({'status': 'failed', 'error': 'Empty file'}, status=400)
+            
+            try:
+                load_model()
+            except FileNotFoundError as e:
+                return JsonResponse({'status': 'failed', 'error': str(e)}, status=500)
+            
+            image = file.read()
+            np_arr = np.frombuffer(image, np.uint8)
+            img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+            frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            results = hands.process(frame_rgb)
+        except Exception as e:
+            print(f"❌ Error in upload_frame: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status': 'failed', 'error': f'Processing error: {str(e)}'}, status=500)
         
         if results.multi_hand_landmarks:
             data_aux = []
