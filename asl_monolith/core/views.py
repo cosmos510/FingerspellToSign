@@ -62,32 +62,32 @@ def upload_frame(request):
             traceback.print_exc()
             return JsonResponse({'status': 'failed', 'error': f'Processing error: {str(e)}'}, status=500)
             
-            if results.multi_hand_landmarks:
-                data_aux = []
-                x_ = []
-                y_ = []
-                
-                hand_landmarks = results.multi_hand_landmarks[0]
-                for i in range(len(hand_landmarks.landmark)):
-                    x = hand_landmarks.landmark[i].x
-                    y = hand_landmarks.landmark[i].y
-                    x_.append(x)
-                    y_.append(y)
-                
-                for i in range(len(hand_landmarks.landmark)):
-                    x = hand_landmarks.landmark[i].x
-                    y = hand_landmarks.landmark[i].y
-                    data_aux.append(x - min(x_))
-                    data_aux.append(y - min(y_))
-                
-                if len(data_aux) == 42:
-                    data_aux_np = np.array(data_aux).reshape(1, -1)
-                    prediction = model.predict(data_aux_np)
-                    global_predicted_character = prediction[0]
-            else:
-                global_predicted_character = "No hand detected"
+        if results.multi_hand_landmarks:
+            data_aux = []
+            x_ = []
+            y_ = []
             
-            return JsonResponse({'prediction': global_predicted_character})
+            hand_landmarks = results.multi_hand_landmarks[0]
+            for i in range(len(hand_landmarks.landmark)):
+                x = hand_landmarks.landmark[i].x
+                y = hand_landmarks.landmark[i].y
+                x_.append(x)
+                y_.append(y)
+            
+            for i in range(len(hand_landmarks.landmark)):
+                x = hand_landmarks.landmark[i].x
+                y = hand_landmarks.landmark[i].y
+                data_aux.append(x - min(x_))
+                data_aux.append(y - min(y_))
+            
+            if len(data_aux) == 42:
+                data_aux_np = np.array(data_aux).reshape(1, -1)
+                prediction = model.predict(data_aux_np)
+                global_predicted_character = prediction[0]
+        else:
+            global_predicted_character = "No hand detected"
+        
+        return JsonResponse({'prediction': global_predicted_character})
     
     return JsonResponse({'status': 'failed', 'error': 'Invalid request method'}, status=400)
 
