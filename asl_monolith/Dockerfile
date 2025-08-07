@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxrender-dev \
     libgomp1 \
-    libgoogle-glog0v5 \
+    libgoogle-glog-dev \
+    libgflags-dev \
+    libprotobuf-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
