@@ -29,4 +29,4 @@ COPY . .
 EXPOSE 8080
 
 # Run the application
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:$PORT"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:${PORT:-8080}"]
