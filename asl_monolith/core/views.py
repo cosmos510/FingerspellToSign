@@ -16,7 +16,13 @@ except ImportError as e:
 try:
     import mediapipe as mp
     mp_hands = mp.solutions.hands
-    hands = mp_hands.Hands()
+    # Optimize mediapipe for performance
+    hands = mp_hands.Hands(
+        static_image_mode=True,
+        max_num_hands=1,
+        min_detection_confidence=0.5,
+        min_tracking_confidence=0.5
+    )
     MEDIAPIPE_AVAILABLE = True
 except ImportError as e:
     print(f"Mediapipe not available: {e}")
@@ -24,14 +30,19 @@ except ImportError as e:
     hands = None
 
 global_predicted_character = "No prediction"
+_cached_model = None
 
 def load_model():
-    model_path = os.path.join(settings.BASE_DIR, 'model1.p')
-    if not os.path.exists(model_path):
-        raise FileNotFoundError(f"Model file not found at {model_path}")
-    with open(model_path, 'rb') as f:
-        model_dict = pickle.load(f)
-    return model_dict['model']
+    global _cached_model
+    if _cached_model is None:
+        model_path = os.path.join(settings.BASE_DIR, 'model1.p')
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found at {model_path}")
+        with open(model_path, 'rb') as f:
+            model_dict = pickle.load(f)
+        _cached_model = model_dict['model']
+        print("✅ Model loaded and cached")
+    return _cached_model
 
 def home(request):
     return render(request, 'index.html')
@@ -60,9 +71,6 @@ def upload_frame(request):
             file = request.FILES['file']
             if file.size == 0:
                 return JsonResponse({'status': 'failed', 'error': 'Empty file'}, status=400)
-            
-            # Load model only when needed
-            model = load_model()
             
             image = file.read()
             np_arr = np.frombuffer(image, np.uint8)
@@ -93,11 +101,9 @@ def upload_frame(request):
                 
                 if len(data_aux) == 42:
                     data_aux_np = np.array(data_aux).reshape(1, -1)
+                    model = load_model()
                     prediction = model.predict(data_aux_np)
                     global_predicted_character = prediction[0]
-                    
-                    # Clear variables to free memory
-                    del model, data_aux_np, img, frame_rgb
             else:
                 global_predicted_character = "No hand detected"
                 
