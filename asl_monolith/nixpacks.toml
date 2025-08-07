@@ -18,12 +18,6 @@ nixPkgs = [
   "gcc-unwrapped.lib"
 ]
 
-[phases.install]
-cmds = [
-  "python -m pip install --upgrade pip",
-  "python -m pip install --no-cache-dir -r requirements.txt"
-]
-
 [variables]
 LD_LIBRARY_PATH = "/nix/store/*-mesa-*/lib:/nix/store/*-libGL-*/lib:/nix/store/*-gcc-*/lib"
 
