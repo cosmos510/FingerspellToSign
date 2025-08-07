@@ -102,10 +102,18 @@ def upload_frame(request):
                 global_predicted_character = "No hand detected"
                 
         except Exception as e:
-            print(f"❌ Error in upload_frame: {str(e)}")
+            error_msg = str(e)
+            print(f"❌ Error in upload_frame: {error_msg}")
+            print(f"❌ Error type: {type(e).__name__}")
             import traceback
             traceback.print_exc()
-            return JsonResponse({'status': 'failed', 'error': f'Processing error: {str(e)}'}, status=500)
+            
+            # Return more specific error for debugging
+            return JsonResponse({
+                'status': 'failed', 
+                'error': f'Processing error: {error_msg}',
+                'error_type': type(e).__name__
+            }, status=500)
         
         return JsonResponse({'prediction': global_predicted_character})
     
