@@ -1,9 +1,0 @@
-[phases.setup]
-nixPkgs = ["python310", "gcc", "libGL", "glib", "glibc", "libGLU", "pkg-config"]
-
-
-[variables]
-LD_LIBRARY_PATH = "/nix/store/*-mesa-*/lib:/nix/store/*-libGL-*/lib:/nix/store/*-gcc-*/lib"
-
-[start]
-cmd = "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:$PORT"
