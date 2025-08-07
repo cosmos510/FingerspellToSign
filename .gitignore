@@ -17,7 +17,6 @@ ENV/
 *.egg-info/
 dist/
 build/
-
 # Django
 *.log
 db.sqlite3
