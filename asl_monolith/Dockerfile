@@ -25,8 +25,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
+# Run migrations during build
+RUN python manage.py migrate
+
 # Expose port
 EXPOSE 8080
 
 # Run the application
-CMD ["sh", "-c", "echo 'Starting migrations...' && python manage.py migrate && echo 'Starting server...' && python manage.py runserver 0.0.0.0:${PORT:-8080}"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
