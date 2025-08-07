@@ -1,25 +1,6 @@
 [phases.setup]
-nixPkgs = [
-  "python310",
-  "python310Packages.pip",
-  "libGL",
-  "libSM",
-  "libGLU",
-  "libxext",
-  "libxrender",
-  "mesa",
-  "mesa.drivers",
-  "xorg.libX11",
-  "xorg.libXext",
-  "xorg.libXrender",
-  "xorg.libXi",
-  "xorg.libXrandr",
-  "xorg.libXfixes",
-  "xorg.libXcursor",
-  "xorg.libXinerama",
-  "glib",
-  "gcc-unwrapped.lib"
-]
+nixPkgs = ["python310", "gcc", "libGL", "glib", "glibc", "libGLU", "pkg-config"]
+
 
 [variables]
 LD_LIBRARY_PATH = "/nix/store/*-mesa-*/lib:/nix/store/*-libGL-*/lib:/nix/store/*-gcc-*/lib"
