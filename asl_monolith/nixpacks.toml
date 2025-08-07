@@ -3,7 +3,10 @@ nixPkgs = [
   "python310",
   "python310Packages.pip",
   "libGL",
+  "libSM",
   "libGLU",
+  "libxext",
+  "libxrender",
   "mesa",
   "mesa.drivers",
   "xorg.libX11",
@@ -17,10 +20,7 @@ nixPkgs = [
   "glib",
   "gcc-unwrapped.lib"
 ]
-nixLibs = [
-    'libuuid',
-    'libGL',
-]
+
 [variables]
 LD_LIBRARY_PATH = "/nix/store/*-mesa-*/lib:/nix/store/*-libGL-*/lib:/nix/store/*-gcc-*/lib"
 
