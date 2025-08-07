@@ -1,2 +1,53 @@
 asl_monolith/model1.p
 .env
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+migrations/__pycache__/
+
+# Model files (large files)
+*.p
+model*.pkl
+model*.joblib
+model1.p
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.spyderproject
+.spyproject
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Docker
+.dockerignore
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

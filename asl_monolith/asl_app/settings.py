@@ -4,22 +4,20 @@ from dotenv import load_dotenv
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-asl-recognition-demo-key-change-in-production'
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-asl-recognition-demo-key-change-in-production')
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 AUTH_USER_MODEL = 'core.User'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
-    'core.apps.CoreConfig',  # <-- Keep this, for the custom app config
+    'core.apps.CoreConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    # 'core',  <-- remove this line
 ]
 
 MIDDLEWARE = [
