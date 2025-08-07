@@ -77,7 +77,6 @@ def upload_frame(request):
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
             
             # Resize image to reduce memory usage
-            img = cv2.resize(img, (320, 240))
             frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             results = hands.process(frame_rgb)
             
