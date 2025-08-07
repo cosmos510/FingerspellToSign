@@ -15,19 +15,25 @@ except ImportError as e:
 
 try:
     import mediapipe as mp
-    mp_hands = mp.solutions.hands
-    # Optimize mediapipe for performance
-    hands = mp_hands.Hands(
-        static_image_mode=True,
-        max_num_hands=1,
-        min_detection_confidence=0.5,
-        min_tracking_confidence=0.5
-    )
     MEDIAPIPE_AVAILABLE = True
 except ImportError as e:
     print(f"Mediapipe not available: {e}")
     MEDIAPIPE_AVAILABLE = False
-    hands = None
+
+_cached_hands = None
+
+def get_hands_detector():
+    global _cached_hands
+    if _cached_hands is None and MEDIAPIPE_AVAILABLE:
+        mp_hands = mp.solutions.hands
+        _cached_hands = mp_hands.Hands(
+            static_image_mode=True,
+            max_num_hands=1,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5
+        )
+        print("✅ Hands detector initialized")
+    return _cached_hands
 
 global_predicted_character = "No prediction"
 _cached_model = None
@@ -78,6 +84,7 @@ def upload_frame(request):
             
             # Resize image to reduce memory usage
             frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            hands = get_hands_detector()
             results = hands.process(frame_rgb)
             
             if results.multi_hand_landmarks:
