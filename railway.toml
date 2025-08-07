@@ -1,5 +1,0 @@
-[build]
-builder = "nixpacks"
-
-[build.environment]
-NIXPACKS_EXTRA_PACKAGES = "mesa mesa_glu"
