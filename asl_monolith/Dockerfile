@@ -25,6 +25,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
+# Collect static files for production
+ENV DEBUG=False
+RUN python manage.py collectstatic --noinput
+
 # Expose port
 EXPOSE 8080
 
