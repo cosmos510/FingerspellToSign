@@ -30,13 +30,6 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-bottom: 2px solid #3e3e5c;
 }
-header .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 header h1 {
     margin: 0;
     font-size: 2rem;
@@ -58,10 +51,6 @@ header nav a {
 header nav a:hover {
     background-color: #3e3e5c;
     transform: translateY(-2px);
-}
-header nav #auth-links {
-    display: flex;
-    gap: 1.5rem;
 }
 .features {
     display: flex;
@@ -225,53 +214,7 @@ video {
     font-size: 1rem;
     font-weight: bold;
 }
-/* Form */
-form {
-    padding: 1.5rem;
-    border-radius: 15px;
-    background-color: #e6f7ff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    width: 375px;
-}
-form:hover {
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-form label {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-    color: #555;
-}
-form input {
-    padding: 0.85rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-    width: 90%;
-    background-color: #fafafa;
-}
-form input:focus {
-    border-color: #0ABAB5;
-    background-color: #ffffff;
-    outline: none;
-}
-form button {
-    display: block;
-    width: 100%;
-    padding: 0.85rem;
-    background-color: #0ABAB5;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-form button:hover {
-    background-color: #008080;
-    transform: scale(1.05);
-}
+ 
 .hero {
     text-align: center;
     margin-bottom: 2rem;
@@ -301,71 +244,11 @@ footer {
 .btn:hover {
     background-color: #0056b3;
 }
-.feedback_btn {
-    padding: 0.75rem 2rem;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-top: 2rem;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-.feedback_btn:hover {
-    background-color: #2980b9;
-}
-#three-canvas {
-    flex: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-}
-.card {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.card.show {
-    opacity: 1;
-    pointer-events: auto;
-}
 
 
 
-.container-register {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem;
-}
-.register-hero {
-    background: linear-gradient(to bottom right, #1e1e2f, #2c2c40, #3f3f5f);
-    color: #fff;
-    padding: 2rem;
-    flex: 1;
-    border-radius: 10px;
-    box-sizing: border-box;
-    min-width: 300px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.register-hero-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-.register-hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
+
+ 
 
 .social-button {
     display: inline-block;
@@ -506,13 +389,7 @@ html {
     overflow: hidden;
 }
 @media (max-width: 480px) {
-    #header-container {
-        height: 150px; 
-    }
-
-    .container-register {
-        flex-direction: column;
-    }
+    
 
     .content {
         flex-direction: column;
@@ -541,28 +418,11 @@ html {
         font-size: 0.9rem;
     }
 
-    .register-hero {
-        flex-direction: column;
-        align-items: center;
-        padding-right: 20px;
-        width: 50%;
-    }
-
-    .register-hero-content {
-        flex-direction: column;
-        align-items: center;
-        padding-right: 20px;
-        display: flex;
-    }
+    
 
     canvas {
         width: 100% !important;
         height: auto !important;
-    }
-
-    form {
-        width: 100%;
-        padding: 0.5rem;
     }
 
     .video-container {
@@ -606,9 +466,7 @@ html {
 }
 
 @media (max-width: 768px) {
-    #header-container {
-        height: 200px;
-    }
+    
 
     .page-nav {
         top: 15px;
