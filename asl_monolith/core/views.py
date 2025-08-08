@@ -81,8 +81,6 @@ def upload_frame(request):
             image = file.read()
             np_arr = np.frombuffer(image, np.uint8)
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-            
-            # Resize image to reduce memory usage
             frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             hands = get_hands_detector()
             results = hands.process(frame_rgb)
@@ -120,7 +118,6 @@ def upload_frame(request):
             import traceback
             traceback.print_exc()
             
-            # Return more specific error for debugging
             return JsonResponse({
                 'status': 'failed', 
                 'error': f'Processing error: {error_msg}',

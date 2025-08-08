@@ -18,5 +18,4 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 class User(AbstractUser):
-    # You can add custom fields here later if needed
     pass
