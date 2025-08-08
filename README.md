@@ -17,29 +17,6 @@ Our mission is to democratize sign language learning by making fingerspelling ac
 - **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
 - **Privacy Focused**: All processing happens locally in your browser - no data is stored or transmitted
 
-## Project Structure
-
-The project is organized as follows:
-
-```
-asl_monolith/
-├── Dockerfile          # Docker configuration for containerization
-├── manage.py           # Django management script
-├── model1.p            # Pre-trained model for gesture recognition
-├── requirements.txt    # Python dependencies
-├── asl_app/            # Main Django app
-│   ├── settings.py     # Django settings
-│   ├── urls.py         # URL routing
-│   ├── wsgi.py         # WSGI configuration
-├── core/               # Core application logic
-│   ├── models.py       # Database models
-│   ├── views.py        # Application views
-│   ├── urls.py         # Core URL routing
-├── static/             # Static assets (images, CSS, JS)
-├── staticfiles/        # Collected static files for deployment
-├── templates/          # HTML templates
-```
-
 ## 🚀 How It Works
 
 1. **Camera Access**: Grant webcam permission to start recognition
@@ -116,7 +93,6 @@ Interested in contributing, collaborating, or learning more about the project?
 
 - **Email**: [maximemartin510@gmail.com](mailto:maximemartin510@gmail.com)
 - **LinkedIn**: [Maxime Martin](https://www.linkedin.com/in/maxime-martin-090731aa/)
-- **GitHub**: [@cosmos510](https://github.com/cosmos510)
 
 ### For Developers
 Interested in the technical implementation or want to contribute? Contact me for access to the trained model and detailed documentation.
