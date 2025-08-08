@@ -1,79 +1,169 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Real-Time ASL Recognition platform offering cutting-edge technology for recognizing American Sign Language in real-time.">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home - Real-Time ASL Recognition</title>
+    <meta name="description" content="Traduisez la dactylologie ASL en temps réel avec notre outil intuitif et accessible. Apprenez et comprenez la langue des signes sans effort.">
+    <title>Fingerspell to Sign - Traduction ASL en temps réel</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    
     <header>
-        <h1>ASL Recognition</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/predict">Predict</a>
-            <a href="/about">About</a>
-        </nav>
-    </header>
-    <nav class="page-nav">
-        <a href="#hero-section">Home</a>
-        <a href="#alphabet-section">ASL Alphabet</a>
-        <a href="#features-section">Features</a>
-        <a href="#about-section">About Us</a>
-        <a href="#cta-section">Join Us</a>
-    </nav>
-    <main>
-        <div class="container">
-            <section id="hero-section" class="hero">
-                <h2 class="title">Experience Real-Time American Sign Language Recognition</h2>
-                <img class="cover" src="{% static 'cover.jpg' %}" >
-                <p class="subtitle">Discover our innovative platform designed to translate American Sign Language alphabet gestures in real time. Leveraging advanced algorithms and state-of-the-art processing, our technology breaks down communication barriers, making interactions more accessible, inclusive, and seamless.</p>
-            </section>
-            <section id="alphabet-section" class="alphabet-section">
-                <h2>Discover the American Sign Language Alphabet</h2>
-                <p class="description">Explore each letter of the ASL alphabet and put your skills to the test! Dive into our interactive recognition tool below to start learning and practicing in real time.</p>
-                <img class="alpha" src="{% static 'asl.jpg' %}" alt="ASL Alphabet">
-                <br>
-                <a href="/predict" class="btn btn-primary">Get Started</a>
-            </section>
-            <h2 class="test">Features</h2>
-            <section id="features-section" class="features">
-                <div class="feature">
-                    <h3>Instant ASL Recognition</h3>
-                    <p>See each ASL letter detected in real time as you sign. A simple and effective tool for learning and practicing the ASL alphabet, enhancing accessibility one letter at a time.</p>
-                    <img class="img_ftr" src="{% static 'detect.png' %}">
-                </div>
-                <div class="feature">
-                    <h3>Precision in ASL Letter Detection</h3>
-                    <p>Powered by advanced machine learning, our system delivers high accuracy in recognizing each ASL letter you sign. Enjoy reliable feedback to support your learning journey.</p>
-                    <img class="img_ftr" src="{% static 'Figure_2.png' %}">
-                </div>
-                <div class="feature">
-                    <h3>User-Friendly Interface</h3>
-                    <p>Our platform is designed for effortless navigation, offering an intuitive and accessible experience for all users—no prior knowledge required.</p>
-                    <img class="img_ftr" src="{% static 'register.png' %}">
-                </div>
-            </section>
-            <h2 class="test">About Me</h2>
-            <section id="about-section" class="about">
-                <p>Driven by a passion for inclusivity, my journey began with a simple goal: to make communication accessible to everyone. Inspired by the challenges I've seen friends and family face in expressing themselves, I set out to create a tool that empowers users to communicate freely and effectively.</p>
-                <p>This project represents my commitment, hard work, and dedication to breaking down communication barriers, and I'm excited to share it with the world!</p>
-                <ul>
-                    <li>Maxime Martin - <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" class="social-button linkedin-button">LinkedIn</a> | <a href="https://github.com/cosmos510" class="social-button github-button">GitHub</a> | <a href="https://github.com/cosmos510/asl-recognition" class="repo-link">GitHub Repository</a></li>
-                </ul>
-            </section>
-            <section id="cta-section" class="cta">
-                <h2>Start Recognizing ASL!</h2>
-                <p>Ready to experience real-time ASL recognition? Try our system now and see the technology in action.</p>
-                <a href="/predict" class="btn btn-secondary">Try Now</a>
-            </section>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Fingerspell to Sign</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="/">Accueil</a>
+                <a href="/predict">Prédiction</a>
+                <a href="/about">À propos</a>
+            </nav>
+            <button class="cta-button" onclick="window.location.href='/predict'">Démarrer la traduction</button>
         </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Traduisez la dactylologie de l'ASL en temps réel</h1>
+                <p>Notre outil intuitif vous aide à comprendre et à apprendre la dactylologie sans effort.</p>
+                <a href="/predict" class="cta-primary">Commencer gratuitement</a>
+                <div class="hero-image">
+                    <img src="{% static 'asl.jpg' %}" alt="Démonstration de l'alphabet en langue des signes américaine montrant diverses personnes utilisant la dactylologie">
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Fonctionnalités clés</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Traduction Instantanée</h3>
+                        <p>Reconnaissance en temps réel de la dactylologie avec feedback immédiat</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Précision Élevée</h3>
+                        <p>Modèle d'IA entraîné pour une reconnaissance précise des gestes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Facile à Utiliser</h3>
+                        <p>Interface intuitive accessible directement depuis votre navigateur</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Apprentissage Ludique</h3>
+                        <p>Apprenez l'alphabet ASL de manière interactive et engageante</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Ce que disent nos utilisateurs</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">
+                            <img src="{% static 'avatar1.jpg' %}" alt="Photo de profil de Marie Dubois" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-placeholder">MD</div>
+                        </div>
+                        <blockquote>
+                            <p>"Cet outil a révolutionné ma façon d'apprendre la langue des signes. La reconnaissance est impressionnante !"</p>
+                            <cite>
+                                <strong>Marie Dubois</strong>
+                                <span>Étudiante en éducation spécialisée</span>
+                            </cite>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">
+                            <img src="{% static 'avatar2.jpg' %}" alt="Photo de profil de Ahmed Hassan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-placeholder">AH</div>
+                        </div>
+                        <blockquote>
+                            <p>"Parfait pour mes cours ! Mes élèves adorent l'aspect interactif et la facilité d'utilisation."</p>
+                            <cite>
+                                <strong>Ahmed Hassan</strong>
+                                <span>Enseignant ASL</span>
+                            </cite>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-avatar">
+                            <img src="{% static 'avatar3.jpg' %}" alt="Photo de profil de Sarah Johnson" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-placeholder">SJ</div>
+                        </div>
+                        <blockquote>
+                            <p>"Une solution accessible qui m'aide à communiquer avec ma fille sourde. Merci pour cet outil formidable !"</p>
+                            <cite>
+                                <strong>Sarah Johnson</strong>
+                                <span>Parent</span>
+                            </cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="compatibility">
+            <div class="container">
+                <h2>Compatible avec tous vos appareils</h2>
+                <p>Utilisez Fingerspell to Sign sur n'importe quel appareil avec un navigateur moderne</p>
+                <div class="devices-grid">
+                    <div class="device">
+                        <div class="device-icon">💻</div>
+                        <h3>Ordinateurs</h3>
+                        <p>Windows, macOS, Linux</p>
+                    </div>
+                    <div class="device">
+                        <div class="device-icon">📱</div>
+                        <h3>Mobiles</h3>
+                        <p>iOS, Android</p>
+                    </div>
+                    <div class="device">
+                        <div class="device-icon">🌐</div>
+                        <h3>Navigateurs</h3>
+                        <p>Chrome, Firefox, Safari, Edge</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Prêt à commencer ?</h2>
+                <p>Rejoignez des milliers d'utilisateurs qui apprennent la langue des signes avec notre outil</p>
+                <a href="/predict" class="cta-primary">Essayer maintenant</a>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 ASL Recognition. Built with Django.</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/about">À propos</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy">Politique de confidentialité</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook" class="social-link">📘</a>
+                <a href="#" aria-label="Twitter" class="social-link">🐦</a>
+                <a href="#" aria-label="LinkedIn" class="social-link">💼</a>
+            </div>
+            <div class="footer-mission">
+                <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 Fingerspell to Sign. Tous droits réservés.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

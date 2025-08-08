@@ -1,52 +1,150 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Real-Time ASL Recognition platform offering cutting-edge technology for recognizing American Sign Language in real-time.">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ASL Prediction - Real-Time ASL Recognition</title>
+    <meta name="description" content="Utilisez notre outil de reconnaissance ASL en temps réel pour traduire la dactylologie. Interface accessible et intuitive.">
+    <title>Prédiction ASL - Fingerspell to Sign</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'predict.css' %}">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    
     <header>
-        <h1>ASL Recognition</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/predict">Predict</a>
-            <a href="/about">About</a>
-        </nav>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Fingerspell to Sign</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="/">Accueil</a>
+                <a href="/predict" aria-current="page">Prédiction</a>
+                <a href="/about">À propos</a>
+            </nav>
+            <button class="cta-button" onclick="window.location.href='/'">Retour à l'accueil</button>
+        </div>
     </header>
-    <main>
-        <div class="container-predict">
-            <h2>ASL Recognition in Action</h2>
-            <div class="content">
-                <div class="video-section">
-                    <div class="video-container">
-                        <video id="webcam" width="640" height="480" autoplay></video>
+
+    <main id="main-content">
+        <section class="predict-hero">
+            <div class="container">
+                <h1>Reconnaissance ASL en temps réel</h1>
+                <p>Placez votre main devant la caméra et commencez à signer. Notre IA reconnaîtra vos gestes instantanément.</p>
+            </div>
+        </section>
+
+        <section class="predict-interface">
+            <div class="container">
+                <div class="predict-grid">
+                    <div class="camera-section">
+                        <div class="camera-container">
+                            <video id="webcam" width="640" height="480" autoplay aria-label="Flux vidéo de la caméra pour la reconnaissance des gestes"></video>
+                            <div class="camera-overlay">
+                                <div class="detection-zone">
+                                    <span class="zone-label">Zone de détection</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-section">
+                        <div class="prediction-card">
+                            <h2>Prédiction actuelle</h2>
+                            <div class="prediction-display">
+                                <span id="prediction-text" class="prediction-letter">-</span>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidence-fill"></div>
+                                </div>
+                            </div>
+                            <canvas id="prediction-canvas" style="display: none;"></canvas>
+                        </div>
+
+                        <div class="word-builder-card">
+                            <h2>Constructeur de mots</h2>
+                            <div class="word-display">
+                                <span id="current-word" class="current-word">_</span>
+                            </div>
+                            <div class="word-controls">
+                                <button id="confirm-letter" class="control-btn primary">
+                                    <span class="btn-icon">✓</span>
+                                    Confirmer la lettre
+                                </button>
+                                <button id="clear-word" class="control-btn danger">
+                                    <span class="btn-icon">🗑️</span>
+                                    Effacer tout
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="content-2">
-                <div class="card-prediction">
-                    <h2>Prediction:</h2>
-                    <p class="prediction-text" id="prediction-text">Your Prediction Will Appear Here!</p>
-                    <canvas id="prediction-canvas"></canvas>
-                </div>
-                <div class="word-builder">
-                    <h2>Current Word:</h2>
-                    <div id="current-word" class="current-word"> </div>
-                </div>
-                <button id="confirm-letter" class="word-builder-button">Confirm Letter</button>
-                <button id="clear-word" class="clear-word-button">Clear Word</button>
             </div>
-            </div>
+        </section>
 
-        </div>
+        <section class="instructions">
+            <div class="container">
+                <h2>Comment utiliser l'outil</h2>
+                <div class="instructions-grid">
+                    <div class="instruction-card">
+                        <div class="instruction-number">1</div>
+                        <h3>Autorisez la caméra</h3>
+                        <p>Autorisez l'accès à votre webcam</p>
+                    </div>
+                    <div class="instruction-card">
+                        <div class="instruction-number">2</div>
+                        <h3>Positionnez votre main</h3>
+                        <p>Placez votre main dans la zone de détection, bien éclairée et visible</p>
+                    </div>
+                    <div class="instruction-card">
+                        <div class="instruction-number">3</div>
+                        <h3>Signez une lettre</h3>
+                        <p>Formez une lettre de l'alphabet ASL et maintenez la position</p>
+                    </div>
+                    <div class="instruction-card">
+                        <div class="instruction-number">4</div>
+                        <h3>Confirmez et construisez</h3>
+                        <p>Confirmez la lettre reconnue pour construire des mots complets</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="alphabet-reference">
+            <div class="container">
+                <h2>Référence de l'alphabet ASL</h2>
+                <p>Consultez cette référence pour vous aider à former correctement chaque lettre</p>
+                <div class="alphabet-display">
+                    <img src="{% static 'asl.jpg' %}" alt="Tableau de référence de l'alphabet en langue des signes américaine montrant toutes les lettres de A à Z" class="alphabet-chart">
+                </div>
+                <div class="tips">
+                    <h3>Conseils pour une meilleure reconnaissance</h3>
+                    <ul>
+                        <li>Assurez-vous d'avoir un bon éclairage</li>
+                        <li>Gardez votre main dans la zone de détection</li>
+                        <li>Maintenez la position pendant 2-3 secondes</li>
+                        <li>Évitez les arrière-plans complexes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 ASL Recognition. Built with Django.</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/about">À propos</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy">Politique de confidentialité</a>
+            </div>
+            <div class="footer-mission">
+                <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 Fingerspell to Sign. Tous droits réservés.</p>
+            </div>
+        </div>
     </footer>
-    <script src="{% static 'predict.js' %}"></script>  
+
+    <script src="{% static 'predict.js' %}"></script>
 </body>
 </html>
