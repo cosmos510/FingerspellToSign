@@ -169,16 +169,62 @@ header nav a:focus {
     outline-offset: 2px;
 }
 
-.hero-image {
+.hero-video {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
 }
 
-.hero-image img {
+.hero-video:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.demo-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+}
+
+.video-fallback {
     width: 100%;
     height: auto;
     border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(37, 99, 235, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.play-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.play-icon {
+    font-size: 0.8rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
 }
 
 /* Features Section */
@@ -197,8 +243,9 @@ header nav a:focus {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    justify-items: center;
 }
 
 .feature-card {
@@ -239,6 +286,23 @@ header nav a:focus {
 .testimonials {
     padding: 5rem 0;
     background: var(--bg-light);
+}
+
+/* Amélioration des animations */
+.feature-card,
+.device {
+    transition: var(--transition);
+}
+
+.feature-card:hover,
+.device:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
 }
 
 .testimonials h2 {
@@ -454,32 +518,76 @@ footer {
     padding: 2px 4px;
 }
 
+.contact-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-info h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .social-link {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 0.75rem 1.25rem;
     text-decoration: none;
-    font-size: 1.2rem;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
     transition: var(--transition);
+    backdrop-filter: blur(4px);
 }
 
 .social-link:hover,
 .social-link:focus {
-    background: var(--primary);
     transform: translateY(-2px);
-    outline: 2px solid var(--primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    outline: 2px solid rgba(255, 255, 255, 0.3);
     outline-offset: 2px;
+}
+
+.social-link.email:hover {
+    background: #ea4335;
+    border-color: #ea4335;
+}
+
+.social-link.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+.social-link.github:hover {
+    background: #333;
+    border-color: #333;
+}
+
+.link-icon {
+    font-size: 1.1rem;
+}
+
+.link-text {
+    font-weight: 600;
 }
 
 .footer-mission {
@@ -520,6 +628,10 @@ footer {
     .compatibility h2,
     .cta-section h2 {
         font-size: 2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
     }
     
     .container {

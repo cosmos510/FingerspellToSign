@@ -28,21 +28,20 @@
     background: var(--bg);
 }
 
-.mission-content {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 4rem;
-    align-items: center;
+.mission-content-centered {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.mission-text h2 {
+.mission-content-centered h2 {
     font-size: 2.3rem;
     font-weight: 700;
     color: var(--text);
     margin-bottom: 1.5rem;
 }
 
-.mission-text p {
+.mission-content-centered p {
     font-size: 1.1rem;
     color: var(--text-light);
     line-height: 1.7;
@@ -89,21 +88,12 @@
     font-size: 0.95rem;
 }
 
-.mission-image {
-    text-align: center;
-}
 
-.mission-image img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-}
 
 /* Team Section */
 .team {
     padding: 5rem 0;
-    background: var(--bg-light);
+    background: var(--bg);
 }
 
 .team h2 {
@@ -189,37 +179,121 @@
     gap: 1rem;
 }
 
-.social-link {
+.member-links .social-link {
+    background: var(--text);
+    color: white;
+    border: 1px solid var(--text);
+}
+
+.member-links .social-link:hover,
+.member-links .social-link:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    outline: 2px solid rgba(255, 255, 255, 0.3);
+    outline-offset: 2px;
+}
+
+
+.member-links .social {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.member-links .social:hover,
+.member-links .social:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+.member-links .social-link.email:hover {
+    background: #ea4335;
+    border-color: #ea4335;
+}
+
+.member-links .social-link.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+.member-links .social-link.github:hover {
+    background: #333;
+    border-color: #333;
+}
+
+.member-links .social {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     color: var(--text);
+    font-size: 0.9rem;
     font-weight: 500;
     transition: var(--transition);
 }
 
+.member-links .social:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+.member-links .social.email:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+.member-links .social.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+.member-links .social.github:hover {
+    background: #333;
+    border-color: #333;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    backdrop-filter: blur(4px);
+}
+
 .social-link:hover,
 .social-link:focus {
-    border-color: var(--primary);
-    color: var(--primary);
     transform: translateY(-2px);
-    outline: 2px solid var(--primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    outline: 2px solid rgba(255, 255, 255, 0.3);
     outline-offset: 2px;
+}
+
+.social-link.email:hover {
+    background: #ea4335;
+    border-color: #ea4335;
 }
 
 .social-link.linkedin:hover {
     background: #0077b5;
-    color: white;
     border-color: #0077b5;
 }
 
 .social-link.github:hover {
     background: #333;
-    color: white;
     border-color: #333;
 }
 
@@ -506,10 +580,8 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .mission-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
+    .mission-content-centered {
+        padding: 0 1rem;
     }
     
     .tech-process {

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez notre mission d'accessibilité, l'équipe derrière Fingerspell to Sign et notre engagement pour l'inclusion dans la langue des signes.">
-    <title>À propos - Fingerspell to Sign</title>
+    <meta name="description" content="Découvrez notre mission d'accessibilité, l'équipe derrière Signéo et notre engagement pour l'inclusion dans la langue des signes.">
+    <title>À propos - Signéo</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'about.css' %}">
 </head>
@@ -15,7 +15,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Fingerspell to Sign</h1>
+                <h1>Signéo</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
@@ -36,31 +36,27 @@
 
         <section class="mission">
             <div class="container">
-                <div class="mission-content">
-                    <div class="mission-text">
-                        <h2>Pourquoi Fingerspell to Sign ?</h2>
-                        <p>Notre mission est de démocratiser l'apprentissage de la langue des signes américaine en rendant la dactylologie accessible à tous, partout et à tout moment.</p>
-                        <p>Nous pensons que la technologie peut être un pont vers une meilleure compréhension et une communication plus inclusive entre les communautés sourdes et entendantes.</p>
-                        <div class="mission-values">
-                            <div class="value">
-                                <div class="value-icon">🌍</div>
-                                <h3>Accessibilité universelle</h3>
-                                <p>Outil gratuit et accessible depuis n'importe quel navigateur</p>
-                            </div>
-                            <div class="value">
-                                <div class="value-icon">🤝</div>
-                                <h3>Inclusion sociale</h3>
-                                <p>Favoriser la communication entre toutes les communautés</p>
-                            </div>
-                            <div class="value">
-                                <div class="value-icon">📚</div>
-                                <h3>Apprentissage ludique</h3>
-                                <p>Rendre l'apprentissage interactif et engageant</p>
-                            </div>
+                <div class="mission-content-centered">
+                    <h2>Pourquoi Signéo ?</h2>
+                    <p>Notre mission est de démocratiser l'apprentissage de la langue des signes en rendant la dactylologie accessible à tous, partout et à tout moment.</p>
+                    <p>Ce projet constitue les fondations d'une vision plus ambitieuse : traduire la langue des signes dans son intégralité, pas seulement la dactylologie. Nous avons commencé par l'ASL en raison du manque de bases de données disponibles pour la LSF (Langue des Signes Française).</p>
+                    <p>Nous pensons que la technologie peut être un pont vers une meilleure compréhension et une communication plus inclusive entre les communautés sourdes et entendantes.</p>
+                    <div class="mission-values">
+                        <div class="value">
+                            <div class="value-icon">🌍</div>
+                            <h3>Accessibilité universelle</h3>
+                            <p>Outil gratuit et accessible depuis n'importe quel navigateur</p>
                         </div>
-                    </div>
-                    <div class="mission-image">
-                        <img src="{% static 'asl.jpg' %}" alt="Personnes diverses utilisant la langue des signes, illustrant l'inclusivité et la diversité de notre communauté">
+                        <div class="value">
+                            <div class="value-icon">🤝</div>
+                            <h3>Inclusion sociale</h3>
+                            <p>Favoriser la communication entre toutes les communautés</p>
+                        </div>
+                        <div class="value">
+                            <div class="value-icon">📚</div>
+                            <h3>Apprentissage ludique</h3>
+                            <p>Rendre l'apprentissage interactif et engageant</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,21 +68,24 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="member-avatar">
-                            <img src="{% static 'maxime-avatar.jpg' %}" alt="Photo de profil de Maxime Martin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="avatar-placeholder">MM</div>
+                            <img src="{% static 'profile.png' %}" alt="Photo de profil de Maxime Martin">
                         </div>
                         <div class="member-info">
                             <h3>Maxime Martin</h3>
                             <p class="member-role">Développeur & Fondateur</p>
                             <p class="member-bio">Passionné par l'accessibilité numérique et l'intelligence artificielle, Maxime a créé cet outil pour rendre la langue des signes plus accessible à tous.</p>
                             <div class="member-links">
-                                <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" class="social-link linkedin">
-                                    <span class="link-icon">💼</span>
-                                    LinkedIn
+                                <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social email">
+                                    <span class="link-icon">✉️</span>
+                                    <span class="link-text">Email</span>
                                 </a>
-                                <a href="https://github.com/cosmos510" target="_blank" rel="noopener" class="social-link github">
+                                <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social linkedin">
+                                    <span class="link-icon">💼</span>
+                                    <span class="link-text">LinkedIn</span>
+                                </a>
+                                <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social github">
                                     <span class="link-icon">🐙</span>
-                                    GitHub
+                                    <span class="link-text">GitHub</span>
                                 </a>
                             </div>
                         </div>
@@ -209,21 +208,29 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="/about">À propos</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy">Politique de confidentialité</a>
-            </div>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook" class="social-link">📘</a>
-                <a href="#" aria-label="Twitter" class="social-link">🐦</a>
-                <a href="#" aria-label="LinkedIn" class="social-link">💼</a>
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Maxime Martin - Développeur & Fondateur</p>
+                <div class="social-links">
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">
+                        <span class="link-icon">✉️</span>
+                        <span class="link-text">Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
+                        <span class="link-icon">💼</span>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
+                        <span class="link-icon">🐙</span>
+                        <span class="link-text">GitHub</span>
+                    </a>
+                </div>
             </div>
             <div class="footer-mission">
                 <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2024 Fingerspell to Sign. Tous droits réservés.</p>
+                <p>&copy; 2025 Signéo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>

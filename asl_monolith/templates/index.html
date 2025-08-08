@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Traduisez la dactylologie ASL en temps réel avec notre outil intuitif et accessible. Apprenez et comprenez la langue des signes sans effort.">
-    <title>Fingerspell to Sign - Traduction ASL en temps réel</title>
+    <title>Signéo - Traduction ASL en temps réel</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
 <body>
@@ -14,7 +14,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Fingerspell to Sign</h1>
+                <h1>Signéo</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
@@ -31,8 +31,17 @@
                 <h1>Traduisez la dactylologie de l'ASL en temps réel</h1>
                 <p>Notre outil intuitif vous aide à comprendre et à apprendre la dactylologie sans effort.</p>
                 <a href="/predict" class="cta-primary">Commencer gratuitement</a>
-                <div class="hero-image">
-                    <img src="{% static 'asl.jpg' %}" alt="Démonstration de l'alphabet en langue des signes américaine montrant diverses personnes utilisant la dactylologie">
+                <div class="hero-video">
+                    <video autoplay muted loop playsinline class="demo-video">
+                        <source src="{% static 'asl_demo.mp4' %}" type="video/mp4">
+                        <img src="{% static 'asl.jpg' %}" alt="Démonstration de l'alphabet en langue des signes américaine" class="video-fallback">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="play-indicator">
+                            <span class="play-icon">▶️</span>
+                            <span class="demo-text">Démo en direct</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -65,57 +74,10 @@
             </div>
         </section>
 
-        <section class="testimonials">
-            <div class="container">
-                <h2>Ce que disent nos utilisateurs</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial">
-                        <div class="testimonial-avatar">
-                            <img src="{% static 'avatar1.jpg' %}" alt="Photo de profil de Marie Dubois" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="avatar-placeholder">MD</div>
-                        </div>
-                        <blockquote>
-                            <p>"Cet outil a révolutionné ma façon d'apprendre la langue des signes. La reconnaissance est impressionnante !"</p>
-                            <cite>
-                                <strong>Marie Dubois</strong>
-                                <span>Étudiante en éducation spécialisée</span>
-                            </cite>
-                        </blockquote>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial-avatar">
-                            <img src="{% static 'avatar2.jpg' %}" alt="Photo de profil de Ahmed Hassan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="avatar-placeholder">AH</div>
-                        </div>
-                        <blockquote>
-                            <p>"Parfait pour mes cours ! Mes élèves adorent l'aspect interactif et la facilité d'utilisation."</p>
-                            <cite>
-                                <strong>Ahmed Hassan</strong>
-                                <span>Enseignant ASL</span>
-                            </cite>
-                        </blockquote>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial-avatar">
-                            <img src="{% static 'avatar3.jpg' %}" alt="Photo de profil de Sarah Johnson" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="avatar-placeholder">SJ</div>
-                        </div>
-                        <blockquote>
-                            <p>"Une solution accessible qui m'aide à communiquer avec ma fille sourde. Merci pour cet outil formidable !"</p>
-                            <cite>
-                                <strong>Sarah Johnson</strong>
-                                <span>Parent</span>
-                            </cite>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="compatibility">
             <div class="container">
                 <h2>Compatible avec tous vos appareils</h2>
-                <p>Utilisez Fingerspell to Sign sur n'importe quel appareil avec un navigateur moderne</p>
+                <p>Utilisez Signéo sur n'importe quel appareil avec un navigateur moderne</p>
                 <div class="devices-grid">
                     <div class="device">
                         <div class="device-icon">💻</div>
@@ -147,21 +109,29 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="/about">À propos</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy">Politique de confidentialité</a>
-            </div>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook" class="social-link">📘</a>
-                <a href="#" aria-label="Twitter" class="social-link">🐦</a>
-                <a href="#" aria-label="LinkedIn" class="social-link">💼</a>
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Maxime Martin - Développeur & Fondateur</p>
+                <div class="social-links">
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">
+                        <span class="link-icon">✉️</span>
+                        <span class="link-text">Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
+                        <span class="link-icon">💼</span>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
+                        <span class="link-icon">🐙</span>
+                        <span class="link-text">GitHub</span>
+                    </a>
+                </div>
             </div>
             <div class="footer-mission">
                 <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2024 Fingerspell to Sign. Tous droits réservés.</p>
+                <p>&copy; 2025 Signéo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>

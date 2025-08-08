@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Utilisez notre outil de reconnaissance ASL en temps réel pour traduire la dactylologie. Interface accessible et intuitive.">
-    <title>Prédiction ASL - Fingerspell to Sign</title>
+    <title>Prédiction ASL - Signéo</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'predict.css' %}">
 </head>
@@ -15,7 +15,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Fingerspell to Sign</h1>
+                <h1>Signéo</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
@@ -38,6 +38,62 @@
             <div class="container">
                 <div class="predict-grid">
                     <div class="camera-section">
+                        <div class="camera-header">
+                            <div class="header-buttons">
+                                <div class="instructions-dropdown">
+                                    <button class="dropdown-toggle" id="instructions-toggle">
+                                        <span class="btn-icon">💡</span>
+                                        <span class="toggle-text">Instructions</span>
+                                        <span class="toggle-icon">▼</span>
+                                    </button>
+                                    <div class="dropdown-content" id="instructions-detail">
+                                        <div class="instructions-list">
+                                            <div class="instruction-item">
+                                                <span class="instruction-icon">📹</span>
+                                                <div>
+                                                    <strong>Autorisez la caméra</strong>
+                                                    <p>Cliquez sur "Démarrer" et autorisez l'accès webcam</p>
+                                                </div>
+                                            </div>
+                                            <div class="instruction-item">
+                                                <span class="instruction-icon">✋</span>
+                                                <div>
+                                                    <strong>Positionnez votre main</strong>
+                                                    <p>Main dans la zone bleue, assurez-vous d'avoir un bon éclairage</p>
+                                                </div>
+                                            </div>
+                                            <div class="instruction-item">
+                                                <span class="instruction-icon">⏱️</span>
+                                                <div>
+                                                    <strong>Maintenez la position</strong>
+                                                    <p>Gardez la lettre 2-3 secondes, évitez les arrière-plans complexes</p>
+                                                </div>
+                                            </div>
+                                            <div class="instruction-item">
+                                                <span class="instruction-icon">✓</span>
+                                                <div>
+                                                    <strong>Confirmez et construisez</strong>
+                                                    <p>Cliquez "Confirmer" pour ajouter la lettre au mot</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alphabet-dropdown">
+                                    <button class="dropdown-toggle" id="alphabet-toggle">
+                                        <span class="btn-icon">🔤</span>
+                                        <span class="toggle-text">Alphabet ASL</span>
+                                        <span class="toggle-icon">▼</span>
+                                    </button>
+                                    <div class="dropdown-content" id="alphabet-detail">
+                                        <div class="alphabet-content">
+                                            <img src="{% static 'asl.jpg' %}" alt="Tableau de référence de l'alphabet en langue des signes américaine" class="alphabet-chart-dropdown">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="camera-container">
                             <video id="webcam" width="640" height="480" autoplay aria-label="Flux vidéo de la caméra pour la reconnaissance des gestes"></video>
                             <div class="camera-overlay">
@@ -63,7 +119,7 @@
                         <div class="word-builder-card">
                             <h2>Constructeur de mots</h2>
                             <div class="word-display">
-                                <span id="current-word" class="current-word">_</span>
+                                <span id="current-word" class="current-word"></span>
                             </div>
                             <div class="word-controls">
                                 <button id="confirm-letter" class="control-btn primary">
@@ -80,71 +136,113 @@
                 </div>
             </div>
         </section>
-
-        <section class="instructions">
-            <div class="container">
-                <h2>Comment utiliser l'outil</h2>
-                <div class="instructions-grid">
-                    <div class="instruction-card">
-                        <div class="instruction-number">1</div>
-                        <h3>Autorisez la caméra</h3>
-                        <p>Autorisez l'accès à votre webcam</p>
-                    </div>
-                    <div class="instruction-card">
-                        <div class="instruction-number">2</div>
-                        <h3>Positionnez votre main</h3>
-                        <p>Placez votre main dans la zone de détection, bien éclairée et visible</p>
-                    </div>
-                    <div class="instruction-card">
-                        <div class="instruction-number">3</div>
-                        <h3>Signez une lettre</h3>
-                        <p>Formez une lettre de l'alphabet ASL et maintenez la position</p>
-                    </div>
-                    <div class="instruction-card">
-                        <div class="instruction-number">4</div>
-                        <h3>Confirmez et construisez</h3>
-                        <p>Confirmez la lettre reconnue pour construire des mots complets</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="alphabet-reference">
-            <div class="container">
-                <h2>Référence de l'alphabet ASL</h2>
-                <p>Consultez cette référence pour vous aider à former correctement chaque lettre</p>
-                <div class="alphabet-display">
-                    <img src="{% static 'asl.jpg' %}" alt="Tableau de référence de l'alphabet en langue des signes américaine montrant toutes les lettres de A à Z" class="alphabet-chart">
-                </div>
-                <div class="tips">
-                    <h3>Conseils pour une meilleure reconnaissance</h3>
-                    <ul>
-                        <li>Assurez-vous d'avoir un bon éclairage</li>
-                        <li>Gardez votre main dans la zone de détection</li>
-                        <li>Maintenez la position pendant 2-3 secondes</li>
-                        <li>Évitez les arrière-plans complexes</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
     </main>
-
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="/about">À propos</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy">Politique de confidentialité</a>
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Maxime Martin - Développeur & Fondateur</p>
+                <div class="social-links">
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">
+                        <span class="link-icon">✉️</span>
+                        <span class="link-text">Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
+                        <span class="link-icon">💼</span>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
+                        <span class="link-icon">🐙</span>
+                        <span class="link-text">GitHub</span>
+                    </a>
+                </div>
             </div>
             <div class="footer-mission">
                 <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2024 Fingerspell to Sign. Tous droits réservés.</p>
+                <p>&copy; 2025 Signéo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script src="{% static 'predict.js' %}"></script>
+    <script>
+        // Override prediction update if needed
+        const originalUpdatePrediction = window.updatePrediction;
+        if (originalUpdatePrediction) {
+            window.updatePrediction = function(prediction) {
+                updatePredictionDisplay(prediction);
+                return originalUpdatePrediction.apply(this, arguments);
+            };
+        }
+    </script>
+    <script>
+        // Toggle instructions dropdown
+        document.getElementById('instructions-toggle').addEventListener('click', function() {
+            const content = document.getElementById('instructions-detail');
+            const icon = this.querySelector('.toggle-icon');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('show');
+                icon.textContent = '▲';
+            }
+        });
+        
+        // Toggle alphabet dropdown
+        document.getElementById('alphabet-toggle').addEventListener('click', function() {
+            const content = document.getElementById('alphabet-detail');
+            const icon = this.querySelector('.toggle-icon');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('show');
+                icon.textContent = '▲';
+            }
+        });
+        
+        // Handle prediction display
+        function updatePredictionDisplay(prediction) {
+            const predictionElement = document.getElementById('prediction-text');
+            const confirmButton = document.getElementById('confirm-letter');
+            
+            if (prediction === 'del' || prediction === 'space') {
+                predictionElement.classList.add('hidden');
+                confirmButton.disabled = true;
+            } else if (prediction === 'No hand detected' || prediction.toLowerCase().includes('no hand')) {
+                predictionElement.classList.remove('hidden');
+                predictionElement.classList.add('no-hand');
+                predictionElement.textContent = prediction;
+                confirmButton.disabled = true;
+            } else {
+                predictionElement.classList.remove('hidden', 'no-hand');
+                predictionElement.textContent = prediction;
+                confirmButton.disabled = false;
+            }
+        }
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const instructionsDropdown = document.querySelector('.instructions-dropdown');
+            const alphabetDropdown = document.querySelector('.alphabet-dropdown');
+            const instructionsContent = document.getElementById('instructions-detail');
+            const alphabetContent = document.getElementById('alphabet-detail');
+            
+            if (!instructionsDropdown.contains(event.target)) {
+                instructionsContent.classList.remove('show');
+                instructionsDropdown.querySelector('.toggle-icon').textContent = '▼';
+            }
+            
+            if (!alphabetDropdown.contains(event.target)) {
+                alphabetContent.classList.remove('show');
+                alphabetDropdown.querySelector('.toggle-icon').textContent = '▼';
+            }
+        });
+    </script>
 </body>
 </html>
