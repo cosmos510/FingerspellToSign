@@ -160,6 +160,28 @@
     display: block;
 }
 
+.hand-tip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+    border: 1px solid #81d4fa;
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.tip-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.tip-text {
+    font-weight: 500;
+}
+
 .camera-container {
     position: relative;
     background: #000;
@@ -187,7 +209,7 @@
 .detection-zone {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 25%;
     transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
@@ -451,6 +473,11 @@
     .prediction-card,
     .word-builder-card {
         padding: 1.5rem;
+    }
+    
+    .hand-tip {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
     }
     
     .prediction-letter {
