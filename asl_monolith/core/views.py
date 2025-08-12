@@ -63,70 +63,56 @@ def about(request):
 def upload_frame(request):
     global global_predicted_character
     
-    if request.method == 'POST':
-        try:
-            if not CV2_AVAILABLE:
-                return JsonResponse({'status': 'failed', 'error': 'Image processing not available'}, status=500)
-            
-            if not MEDIAPIPE_AVAILABLE:
-                return JsonResponse({'status': 'failed', 'error': 'Hand detection not available'}, status=500)
-                
-            if 'file' not in request.FILES:
-                return JsonResponse({'status': 'failed', 'error': 'No file part'}, status=400)
-            
-            file = request.FILES['file']
-            if file.size == 0:
-                return JsonResponse({'status': 'failed', 'error': 'Empty file'}, status=400)
-            
-            image = file.read()
-            np_arr = np.frombuffer(image, np.uint8)
-            img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-            frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            hands = get_hands_detector()
-            results = hands.process(frame_rgb)
-            
-            if results.multi_hand_landmarks:
-                data_aux = []
-                x_ = []
-                y_ = []
-                
-                hand_landmarks = results.multi_hand_landmarks[0]
-                for i in range(len(hand_landmarks.landmark)):
-                    x = hand_landmarks.landmark[i].x
-                    y = hand_landmarks.landmark[i].y
-                    x_.append(x)
-                    y_.append(y)
-                
-                for i in range(len(hand_landmarks.landmark)):
-                    x = hand_landmarks.landmark[i].x
-                    y = hand_landmarks.landmark[i].y
-                    data_aux.append(x - min(x_))
-                    data_aux.append(y - min(y_))
-                
-                if len(data_aux) == 42:
-                    data_aux_np = np.array(data_aux).reshape(1, -1)
-                    model = load_model()
-                    prediction = model.predict(data_aux_np)
-                    global_predicted_character = prediction[0]
-            else:
-                global_predicted_character = "No hand detected"
-                
-        except Exception as e:
-            error_msg = str(e)
-            print(f"❌ Error in upload_frame: {error_msg}")
-            print(f"❌ Error type: {type(e).__name__}")
-            import traceback
-            traceback.print_exc()
-            
-            return JsonResponse({
-                'status': 'failed', 
-                'error': f'Processing error: {error_msg}',
-                'error_type': type(e).__name__
-            }, status=500)
-        
-        return JsonResponse({'prediction': global_predicted_character})
+    if request.method != 'POST':
+        return JsonResponse({'status': 'failed', 'error': 'Invalid request method'}, status=400)
     
-    return JsonResponse({'status': 'failed', 'error': 'Invalid request method'}, status=400)
+    if not CV2_AVAILABLE or not MEDIAPIPE_AVAILABLE:
+        return JsonResponse({'status': 'failed', 'error': 'Required libraries not available'}, status=500)
+    
+    if 'file' not in request.FILES:
+        return JsonResponse({'status': 'failed', 'error': 'No file part'}, status=400)
+    
+    file = request.FILES['file']
+    if file.size == 0 or file.size > 1024 * 1024:
+        return JsonResponse({'status': 'failed', 'error': 'Invalid file size'}, status=400)
+    
+    try:
+        image_data = file.read()
+        np_arr = np.frombuffer(image_data, np.uint8)
+        img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+        
+        if img is None:
+            return JsonResponse({'status': 'failed', 'error': 'Invalid image'}, status=400)
+        
+        frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        hands = get_hands_detector()
+        results = hands.process(frame_rgb)
+        
+        if results.multi_hand_landmarks:
+            landmarks = results.multi_hand_landmarks[0].landmark
+            x_coords = [lm.x for lm in landmarks]
+            y_coords = [lm.y for lm in landmarks]
+            
+            min_x, min_y = min(x_coords), min(y_coords)
+            data_aux = []
+            for lm in landmarks:
+                data_aux.extend([lm.x - min_x, lm.y - min_y])
+            
+            if len(data_aux) == 42:
+                prediction_input = np.array(data_aux, dtype=np.float32).reshape(1, -1)
+                model = load_model()
+                prediction = model.predict(prediction_input)
+                global_predicted_character = prediction[0]
+        else:
+            global_predicted_character = "No hand detected"
+            
+    except Exception as e:
+        return JsonResponse({
+            'status': 'failed', 
+            'error': 'Processing error'
+        }, status=500)
+    
+    return JsonResponse({'prediction': global_predicted_character})
 
 def get_prediction(request):
     global global_predicted_character

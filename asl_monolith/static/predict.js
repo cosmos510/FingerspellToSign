@@ -56,7 +56,6 @@ function sendFrameToServer(blob) {
     });
 }
 
-// Reuse canvas for better performance
 let reusableCanvas = null;
 
 function captureFrame() {
@@ -70,18 +69,32 @@ function captureFrame() {
             reusableCanvas = document.createElement('canvas');
         }
         
-        reusableCanvas.width = videoElement.videoWidth;
-        reusableCanvas.height = videoElement.videoHeight;
+        const maxWidth = 320;
+        const maxHeight = 240;
+        const videoWidth = videoElement.videoWidth;
+        const videoHeight = videoElement.videoHeight;
+        
+        let canvasWidth = videoWidth;
+        let canvasHeight = videoHeight;
+        
+        if (videoWidth > maxWidth || videoHeight > maxHeight) {
+            const scale = Math.min(maxWidth / videoWidth, maxHeight / videoHeight);
+            canvasWidth = Math.floor(videoWidth * scale);
+            canvasHeight = Math.floor(videoHeight * scale);
+        }
+        
+        reusableCanvas.width = canvasWidth;
+        reusableCanvas.height = canvasHeight;
         
         const context = reusableCanvas.getContext('2d');
-        context.drawImage(videoElement, 0, 0, reusableCanvas.width, reusableCanvas.height);
+        context.drawImage(videoElement, 0, 0, canvasWidth, canvasHeight);
         
         if (reusableCanvas.toBlob) {
             reusableCanvas.toBlob(blob => {
                 if (blob) {
                     sendFrameToServer(blob);
                 }
-            }, 'image/jpeg');
+            }, 'image/jpeg', 0.6);
         }
     } catch (error) {
         console.error('Frame capture failed');
