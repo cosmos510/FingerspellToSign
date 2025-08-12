@@ -69,8 +69,8 @@ function captureFrame() {
             reusableCanvas = document.createElement('canvas');
         }
         
-        const maxWidth = 320;
-        const maxHeight = 240;
+        const maxWidth = 160;
+        const maxHeight = 120;
         const videoWidth = videoElement.videoWidth;
         const videoHeight = videoElement.videoHeight;
         
@@ -94,7 +94,7 @@ function captureFrame() {
                 if (blob) {
                     sendFrameToServer(blob);
                 }
-            }, 'image/jpeg', 0.6);
+            }, 'image/jpeg', 0.3);
         }
     } catch (error) {
         console.error('Frame capture failed');
@@ -136,5 +136,5 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('clear-word').addEventListener('click', clearWord);
     
     setupWebcam();
-    setInterval(captureFrame, 1000);
+    setInterval(captureFrame, 2000);
 });

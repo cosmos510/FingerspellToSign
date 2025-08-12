@@ -73,7 +73,7 @@ def upload_frame(request):
         return JsonResponse({'status': 'failed', 'error': 'No file part'}, status=400)
     
     file = request.FILES['file']
-    if file.size == 0 or file.size > 1024 * 1024:
+    if file.size == 0 or file.size > 200 * 1024:
         return JsonResponse({'status': 'failed', 'error': 'Invalid file size'}, status=400)
     
     try:
