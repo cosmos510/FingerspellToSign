@@ -23,7 +23,7 @@ class CoreConfig(AppConfig):
                 aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
                 aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
                 bucket_name = os.getenv('AWS_S3_BUCKET_NAME')
-                s3_key = os.getenv('AWS_S3_KEY', 'model1.p')
+                s3_key = os.getenv('AWS_S3_KEY', 'advanced_asl_model.p')
 
                 if not all([aws_access_key_id, aws_secret_access_key, bucket_name]):
                     print("❌ Missing AWS environment variables. Please set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_S3_BUCKET_NAME.")
