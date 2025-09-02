@@ -8,7 +8,13 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-asl-recognition-demo-key-c
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 AUTH_USER_MODEL = 'core.User'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = [
+    'www.parle-avec-tes-mains.fr',
+    'parle-avec-tes-mains.fr',
+    'signeo.up.railway.app',
+    'localhost',
+    '127.0.0.1'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
