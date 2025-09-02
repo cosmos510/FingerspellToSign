@@ -231,3 +231,9 @@ def header_view(request):
 
 def footer_view(request):
     return render(request, 'footer.html')
+
+def rgpd(request):
+    return render(request, 'rgpd.html')
+
+def mentions_legales(request):
+    return render(request, 'mentions-legales.html')

@@ -4,8 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Utilisez notre outil de reconnaissance ASL en temps réel pour traduire la dactylologie. Interface accessible et intuitive.">
-    <title>Prédiction ASL - Signéo</title>
+    <meta name="description" content="Utilisez notre outil de reconnaissance dactylologique en temps réel. Interface accessible et intuitive.">
+    <meta name="keywords" content="reconnaissance dactylologique, langue des signes, caméra, temps réel, IA">
+    <meta name="author" content="Maxime Martin">
+    <meta property="og:title" content="Reconnaissance dactylologique - Parle avec tes mains">
+    <meta property="og:description" content="Montre tes mains et épelle avec tes doigts. Notre IA reconnaît la dactylologie en temps réel.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.parle-avec-tes-mains.fr/predict">
+    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr/predict">
+    <title>Reconnaissance dactylologique - Parle avec tes mains</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'predict.css' %}">
 </head>
@@ -15,7 +22,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Signéo</h1>
+                <h1>Parle avec tes mains</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
@@ -29,8 +36,8 @@
     <main id="main-content">
         <section class="predict-hero">
             <div class="container">
-                <h1>Reconnaissance ASL en temps réel</h1>
-                <p>Placez votre main devant la caméra et commencez à signer. Notre IA reconnaîtra vos gestes instantanément.</p>
+                <h1>Montre tes mains ! 👋</h1>
+                <p>Place ta main devant la caméra et épelle avec tes doigts. Notre IA reconnaît la dactylologie en temps réel.</p>
             </div>
         </section>
 
@@ -83,12 +90,12 @@
                                 <div class="alphabet-dropdown">
                                     <button class="dropdown-toggle" id="alphabet-toggle">
                                         <span class="btn-icon">🔤</span>
-                                        <span class="toggle-text">Alphabet ASL</span>
+                                        <span class="toggle-text">Alphabet dactylologique</span>
                                         <span class="toggle-icon">▼</span>
                                     </button>
                                     <div class="dropdown-content" id="alphabet-detail">
                                         <div class="alphabet-content">
-                                            <img src="{% static 'asl.jpg' %}" alt="Tableau de référence de l'alphabet en langue des signes américaine" class="alphabet-chart-dropdown">
+                                            <img src="{% static 'asl.jpg' %}" alt="Tableau de référence de l'alphabet dactylologique" class="alphabet-chart-dropdown">
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +103,7 @@
                         </div>
                         <div class="hand-tip">
                             <span class="tip-icon">👉</span>
-                            <span class="tip-text">Conseil : utilisez votre main droite pour des résultats optimaux !</span>
+                            <span class="tip-text">Astuce : ta main droite, c'est le top pour de meilleurs résultats ! 👍</span>
                         </div>
                         <div class="camera-container">
                             <video id="webcam" width="640" height="480" autoplay aria-label="Flux vidéo de la caméra pour la reconnaissance des gestes"></video>
@@ -110,7 +117,7 @@
 
                     <div class="results-section">
                         <div class="prediction-card">
-                            <h2>Prédiction actuelle</h2>
+                            <h2>Lettre détectée 👀</h2>
                             <div class="prediction-display">
                                 <span id="prediction-text" class="prediction-letter">-</span>
                                 <div class="confidence-bar">
@@ -121,18 +128,18 @@
                         </div>
 
                         <div class="word-builder-card">
-                            <h2>Constructeur de mots</h2>
+                            <h2>Ton mot en cours ✨</h2>
                             <div class="word-display">
                                 <span id="current-word" class="current-word"></span>
                             </div>
                             <div class="word-controls">
                                 <button id="confirm-letter" class="control-btn primary">
                                     <span class="btn-icon">✓</span>
-                                    Confirmer la lettre
+                                    Ajouter la lettre
                                 </button>
                                 <button id="clear-word" class="control-btn danger">
                                     <span class="btn-icon">🗑️</span>
-                                    Effacer tout
+                                    Effacer le mot
                                 </button>
                             </div>
                         </div>
@@ -146,26 +153,24 @@
             <div class="contact-info">
                 <h3>Contact</h3>
                 <p>Maxime Martin - Développeur & Fondateur</p>
+            </div>
+            <div class="footer-center">
                 <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">
-                        <span class="link-icon">✉️</span>
-                        <span class="link-text">Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
-                        <span class="link-icon">💼</span>
-                        <span class="link-text">LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
-                        <span class="link-icon">🐙</span>
-                        <span class="link-text">GitHub</span>
-                    </a>
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                </div>
+                <div class="accessibility-badge">
+                    <span class="badge-icon">♿</span>
+                    <span class="badge-text">Accessible</span>
                 </div>
             </div>
-            <div class="footer-mission">
-                <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2025 Signéo. Tous droits réservés.</p>
+            <div class="footer-right">
+                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-links">
+                    <a href="/rgpd">RGPD</a>
+                    <a href="/mentions-legales">Mentions légales</a>
+                </div>
             </div>
         </div>
     </footer>

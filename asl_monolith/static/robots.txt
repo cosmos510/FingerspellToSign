@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.parle-avec-tes-mains.fr/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /upload_frame/
+Disallow: /get_prediction/
+Disallow: /video_feed/

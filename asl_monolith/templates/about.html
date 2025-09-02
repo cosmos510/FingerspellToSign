@@ -4,8 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez notre mission d'accessibilité, l'équipe derrière Signéo et notre engagement pour l'inclusion dans la langue des signes.">
-    <title>À propos - Signéo</title>
+    <meta name="description" content="Découvrez notre mission d'accessibilité, l'équipe et notre engagement pour l'inclusion dans la langue des signes.">
+    <meta name="keywords" content="mission, équipe, Maxime Martin, accessibilité, inclusion, langue des signes">
+    <meta name="author" content="Maxime Martin">
+    <meta property="og:title" content="À propos - Parle avec tes mains">
+    <meta property="og:description" content="On révolutionne l'apprentissage de la langue des signes pour tous, partout, maintenant !">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.parle-avec-tes-mains.fr/about">
+    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr/about">
+    <title>À propos - Parle avec tes mains</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'about.css' %}">
 </head>
@@ -15,7 +22,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Signéo</h1>
+                <h1>Parle avec tes mains</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
@@ -29,64 +36,32 @@
     <main id="main-content">
         <section class="about-hero">
             <div class="container">
-                <h1>Notre mission : rendre la langue des signes accessible à tous</h1>
-                <p>Nous croyons que la communication ne devrait jamais être une barrière. Découvrez comment nous œuvrons pour un monde plus inclusif.</p>
+                <h1>On révolutionne l'apprentissage 🚀</h1>
+                <p>La langue des signes pour tous, partout, maintenant !</p>
             </div>
         </section>
 
-        <section class="mission">
+        <section class="mission-modern">
             <div class="container">
-                <div class="mission-content-centered">
-                    <h2>Pourquoi Signéo ?</h2>
-                    <p>Notre mission est de démocratiser l'apprentissage de la langue des signes en rendant la dactylologie accessible à tous, partout et à tout moment.</p>
-                    <p>Ce projet constitue les fondations d'une vision plus ambitieuse : traduire la langue des signes dans son intégralité, pas seulement la dactylologie. Nous avons commencé par l'ASL en raison du manque de bases de données disponibles pour la LSF (Langue des Signes Française).</p>
-                    <p>Nous pensons que la technologie peut être un pont vers une meilleure compréhension et une communication plus inclusive entre les communautés sourdes et entendantes.</p>
-                    <div class="mission-values">
-                        <div class="value">
-                            <div class="value-icon">🌍</div>
-                            <h3>Accessibilité universelle</h3>
-                            <p>Outil gratuit et accessible depuis n'importe quel navigateur</p>
-                        </div>
-                        <div class="value">
-                            <div class="value-icon">🤝</div>
-                            <h3>Inclusion sociale</h3>
-                            <p>Favoriser la communication entre toutes les communautés</p>
-                        </div>
-                        <div class="value">
-                            <div class="value-icon">📚</div>
-                            <h3>Apprentissage ludique</h3>
-                            <p>Rendre l'apprentissage interactif et engageant</p>
-                        </div>
+                <div class="split-content">
+                    <div class="content-left">
+                        <h2>Notre mission 🎯</h2>
+                        <p>Casser les barrières de communication en rendant la dactylologie accessible à tous.</p>
+                        <p>Ce projet ? C'est juste le début. On vise la LSF complète, pas que l'alphabet !</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="team">
-            <div class="container">
-                <h2>L'équipe</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <img src="{% static 'profile.png' %}" alt="Photo de profil de Maxime Martin">
-                        </div>
-                        <div class="member-info">
-                            <h3>Maxime Martin</h3>
-                            <p class="member-role">Développeur & Fondateur</p>
-                            <p class="member-bio">Passionné par l'accessibilité numérique et l'intelligence artificielle, Maxime a créé cet outil pour rendre la langue des signes plus accessible à tous.</p>
-                            <div class="member-links">
-                                <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social email">
-                                    <span class="link-icon">✉️</span>
-                                    <span class="link-text">Email</span>
-                                </a>
-                                <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social linkedin">
-                                    <span class="link-icon">💼</span>
-                                    <span class="link-text">LinkedIn</span>
-                                </a>
-                                <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social github">
-                                    <span class="link-icon">🐙</span>
-                                    <span class="link-text">GitHub</span>
-                                </a>
+                    <div class="content-right">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">Précision</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">0€</div>
+                                <div class="stat-label">Toujours gratuit</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Disponible</div>
                             </div>
                         </div>
                     </div>
@@ -94,110 +69,70 @@
             </div>
         </section>
 
-        <section class="technology">
+        <section class="creator-section">
             <div class="container">
-                <h2>Comment ça fonctionne</h2>
-                <div class="tech-explanation">
-                    <div class="tech-process">
-                        <div class="process-step">
-                            <div class="step-icon">📹</div>
-                            <h3>Capture vidéo</h3>
-                            <p>Votre webcam capture les images en temps réel dans votre navigateur</p>
-                        </div>
-                        <div class="process-arrow">→</div>
-                        <div class="process-step">
-                            <div class="step-icon">🤖</div>
-                            <h3>Analyse IA</h3>
-                            <p>Notre modèle d'intelligence artificielle analyse les gestes de la main</p>
-                        </div>
-                        <div class="process-arrow">→</div>
-                        <div class="process-step">
-                            <div class="step-icon">✨</div>
-                            <h3>Reconnaissance</h3>
-                            <p>La lettre est identifiée et affichée instantanément</p>
-                        </div>
+                <div class="creator-card">
+                    <div class="creator-avatar">
+                        <img src="{% static 'profile.png' %}" alt="Maxime Martin">
+                        <div class="creator-badge">🚀 Créateur</div>
                     </div>
-                    
-                    <div class="tech-stack">
-                        <h3>Technologies utilisées</h3>
-                        <div class="tech-grid">
-                            <div class="tech-item">
-                                <span class="tech-icon">🐍</span>
-                                <span class="tech-name">Django</span>
-                                <span class="tech-desc">Framework web robuste</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-icon">🧠</span>
-                                <span class="tech-name">MediaPipe</span>
-                                <span class="tech-desc">Détection des mains</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-icon">👁️</span>
-                                <span class="tech-name">OpenCV</span>
-                                <span class="tech-desc">Traitement d'images</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-icon">📊</span>
-                                <span class="tech-name">Scikit-learn</span>
-                                <span class="tech-desc">Machine learning</span>
-                            </div>
+                    <div class="creator-content">
+                        <h2>Salut, moi c'est Maxime ! 👋</h2>
+                        <p>Dév passionné par l'IA et l'accessibilité. J'ai créé cet outil parce que je crois que la tech peut vraiment changer les choses.</p>
+                        <div class="creator-links">
+                            <a href="mailto:maximemartin510@gmail.com" class="creator-btn email">
+                                ✉️ Me contacter
+                            </a>
+                            <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" class="creator-btn linkedin">
+                                💼 LinkedIn
+                            </a>
+                            <a href="https://github.com/cosmos510" target="_blank" class="creator-btn github">
+                                🐙 GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="accessibility">
+        <section class="tech-modern">
             <div class="container">
-                <h2>Notre engagement pour l'accessibilité</h2>
-                <div class="accessibility-content">
-                    <div class="accessibility-text">
-                        <p>L'accessibilité n'est pas une fonctionnalité supplémentaire, c'est au cœur de notre conception. Nous nous efforçons de respecter les standards WCAG pour garantir une expérience inclusive.</p>
-                        
-                        <div class="accessibility-features">
-                            <div class="feature-item">
-                                <span class="feature-icon">⌨️</span>
-                                <div>
-                                    <h4>Navigation au clavier</h4>
-                                    <p>Interface entièrement navigable au clavier avec focus visible</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">🎨</span>
-                                <div>
-                                    <h4>Contraste élevé</h4>
-                                    <p>Couleurs et typographie optimisées pour la lisibilité</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">🔄</span>
-                                <div>
-                                    <h4>Respect des préférences</h4>
-                                    <p>Support des préférences de mouvement réduit</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">📱</span>
-                                <div>
-                                    <h4>Design responsive</h4>
-                                    <p>Expérience optimisée sur tous les appareils</p>
-                                </div>
-                            </div>
-                        </div>
+                <h2>La magie derrière l'écran ✨</h2>
+                <div class="tech-flow">
+                    <div class="flow-step">
+                        <div class="flow-icon">📹</div>
+                        <h3>Caméra</h3>
+                        <p>Capture en live</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🤖</div>
+                        <h3>IA</h3>
+                        <p>Analyse instantanée</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🎯</div>
+                        <h3>Résultat</h3>
+                        <p>Lettre détectée</p>
                     </div>
                 </div>
                 
-                <div class="feedback-section">
-                    <h3>Vos retours comptent</h3>
-                    <p>Si vous rencontrez des difficultés d'accessibilité ou avez des suggestions d'amélioration, n'hésitez pas à nous contacter. Votre expérience nous aide à améliorer l'outil pour tous.</p>
+                <div class="tech-badges">
+                    <span class="tech-badge">🐍 Django</span>
+                    <span class="tech-badge">🧠 MediaPipe</span>
+                    <span class="tech-badge">👁️ OpenCV</span>
+                    <span class="tech-badge">📊 ML</span>
                 </div>
             </div>
         </section>
 
+
+
         <section class="cta-section">
             <div class="container">
-                <h2>Prêt à découvrir la langue des signes ?</h2>
-                <p>Rejoignez notre communauté et commencez votre apprentissage dès maintenant</p>
+                <h2>Prêt à découvrir la dactylologie ? 🚀</h2>
+                <p>Rejoins notre communauté et commence ton apprentissage dès maintenant</p>
                 <div class="cta-buttons">
                     <a href="/predict" class="cta-primary">Commencer l'apprentissage</a>
                     <a href="https://github.com/cosmos510/FingerspellToSign" target="_blank" rel="noopener" class="cta-secondary">Voir le code source</a>
@@ -211,26 +146,24 @@
             <div class="contact-info">
                 <h3>Contact</h3>
                 <p>Maxime Martin - Développeur & Fondateur</p>
+            </div>
+            <div class="footer-center">
                 <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">
-                        <span class="link-icon">✉️</span>
-                        <span class="link-text">Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
-                        <span class="link-icon">💼</span>
-                        <span class="link-text">LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
-                        <span class="link-icon">🐙</span>
-                        <span class="link-text">GitHub</span>
-                    </a>
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                </div>
+                <div class="accessibility-badge">
+                    <span class="badge-icon">♿</span>
+                    <span class="badge-text">Accessible</span>
                 </div>
             </div>
-            <div class="footer-mission">
-                <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2025 Signéo. Tous droits réservés.</p>
+            <div class="footer-right">
+                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-links">
+                    <a href="/rgpd">RGPD</a>
+                    <a href="/mentions-legales">Mentions légales</a>
+                </div>
             </div>
         </div>
     </footer>

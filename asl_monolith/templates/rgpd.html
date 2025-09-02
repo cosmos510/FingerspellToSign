@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protection des données et vie privée. Traitement 100% local, aucune collecte de données personnelles.">
+    <meta name="keywords" content="RGPD, protection données, vie privée, cookies, confidentialité">
+    <meta name="author" content="Maxime Martin">
+    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr/rgpd">
+    <title>RGPD - Parle avec tes mains</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Parle avec tes mains</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="/">Accueil</a>
+                <a href="/predict">Prédiction</a>
+                <a href="/about">À propos</a>
+            </nav>
+            <button class="cta-button" onclick="window.location.href='/predict'">Essayer maintenant</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Protection des données 🔒</h1>
+                <p>Ta vie privée, notre priorité absolue</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>🛡️ Tes données restent chez toi</h2>
+                <p><strong>Bonne nouvelle :</strong> On ne collecte AUCUNE donnée personnelle ! Voici pourquoi tu peux utiliser notre outil en toute sérénité :</p>
+                
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h3>📹 Traitement 100% local</h3>
+                    <p>Tes images de caméra ne quittent jamais ton appareil. Tout se passe dans ton navigateur, rien n'est envoyé sur nos serveurs.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h3>🚫 Aucun stockage</h3>
+                    <p>On ne sauvegarde rien : ni tes gestes, ni tes mots, ni tes données. Dès que tu fermes l'onglet, tout disparaît.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h3>🍪 Cookies techniques uniquement</h3>
+                    <p>On utilise juste les cookies nécessaires au fonctionnement du site. Pas de tracking, pas de pub, pas de revente.</p>
+                </div>
+
+                <h2>📧 Contact</h2>
+                <p>Des questions sur tes données ? Écris-nous : <a href="mailto:maximemartin510@gmail.com">maximemartin510@gmail.com</a></p>
+                
+                <p style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-light);">
+                    Dernière mise à jour : Janvier 2025
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Maxime Martin - Développeur & Fondateur</p>
+            </div>
+            <div class="footer-center">
+                <div class="social-links">
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                </div>
+                <div class="accessibility-badge">
+                    <span class="badge-icon">♿</span>
+                    <span class="badge-text">Accessible</span>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-links">
+                    <a href="/rgpd">RGPD</a>
+                    <a href="/mentions-legales">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

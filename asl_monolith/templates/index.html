@@ -4,8 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Traduisez la dactylologie ASL en temps réel avec notre outil intuitif et accessible. Apprenez et comprenez la langue des signes sans effort.">
-    <title>Signéo - Traduction ASL en temps réel</title>
+    <meta name="description" content="Reconnaissance dactylologique en temps réel avec notre outil intuitif et accessible. Apprenez et comprenez la langue des signes sans effort.">
+    <meta name="keywords" content="dactylologie, langue des signes, LSF, ASL, reconnaissance gestuelle, IA, apprentissage, accessibilité">
+    <meta name="author" content="Maxime Martin">
+    <meta property="og:title" content="Parle avec tes mains - Reconnaissance dactylologique">
+    <meta property="og:description" content="Découvre la dactylologie en temps réel avec ta caméra. Simple, rapide et précis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.parle-avec-tes-mains.fr">
+    <meta property="og:image" content="{% static 'asl.jpg' %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr">
+    <title>Parle avec tes mains - Reconnaissance dactylologique en temps réel</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
 <body>
@@ -14,7 +23,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Signéo</h1>
+                <h1>Parle avec tes mains</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
@@ -28,9 +37,11 @@
     <main id="main-content">
         <section class="hero">
             <div class="hero-content">
-                <h1>Traduisez la dactylologie de l'ASL en temps réel</h1>
-                <p>Notre outil intuitif vous aide à comprendre et à apprendre la dactylologie sans effort.</p>
-                <a href="/predict" class="cta-primary">Commencer gratuitement</a>
+                <div class="hero-text">
+                    <h1>Tes mains parlent, on traduit ! 👋</h1>
+                    <p>Découvre la dactylologie en temps réel avec ta caméra. Simple, rapide et précis.</p>
+                    <a href="/predict" class="cta-primary">C'est parti !</a>
+                </div>
                 <div class="hero-video">
                     <video autoplay muted loop playsinline class="demo-video">
                         <source src="{% static 'asl_demo.mp4' %}" type="video/mp4">
@@ -48,27 +59,47 @@
 
         <section class="features">
             <div class="container">
-                <h2>Fonctionnalités clés</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Traduction Instantanée</h3>
-                        <p>Reconnaissance en temps réel de la dactylologie avec feedback immédiat</p>
+                <h2>Fonctionnalités clés ✨</h2>
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track" id="carousel-track">
+                            <div class="feature-card active">
+                                <div class="feature-icon">📹</div>
+                                <h3>Reconnaissance temps réel</h3>
+                                <p>Détection instantanée de tes gestes dactylologiques avec feedback immédiat</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h3>IA haute précision</h3>
+                                <p>Modèle entraîné sur des milliers d'images pour 95% de réussite</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📝</div>
+                                <h3>Construction de mots</h3>
+                                <p>Assemble tes lettres pour former des mots complets facilement</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🌍</div>
+                                <h3>Accessible partout</h3>
+                                <p>Fonctionne sur tous tes appareils, aucune installation requise</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔒</div>
+                                <h3>Respect de la vie privée</h3>
+                                <p>Traitement local, aucune donnée envoyée sur nos serveurs</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Précision Élevée</h3>
-                        <p>Modèle d'IA entraîné pour une reconnaissance précise des gestes</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎮</div>
-                        <h3>Facile à Utiliser</h3>
-                        <p>Interface intuitive accessible directement depuis votre navigateur</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📚</div>
-                        <h3>Apprentissage Ludique</h3>
-                        <p>Apprenez l'alphabet ASL de manière interactive et engageante</p>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" id="prev-btn">❮</button>
+                        <div class="carousel-dots" id="carousel-dots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                            <span class="dot" data-slide="3"></span>
+                            <span class="dot" data-slide="4"></span>
+                        </div>
+                        <button class="carousel-btn next" id="next-btn">❯</button>
                     </div>
                 </div>
             </div>
@@ -76,23 +107,23 @@
 
         <section class="compatibility">
             <div class="container">
-                <h2>Compatible avec tous vos appareils</h2>
-                <p>Utilisez Signéo sur n'importe quel appareil avec un navigateur moderne</p>
+                <h2>Apprends où tu veux, quand tu veux 🌍</h2>
+                <p>Chez toi, dans le train, en pause... La langue des signes t'accompagne partout</p>
                 <div class="devices-grid">
                     <div class="device">
                         <div class="device-icon">💻</div>
-                        <h3>Ordinateurs</h3>
-                        <p>Windows, macOS, Linux</p>
+                        <h3>Sur ton ordi</h3>
+                        <p>Grand écran, confort optimal pour apprendre</p>
                     </div>
                     <div class="device">
                         <div class="device-icon">📱</div>
-                        <h3>Mobiles</h3>
-                        <p>iOS, Android</p>
+                        <h3>Sur ton mobile</h3>
+                        <p>Pratique partout, même en déplacement</p>
                     </div>
                     <div class="device">
                         <div class="device-icon">🌐</div>
-                        <h3>Navigateurs</h3>
-                        <p>Chrome, Firefox, Safari, Edge</p>
+                        <h3>Aucun téléchargement</h3>
+                        <p>Directement dans ton navigateur, toujours à jour</p>
                     </div>
                 </div>
             </div>
@@ -100,9 +131,9 @@
 
         <section class="cta-section">
             <div class="container">
-                <h2>Prêt à commencer ?</h2>
-                <p>Rejoignez des milliers d'utilisateurs qui apprennent la langue des signes avec notre outil</p>
-                <a href="/predict" class="cta-primary">Essayer maintenant</a>
+                <h2>Prêt à tester ? 🚀</h2>
+                <p>Rejoins ceux qui découvrent la dactylologie avec notre outil</p>
+                <a href="/predict" class="cta-primary">Je teste !</a>
             </div>
         </section>
     </main>
@@ -112,28 +143,27 @@
             <div class="contact-info">
                 <h3>Contact</h3>
                 <p>Maxime Martin - Développeur & Fondateur</p>
+            </div>
+            <div class="footer-center">
                 <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">
-                        <span class="link-icon">✉️</span>
-                        <span class="link-text">Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
-                        <span class="link-icon">💼</span>
-                        <span class="link-text">LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
-                        <span class="link-icon">🐙</span>
-                        <span class="link-text">GitHub</span>
-                    </a>
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                </div>
+                <div class="accessibility-badge">
+                    <span class="badge-icon">♿</span>
+                    <span class="badge-text">Accessible</span>
                 </div>
             </div>
-            <div class="footer-mission">
-                <p>Notre mission est de rendre la langue des signes accessible à tous, en favorisant l'inclusion et la communication pour une société plus équitable.</p>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2025 Signéo. Tous droits réservés.</p>
+            <div class="footer-right">
+                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-links">
+                    <a href="/rgpd">RGPD</a>
+                    <a href="/mentions-legales">Mentions légales</a>
+                </div>
             </div>
         </div>
     </footer>
+    <script src="{% static 'carousel.js' %}"></script>
 </body>
 </html>

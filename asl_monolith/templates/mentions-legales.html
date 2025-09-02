@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mentions légales, informations sur l'éditeur, hébergement et propriété intellectuelle du site.">
+    <meta name="keywords" content="mentions légales, éditeur, hébergement, Railway, Maxime Martin">
+    <meta name="author" content="Maxime Martin">
+    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr/mentions-legales">
+    <title>Mentions légales - Parle avec tes mains</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Parle avec tes mains</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="/">Accueil</a>
+                <a href="/predict">Prédiction</a>
+                <a href="/about">À propos</a>
+            </nav>
+            <button class="cta-button" onclick="window.location.href='/predict'">Essayer maintenant</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Mentions légales ⚖️</h1>
+                <p>Les infos officielles sur notre projet</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h2>👨‍💻 Éditeur du site</h2>
+                    <p><strong>Maxime Martin</strong><br>
+                    Développeur indépendant<br>
+                    Email : <a href="mailto:maximemartin510@gmail.com">maximemartin510@gmail.com</a><br>
+                    LinkedIn : <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank">Maxime Martin</a></p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h2>🌐 Hébergement</h2>
+                    <p><strong>Railway</strong><br>
+                    Service d'hébergement cloud<br>
+                    Site web : <a href="https://railway.app" target="_blank">railway.app</a></p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h2>📜 Propriété intellectuelle</h2>
+                    <p>Le code source de ce projet est disponible sous licence MIT sur <a href="https://github.com/cosmos510" target="_blank">GitHub</a>.</p>
+                    <p>Les contenus du site (textes, images) sont la propriété de Maxime Martin.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h2>🎯 Finalité du site</h2>
+                    <p>Ce site est un projet éducatif et de recherche visant à démocratiser l'apprentissage de la dactylologie.</p>
+                    <p>Il s'agit d'un outil gratuit et open-source, sans but commercial.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h2>⚠️ Limitation de responsabilité</h2>
+                    <p>Ce site est fourni "en l'état". Nous ne garantissons pas la précision à 100% des reconnaissances.</p>
+                    <p>L'utilisation se fait sous votre propre responsabilité.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
+                    <h2>📞 Contact</h2>
+                    <p>Pour toute question juridique ou technique :<br>
+                    <a href="mailto:maximemartin510@gmail.com">maximemartin510@gmail.com</a></p>
+                </div>
+                
+                <p style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-light);">
+                    Dernière mise à jour : Janvier 2025
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Maxime Martin - Développeur & Fondateur</p>
+            </div>
+            <div class="footer-center">
+                <div class="social-links">
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                </div>
+                <div class="accessibility-badge">
+                    <span class="badge-icon">♿</span>
+                    <span class="badge-text">Accessible</span>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-links">
+                    <a href="/rgpd">RGPD</a>
+                    <a href="/mentions-legales">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
