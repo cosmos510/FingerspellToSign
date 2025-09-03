@@ -775,6 +775,7 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Header */
     .header-content {
         flex-direction: column;
         gap: 1rem;
@@ -782,13 +783,26 @@ footer {
     }
     
     header nav {
-        gap: 1rem;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .cta-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 3rem 0;
     }
     
     .hero-content {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
+        padding: 0 1rem;
     }
     
     .hero-text {
@@ -796,17 +810,124 @@ footer {
     }
     
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
     }
     
     .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-primary {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Features */
+    .features {
+        padding: 4rem 0;
+    }
+    
+    .features h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .carousel-container {
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+    
+    .carousel-wrapper {
+        height: 280px;
+    }
+    
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-card p {
+        font-size: 1rem;
+    }
+    
+    .carousel-controls {
+        margin-top: 1.5rem;
+        padding: 0;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
         font-size: 1.2rem;
     }
     
+    /* Compatibility */
+    .compatibility {
+        padding: 4rem 0;
+    }
+    
+    .compatibility h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .compatibility > p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .devices-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .device {
+        padding: 2rem 1.5rem;
+    }
+    
+    .device-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .device h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        padding: 4rem 0;
+    }
+    
+    .cta-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 1.5rem;
+        gap: 2rem;
+        padding: 0 1rem;
     }
     
     .contact-info,
@@ -816,53 +937,293 @@ footer {
     
     .footer-links {
         justify-content: center;
+        gap: 1.5rem;
     }
     
-    .features h2,
-    .testimonials h2,
-    .compatibility h2,
-    .cta-section h2 {
-        font-size: 2rem;
+    .social-links {
+        gap: 0.5rem;
     }
     
-    .features-grid {
-        grid-template-columns: 1fr;
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
     
+    .accessibility-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    /* General */
     .container {
         padding: 0 1rem;
-    }
-    
-    .hero-content {
-        padding: 0 1rem;
-    }
-    
-    .footer-links {
-        flex-direction: column;
-        gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
+    /* Header */
+    .header-content {
+        padding: 0.8rem;
+    }
+    
+    header nav {
+        gap: 1rem;
+    }
+    
+    header nav a {
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Hero */
     .hero {
         padding: 2rem 0;
     }
     
-    .hero h1 {
-        font-size: 1.75rem;
+    .hero-text h1 {
+        font-size: 1.8rem;
+        line-height: 1.1;
     }
     
-    .features,
-    .testimonials,
-    .compatibility,
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .cta-primary {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+    }
+    
+    /* Features */
+    .features {
+        padding: 3rem 0;
+    }
+    
+    .features h2 {
+        font-size: 1.8rem;
+    }
+    
+    .carousel-wrapper {
+        height: 250px;
+    }
+    
+    .feature-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    /* Compatibility */
+    .compatibility {
+        padding: 3rem 0;
+    }
+    
+    .compatibility h2 {
+        font-size: 1.8rem;
+    }
+    
+    .compatibility > p {
+        font-size: 1rem;
+    }
+    
+    .device {
+        padding: 1.5rem 1rem;
+    }
+    
+    .device-icon {
+        font-size: 2.5rem;
+    }
+    
+    .device h3 {
+        font-size: 1.2rem;
+    }
+    
+    .device p {
+        font-size: 0.9rem;
+    }
+    
+    /* CTA Section */
     .cta-section {
         padding: 3rem 0;
     }
     
-    .feature-card,
-    .testimonial,
-    .device {
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-content {
+        gap: 1.5rem;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+    
+    .social-link {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.8rem;
+    }
+    
+    .accessibility-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    /* General */
+    .container {
+        padding: 0 0.8rem;
+    }
+}
+
+/* Responsive pour about.css */
+@media (max-width: 768px) {
+    .split-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem 0.8rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .creator-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .creator-avatar img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .creator-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .creator-links {
+        justify-content: center;
+    }
+    
+    .tech-flow {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .tech-badges {
+        gap: 0.8rem;
+    }
+    
+    .tech-badge {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .creator-card {
         padding: 1.5rem;
+    }
+    
+    .creator-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .creator-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .creator-content p {
+        font-size: 1rem;
+    }
+    
+    .creator-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .creator-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .flow-step {
+        padding: 1.5rem;
+        min-width: auto;
+    }
+    
+    .flow-icon {
+        font-size: 2.5rem;
+    }
+    
+    .tech-badges {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
