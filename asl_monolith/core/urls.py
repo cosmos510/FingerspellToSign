@@ -12,4 +12,6 @@ urlpatterns = [
     path('footer.html', views.footer_view, name='footer'),
     path('rgpd/', views.rgpd, name='rgpd'),
     path('mentions-legales/', views.mentions_legales, name='mentions_legales'),
+    path('sitemap.xml', views.sitemap, name='sitemap'),
+    path('robots.txt', views.robots, name='robots'),
 ]

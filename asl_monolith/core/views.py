@@ -237,3 +237,19 @@ def rgpd(request):
 
 def mentions_legales(request):
     return render(request, 'mentions-legales.html')
+
+def sitemap(request):
+    return render(request, 'sitemap.xml', content_type='application/xml')
+
+def robots(request):
+    from django.http import HttpResponse
+    from django.conf import settings
+    import os
+    
+    robots_path = os.path.join(settings.BASE_DIR, 'static', 'robots.txt')
+    try:
+        with open(robots_path, 'r') as f:
+            content = f.read()
+        return HttpResponse(content, content_type='text/plain')
+    except FileNotFoundError:
+        return HttpResponse('User-agent: *\nAllow: /', content_type='text/plain')

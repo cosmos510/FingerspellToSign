@@ -15,6 +15,36 @@
     <title>Reconnaissance dactylologique - Parle avec tes mains</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'predict.css' %}">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Reconnaissance dactylologique - Parle avec tes mains",
+        "description": "Utilisez notre outil de reconnaissance dactylologique en temps réel. Interface accessible et intuitive.",
+        "url": "https://www.parle-avec-tes-mains.fr/predict",
+        "mainEntity": {
+            "@type": "SoftwareApplication",
+            "name": "Outil de reconnaissance dactylologique",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web Browser",
+            "description": "Reconnaissance en temps réel des gestes dactylologiques via caméra web",
+            "featureList": [
+                "Reconnaissance temps réel",
+                "Détection par caméra",
+                "Construction de mots",
+                "Interface accessible"
+            ],
+            "isAccessibleForFree": true,
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR"
+            }
+        }
+    }
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Aller au contenu principal</a>

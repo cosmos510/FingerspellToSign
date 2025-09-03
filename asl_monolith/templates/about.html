@@ -15,6 +15,34 @@
     <title>À propos - Parle avec tes mains</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'about.css' %}">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "À propos - Parle avec tes mains",
+        "description": "Découvrez notre mission d'accessibilité et notre engagement pour l'inclusion dans la langue des signes.",
+        "url": "https://www.parle-avec-tes-mains.fr/about",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Parle avec tes mains",
+            "founder": {
+                "@type": "Person",
+                "name": "Maxime Martin",
+                "jobTitle": "Développeur & Fondateur",
+                "email": "maximemartin510@gmail.com",
+                "sameAs": [
+                    "https://www.linkedin.com/in/maxime-martin-090731aa/",
+                    "https://github.com/cosmos510"
+                ]
+            },
+            "mission": "Démocratiser l'apprentissage de la langue des signes en rendant la dactylologie accessible à tous",
+            "foundingDate": "2025",
+            "url": "https://www.parle-avec-tes-mains.fr"
+        }
+    }
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Aller au contenu principal</a>

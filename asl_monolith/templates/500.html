@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur serveur - Parle avec tes mains</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Parle avec tes mains</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="/">Accueil</a>
+                <a href="/predict">Prédiction</a>
+                <a href="/about">À propos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding: 6rem 0; text-align: center; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+        <div class="container">
+            <h1 style="font-size: 4rem; margin-bottom: 1rem;">500 ⚠️</h1>
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text);">Erreur serveur</h2>
+            <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">
+                Une erreur technique s'est produite. Nous travaillons à la résoudre !
+            </p>
+            <a href="/" class="cta-primary">Retour à l'accueil</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Maxime Martin - Développeur & Fondateur</p>
+            </div>
+            <div class="footer-center">
+                <div class="social-links">
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                </div>
+                <div class="accessibility-badge">
+                    <span class="badge-icon">♿</span>
+                    <span class="badge-text">Accessible</span>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-links">
+                    <a href="/rgpd">RGPD</a>
+                    <a href="/mentions-legales">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
