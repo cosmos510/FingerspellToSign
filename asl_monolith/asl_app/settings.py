@@ -5,7 +5,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-asl-recognition-demo-key-change-in-production')
-DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 AUTH_USER_MODEL = 'core.User'
 
 ALLOWED_HOSTS = [
@@ -95,22 +95,20 @@ CORS_ALLOW_CREDENTIALS = True
 # Theme setting
 DEFAULT_THEME = os.getenv('DEFAULT_THEME', 'modern')
 
-# Security settings for production
-if not DEBUG:
-    SECURE_SSL_REDIRECT = False
+# Security settings - Railway compatible
+SECURE_SSL_REDIRECT = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+# Only enable HSTS in production with proper domain
+if not DEBUG and 'railway.app' not in os.getenv('RAILWAY_PUBLIC_DOMAIN', ''):
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SESSION_COOKIE_SECURE = True # Disable for HTTP
-    CSRF_COOKIE_SECURE = True     # Disable for HTTP
-    X_FRAME_OPTIONS = 'DENY'
-else:
-    # Development settings - disable HTTPS requirements
-    SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
 
 LOGGING = {
     'version': 1,
