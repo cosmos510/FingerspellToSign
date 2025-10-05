@@ -1,285 +1,227 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Utilisez notre outil de reconnaissance dactylologique en temps réel. Interface moderne et accessible.">
-    <title>Signéo - Reconnaissance en temps réel</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="{% static 'index.css' %}">
-    <link rel="stylesheet" href="{% static 'predict.css' %}">
-</head>
-<body>
-    <div id="three-bg"></div>
-    
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <h1>Signéo</h1>
-            </div>
-            <nav aria-label="Navigation principale">
-                <a href="/">Accueil</a>
-                <a href="/predict" aria-current="page">Prédiction</a>
-                <a href="/about">À propos</a>
-            </nav>
-            <button class="cta-button" onclick="window.location.href='/'">
-                Retour 🏠
-            </button>
-        </div>
-    </header>
 
-    <main>
-        <section class="predict-hero">
-            <div class="container">
-                <h1>Montre tes mains ! 👋</h1>
-                <p>Place ta main devant la caméra et épelle avec tes doigts. Notre IA reconnaît la dactylologie en temps réel avec une précision de 95%.</p>
-            </div>
-        </section>
+{% block title %}Reconnaissance en temps réel - Signéo{% endblock %}
+{% block description %}Utilisez notre outil de reconnaissance dactylologique en temps réel. Interface moderne et accessible.{% endblock %}
+{% block cta_text %}Retour 🏠{% endblock %}
 
-        <section class="predict-interface">
-            <div class="predict-grid">
-                <div class="camera-section">
-                    <div class="camera-header">
-                        <div class="header-buttons">
-                            <div class="instructions-dropdown">
-                                <button class="dropdown-toggle" id="instructions-toggle">
-                                    <span class="btn-icon">💡</span>
-                                    <span class="toggle-text">Instructions</span>
-                                    <span class="toggle-icon">▼</span>
-                                </button>
-                                <div class="dropdown-content" id="instructions-detail">
-                                    <div class="instructions-list">
-                                        <div class="instruction-item">
-                                            <span class="instruction-icon">📹</span>
-                                            <div>
-                                                <strong>Autorisez la caméra</strong>
-                                                <p>Cliquez sur "Démarrer" et autorisez l'accès à votre webcam</p>
-                                            </div>
-                                        </div>
-                                        <div class="instruction-item">
-                                            <span class="instruction-icon">✋</span>
-                                            <div>
-                                                <strong>Positionnez votre main</strong>
-                                                <p>Placez votre main dans la zone bleue avec un bon éclairage</p>
-                                            </div>
-                                        </div>
-                                        <div class="instruction-item">
-                                            <span class="instruction-icon">⏱️</span>
-                                            <div>
-                                                <strong>Maintenez la position</strong>
-                                                <p>Gardez la lettre 2-3 secondes pour une meilleure reconnaissance</p>
-                                            </div>
-                                        </div>
-                                        <div class="instruction-item">
-                                            <span class="instruction-icon">✓</span>
-                                            <div>
-                                                <strong>Confirmez et construisez</strong>
-                                                <p>Cliquez "Ajouter" pour construire votre mot lettre par lettre</p>
-                                            </div>
-                                        </div>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'predict.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="predict-hero">
+    <div class="container">
+        <h1>Montre tes mains ! 👋</h1>
+        <p>Place ta main devant la caméra et épelle avec tes doigts. Notre IA reconnaît la dactylologie en temps réel avec une précision de 95%.</p>
+    </div>
+</section>
+
+<section class="predict-interface">
+    <div class="predict-grid">
+        <div class="camera-section">
+            <div class="camera-header">
+                <div class="header-buttons">
+                    <div class="instructions-dropdown">
+                        <button class="dropdown-toggle" id="instructions-toggle">
+                            <span class="btn-icon">💡</span>
+                            <span class="toggle-text">Instructions</span>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="dropdown-content" id="instructions-detail">
+                            <div class="instructions-list">
+                                <div class="instruction-item">
+                                    <span class="instruction-icon">📹</span>
+                                    <div>
+                                        <strong>Autorisez la caméra</strong>
+                                        <p>Cliquez sur "Démarrer" et autorisez l'accès à votre webcam</p>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="alphabet-dropdown">
-                                <button class="dropdown-toggle" id="alphabet-toggle">
-                                    <span class="btn-icon">🔤</span>
-                                    <span class="toggle-text">Alphabet ASL</span>
-                                    <span class="toggle-icon">▼</span>
-                                </button>
-                                <div class="dropdown-content" id="alphabet-detail">
-                                    <div class="alphabet-content">
-                                        <img src="{% static 'asl.jpg' %}" alt="Alphabet dactylologique ASL" class="alphabet-chart-dropdown">
+                                <div class="instruction-item">
+                                    <span class="instruction-icon">✋</span>
+                                    <div>
+                                        <strong>Positionnez votre main</strong>
+                                        <p>Placez votre main dans la zone bleue avec un bon éclairage</p>
+                                    </div>
+                                </div>
+                                <div class="instruction-item">
+                                    <span class="instruction-icon">⏱️</span>
+                                    <div>
+                                        <strong>Maintenez la position</strong>
+                                        <p>Gardez la lettre 2-3 secondes pour une meilleure reconnaissance</p>
+                                    </div>
+                                </div>
+                                <div class="instruction-item">
+                                    <span class="instruction-icon">✓</span>
+                                    <div>
+                                        <strong>Confirmez et construisez</strong>
+                                        <p>Cliquez "Ajouter" pour construire votre mot lettre par lettre</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="hand-tip">
-                        <span class="tip-icon">💡</span>
-                        <span class="tip-text">Astuce : Utilisez votre main droite pour de meilleurs résultats !</span>
-                    </div>
-                    
-                    <div class="camera-container">
-                        <video id="webcam" width="640" height="480" autoplay aria-label="Flux vidéo pour reconnaissance des gestes"></video>
-                        <div class="camera-overlay">
-                            <div class="detection-zone">
-                                <span class="zone-label">Zone de détection</span>
+                    <div class="alphabet-dropdown">
+                        <button class="dropdown-toggle" id="alphabet-toggle">
+                            <span class="btn-icon">🔤</span>
+                            <span class="toggle-text">Alphabet ASL</span>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="dropdown-content" id="alphabet-detail">
+                            <div class="alphabet-content">
+                                <img src="{% static 'asl.jpg' %}" alt="Alphabet dactylologique ASL" class="alphabet-chart-dropdown">
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="results-section">
-                    <div class="prediction-card">
-                        <h2>Lettre détectée 🎯</h2>
-                        <div class="prediction-display">
-                            <span id="prediction-text" class="prediction-letter">-</span>
-                            <div class="confidence-bar">
-                                <div class="confidence-fill" id="confidence-fill"></div>
-                            </div>
-                        </div>
-                        <canvas id="prediction-canvas" style="display: none;"></canvas>
+            </div>
+            
+            <div class="hand-tip">
+                <span class="tip-icon">💡</span>
+                <span class="tip-text">Astuce : Utilisez votre main droite pour de meilleurs résultats !</span>
+            </div>
+            
+            <div class="camera-container">
+                <video id="webcam" width="640" height="480" autoplay aria-label="Flux vidéo pour reconnaissance des gestes"></video>
+                <div class="camera-overlay">
+                    <div class="detection-zone">
+                        <span class="zone-label">Zone de détection</span>
                     </div>
-
-                    <div class="word-builder-card">
-                        <h2>Votre mot ✨</h2>
-                        <div class="word-display">
-                            <span id="current-word" class="current-word">Commencez à épeler...</span>
-                        </div>
-                        <div class="word-controls">
-                            <button id="confirm-letter" class="control-btn primary">
-                                <span class="btn-icon">✓</span>
-                                Ajouter la lettre
-                            </button>
-                            <button id="clear-word" class="control-btn danger">
-                                <span class="btn-icon">🗑️</span>
-                                Effacer le mot
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Contact</h3>
-                <p>Maxime Martin - Développeur & Fondateur</p>
-            </div>
-            <div class="footer-center">
-                <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link">✉️</a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">💼</a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">🐙</a>
-                </div>
-                <div class="accessibility-badge">
-                    <span class="badge-icon">♿</span>
-                    <span class="badge-text">Accessible</span>
-                </div>
-            </div>
-            <div class="footer-right">
-                <div class="footer-copyright">&copy; 2025 Signéo</div>
-                <div class="footer-links">
-                    <a href="/rgpd">RGPD</a>
-                    <a href="/mentions-legales">Mentions légales</a>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <script src="{% static 'three-bg.js' %}"></script>
-    <script src="{% static 'predict.js' %}"></script>
+        <div class="results-section">
+            <div class="prediction-card">
+                <h2>Lettre détectée 🎯</h2>
+                <div class="prediction-display">
+                    <span id="prediction-text" class="prediction-letter">-</span>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidence-fill"></div>
+                    </div>
+                </div>
+                <canvas id="prediction-canvas" style="display: none;"></canvas>
+            </div>
+
+            <div class="word-builder-card">
+                <h2>Votre mot ✨</h2>
+                <div class="word-display">
+                    <span id="current-word" class="current-word">Commencez à épeler...</span>
+                </div>
+                <div class="word-controls">
+                    <button id="confirm-letter" class="control-btn primary">
+                        <span class="btn-icon">✓</span>
+                        Ajouter la lettre
+                    </button>
+                    <button id="clear-word" class="control-btn danger">
+                        <span class="btn-icon">🗑️</span>
+                        Effacer le mot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'predict.js' %}"></script>
+
+<script>
+// Dropdown functionality
+document.getElementById('instructions-toggle').addEventListener('click', function() {
+    const content = document.getElementById('instructions-detail');
+    const icon = this.querySelector('.toggle-icon');
     
-    <script>
-        // Dropdown functionality
-        document.getElementById('instructions-toggle').addEventListener('click', function() {
-            const content = document.getElementById('instructions-detail');
-            const icon = this.querySelector('.toggle-icon');
-            
-            if (content.classList.contains('show')) {
-                content.classList.remove('show');
-                icon.textContent = '▼';
-            } else {
-                content.classList.add('show');
-                icon.textContent = '▲';
-            }
-        });
-        
-        document.getElementById('alphabet-toggle').addEventListener('click', function() {
-            const content = document.getElementById('alphabet-detail');
-            const icon = this.querySelector('.toggle-icon');
-            
-            if (content.classList.contains('show')) {
-                content.classList.remove('show');
-                icon.textContent = '▼';
-            } else {
-                content.classList.add('show');
-                icon.textContent = '▲';
-            }
-        });
-        
-        // Enhanced prediction display
-        function updatePredictionDisplay(prediction) {
-            const predictionElement = document.getElementById('prediction-text');
-            const confirmButton = document.getElementById('confirm-letter');
-            const confidenceFill = document.getElementById('confidence-fill');
-            
-            if (prediction === 'del' || prediction === 'space') {
-                predictionElement.classList.add('hidden');
-                confirmButton.disabled = true;
-                confidenceFill.style.width = '0%';
-            } else if (prediction === 'No hand detected' || prediction.toLowerCase().includes('no hand')) {
-                predictionElement.classList.remove('hidden');
-                predictionElement.classList.add('no-hand');
-                predictionElement.textContent = 'Aucune main détectée';
-                confirmButton.disabled = true;
-                confidenceFill.style.width = '0%';
-            } else {
-                predictionElement.classList.remove('hidden', 'no-hand');
-                predictionElement.textContent = prediction.toUpperCase();
-                confirmButton.disabled = false;
-                // Simulate confidence (you can replace with actual confidence from your model)
-                const confidence = Math.random() * 40 + 60; // 60-100%
-                confidenceFill.style.width = confidence + '%';
-            }
-        }
-        
-        // Word builder enhancement
-        let currentWord = '';
-        
-        document.getElementById('confirm-letter').addEventListener('click', function() {
-            const prediction = document.getElementById('prediction-text').textContent;
-            if (prediction && prediction !== '-' && prediction !== 'Aucune main détectée') {
-                currentWord += prediction;
-                document.getElementById('current-word').textContent = currentWord || 'Commencez à épeler...';
-            }
-        });
-        
-        document.getElementById('clear-word').addEventListener('click', function() {
-            currentWord = '';
-            document.getElementById('current-word').textContent = 'Commencez à épeler...';
-        });
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
-            const instructionsDropdown = document.querySelector('.instructions-dropdown');
-            const alphabetDropdown = document.querySelector('.alphabet-dropdown');
-            const instructionsContent = document.getElementById('instructions-detail');
-            const alphabetContent = document.getElementById('alphabet-detail');
-            
-            if (!instructionsDropdown.contains(event.target)) {
-                instructionsContent.classList.remove('show');
-                instructionsDropdown.querySelector('.toggle-icon').textContent = '▼';
-            }
-            
-            if (!alphabetDropdown.contains(event.target)) {
-                alphabetContent.classList.remove('show');
-                alphabetDropdown.querySelector('.toggle-icon').textContent = '▼';
-            }
-        });
-        
-        // Override existing prediction function if it exists
-        if (typeof window.updatePrediction === 'function') {
-            const originalUpdatePrediction = window.updatePrediction;
-            window.updatePrediction = function(prediction) {
-                updatePredictionDisplay(prediction);
-                return originalUpdatePrediction.apply(this, arguments);
-            };
-        }
-    </script>
-</body>
-</html>
+    if (content.classList.contains('show')) {
+        content.classList.remove('show');
+        icon.textContent = '▼';
+    } else {
+        content.classList.add('show');
+        icon.textContent = '▲';
+    }
+});
+
+document.getElementById('alphabet-toggle').addEventListener('click', function() {
+    const content = document.getElementById('alphabet-detail');
+    const icon = this.querySelector('.toggle-icon');
+    
+    if (content.classList.contains('show')) {
+        content.classList.remove('show');
+        icon.textContent = '▼';
+    } else {
+        content.classList.add('show');
+        icon.textContent = '▲';
+    }
+});
+
+// Enhanced prediction display
+function updatePredictionDisplay(prediction) {
+    const predictionElement = document.getElementById('prediction-text');
+    const confirmButton = document.getElementById('confirm-letter');
+    const confidenceFill = document.getElementById('confidence-fill');
+    
+    if (prediction === 'del' || prediction === 'space') {
+        predictionElement.classList.add('hidden');
+        confirmButton.disabled = true;
+        confidenceFill.style.width = '0%';
+    } else if (prediction === 'No hand detected' || prediction.toLowerCase().includes('no hand')) {
+        predictionElement.classList.remove('hidden');
+        predictionElement.classList.add('no-hand');
+        predictionElement.textContent = 'Aucune main détectée';
+        confirmButton.disabled = true;
+        confidenceFill.style.width = '0%';
+    } else {
+        predictionElement.classList.remove('hidden', 'no-hand');
+        predictionElement.textContent = prediction.toUpperCase();
+        confirmButton.disabled = false;
+        const confidence = Math.random() * 40 + 60;
+        confidenceFill.style.width = confidence + '%';
+    }
+}
+
+// Word builder enhancement
+let currentWord = '';
+
+document.getElementById('confirm-letter').addEventListener('click', function() {
+    const prediction = document.getElementById('prediction-text').textContent;
+    if (prediction && prediction !== '-' && prediction !== 'Aucune main détectée') {
+        currentWord += prediction;
+        document.getElementById('current-word').textContent = currentWord || 'Commencez à épeler...';
+    }
+});
+
+document.getElementById('clear-word').addEventListener('click', function() {
+    currentWord = '';
+    document.getElementById('current-word').textContent = 'Commencez à épeler...';
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    const instructionsDropdown = document.querySelector('.instructions-dropdown');
+    const alphabetDropdown = document.querySelector('.alphabet-dropdown');
+    const instructionsContent = document.getElementById('instructions-detail');
+    const alphabetContent = document.getElementById('alphabet-detail');
+    
+    if (!instructionsDropdown.contains(event.target)) {
+        instructionsContent.classList.remove('show');
+        instructionsDropdown.querySelector('.toggle-icon').textContent = '▼';
+    }
+    
+    if (!alphabetDropdown.contains(event.target)) {
+        alphabetContent.classList.remove('show');
+        alphabetDropdown.querySelector('.toggle-icon').textContent = '▼';
+    }
+});
+
+// Override existing prediction function if it exists
+if (typeof window.updatePrediction === 'function') {
+    const originalUpdatePrediction = window.updatePrediction;
+    window.updatePrediction = function(prediction) {
+        updatePredictionDisplay(prediction);
+        return originalUpdatePrediction.apply(this, arguments);
+    };
+}
+</script>
+{% endblock %}
