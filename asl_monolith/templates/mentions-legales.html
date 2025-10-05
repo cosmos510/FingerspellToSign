@@ -1,113 +1,235 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mentions légales, informations sur l'éditeur, hébergement et propriété intellectuelle du site.">
-    <meta name="keywords" content="mentions légales, éditeur, hébergement, Railway, Maxime Martin">
-    <meta name="author" content="Maxime Martin">
-    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr/mentions-legales">
-    <title>Mentions légales - Parle avec tes mains</title>
-    <link rel="stylesheet" href="{% static 'index.css' %}">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <h1>Parle avec tes mains</h1>
-            </div>
-            <nav aria-label="Navigation principale">
-                <a href="/">Accueil</a>
-                <a href="/predict">Prédiction</a>
-                <a href="/about">À propos</a>
-            </nav>
-            <button class="cta-button" onclick="window.location.href='/predict'">Essayer maintenant</button>
-        </div>
-    </header>
+{% extends 'base.html' %}
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Mentions légales ⚖️</h1>
-                <p>Les infos officielles sur notre projet</p>
-            </div>
-        </section>
+{% block title %}Mentions légales - Parle avec tes mains{% endblock %}
+{% block description %}Mentions légales de Parle avec tes mains. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation du site.{% endblock %}
+{% block canonical %}/mentions-legales{% endblock %}
 
-        <section class="content-section">
-            <div class="container">
-                
-                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
-                    <h2>👨‍💻 Éditeur du site</h2>
-                    <p><strong>Maxime Martin</strong><br>
-                    Développeur indépendant<br>
-                    Email : <a href="mailto:maximemartin510@gmail.com">maximemartin510@gmail.com</a><br>
-                    LinkedIn : <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank">Maxime Martin</a></p>
-                </div>
+{% block extra_css %}
+<style>
+.legal-hero {
+    background: var(--gradient-primary);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+}
 
-                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
-                    <h2>🌐 Hébergement</h2>
-                    <p><strong>Railway</strong><br>
-                    Service d'hébergement cloud<br>
-                    Site web : <a href="https://railway.app" target="_blank">railway.app</a></p>
-                </div>
+.legal-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
 
-                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
-                    <h2>📜 Propriété intellectuelle</h2>
-                    <p>Le code source de ce projet est disponible sous licence MIT sur <a href="https://github.com/cosmos510" target="_blank">GitHub</a>.</p>
-                    <p>Les contenus du site (textes, images) sont la propriété de Maxime Martin.</p>
-                </div>
+.legal-hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
 
-                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
-                    <h2>🎯 Finalité du site</h2>
-                    <p>Ce site est un projet éducatif et de recherche visant à démocratiser l'apprentissage de la dactylologie.</p>
-                    <p>Il s'agit d'un outil gratuit et open-source, sans but commercial.</p>
-                </div>
+.legal-content {
+    padding: 4rem 0;
+    background: var(--bg-light);
+}
 
-                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
-                    <h2>⚠️ Limitation de responsabilité</h2>
-                    <p>Ce site est fourni "en l'état". Nous ne garantissons pas la précision à 100% des reconnaissances.</p>
-                    <p>L'utilisation se fait sous votre propre responsabilité.</p>
-                </div>
+.legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-                <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius); margin: 2rem 0;">
-                    <h2>📞 Contact</h2>
-                    <p>Pour toute question juridique ou technique :<br>
-                    <a href="mailto:maximemartin510@gmail.com">maximemartin510@gmail.com</a></p>
-                </div>
-                
-                <p style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-light);">
-                    Dernière mise à jour : Janvier 2025
-                </p>
-            </div>
-        </section>
-    </main>
+.legal-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
 
-    <footer>
-        <div class="footer-content">
+.legal-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+
+.legal-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.legal-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 1.5rem 0 1rem;
+}
+
+.legal-section p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.legal-section ul {
+    color: var(--text-light);
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.legal-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.contact-info {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.contact-info strong {
+    color: var(--text);
+}
+
+.highlight {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border: 1px solid #93c5fd;
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin: 1rem 0;
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .legal-hero {
+        padding: 3rem 0;
+    }
+    
+    .legal-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .legal-container {
+        padding: 0 1rem;
+    }
+    
+    .legal-section {
+        padding: 2rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="legal-hero">
+    <div class="container">
+        <h1>Mentions légales</h1>
+        <p>Informations légales et conditions d'utilisation</p>
+    </div>
+</section>
+
+<section class="legal-content">
+    <div class="legal-container">
+        <div class="legal-section">
+            <h2>📝 Éditeur du site</h2>
             <div class="contact-info">
-                <h3>Contact</h3>
-                <p>Maxime Martin - Développeur & Fondateur</p>
-            </div>
-            <div class="footer-center">
-                <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
-                </div>
-                <div class="accessibility-badge">
-                    <span class="badge-icon">♿</span>
-                    <span class="badge-text">Accessible</span>
-                </div>
-            </div>
-            <div class="footer-right">
-                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
-                <div class="footer-links">
-                    <a href="/rgpd">RGPD</a>
-                    <a href="/mentions-legales">Mentions légales</a>
-                </div>
+                <strong>Nom :</strong> Maxime Martin<br>
+                <strong>Statut :</strong> Développeur indépendant<br>
+                <strong>Email :</strong> <a href="mailto:contact@parle-avec-tes-mains.fr">contact@parle-avec-tes-mains.fr</a><br>
+                <strong>Site web :</strong> <a href="https://www.parle-avec-tes-mains.fr">www.parle-avec-tes-mains.fr</a>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+
+        <div class="legal-section">
+            <h2>🌐 Hébergement</h2>
+            <p>Le site est hébergé par :</p>
+            <div class="contact-info">
+                <strong>Railway</strong><br>
+                Adresse : États-Unis<br>
+                Site web : <a href="https://railway.app" target="_blank" rel="noopener">railway.app</a>
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <h2>⚖️ Propriété intellectuelle</h2>
+            <p>Le contenu de ce site (textes, images, vidéos, code source) est protégé par le droit d'auteur.</p>
+            <ul>
+                <li>Code source : Licence MIT</li>
+                <li>Contenu éditorial : © Maxime Martin 2025</li>
+                <li>Images ASL : Domaine public</li>
+                <li>Reproduction autorisée avec mention de la source</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>🎯 Objet du site</h2>
+            <p>Parle avec tes mains est un outil éducatif gratuit permettant :</p>
+            <ul>
+                <li>L'apprentissage de la dactylologie ASL</li>
+                <li>La reconnaissance gestuelle en temps réel</li>
+                <li>La sensibilisation à la langue des signes</li>
+                <li>L'accessibilité numérique</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>📋 Conditions d'utilisation</h2>
+            <h3>Utilisation autorisée</h3>
+            <ul>
+                <li>Usage personnel et éducatif</li>
+                <li>Partage du lien vers le site</li>
+                <li>Utilisation en classe ou formation</li>
+            </ul>
+            
+            <h3>Utilisation interdite</h3>
+            <ul>
+                <li>Reproduction du code sans autorisation</li>
+                <li>Usage commercial sans accord</li>
+                <li>Modification du contenu</li>
+                <li>Utilisation malveillante</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>⚠️ Responsabilité</h2>
+            <p>L'éditeur s'efforce de fournir un service de qualité mais :</p>
+            <ul>
+                <li>Ne garantit pas la disponibilité 24h/24</li>
+                <li>N'est pas responsable des interruptions techniques</li>
+                <li>Décline toute responsabilité en cas de dommage</li>
+                <li>Se réserve le droit de modifier le service</li>
+            </ul>
+            
+            <div class="highlight">
+                <strong>Important :</strong> Ce service est fourni gratuitement et sans garantie. L'utilisateur l'utilise à ses propres risques.
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <h2>📞 Contact</h2>
+            <p>Pour toute question concernant ces mentions légales :</p>
+            <div class="contact-info">
+                <strong>Email :</strong> <a href="mailto:contact@parle-avec-tes-mains.fr">contact@parle-avec-tes-mains.fr</a><br>
+                <strong>Réponse :</strong> Sous 48 heures ouvrées
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <h2>📅 Mise à jour</h2>
+            <p>Ces mentions légales ont été mises à jour le <strong>26 janvier 2025</strong>.</p>
+            <p>Elles peuvent être modifiées à tout moment. La version en vigueur est celle publiée sur le site.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -9,3 +9,13 @@ Disallow: /admin/
 Disallow: /upload_frame/
 Disallow: /get_prediction/
 Disallow: /video_feed/
+
+# Allow important pages
+Allow: /
+Allow: /predict
+Allow: /about
+Allow: /rgpd
+Allow: /mentions-legales
+
+# Crawl delay
+Crawl-delay: 1
