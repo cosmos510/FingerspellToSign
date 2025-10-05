@@ -9,9 +9,9 @@ DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 AUTH_USER_MODEL = 'core.User'
 
 ALLOWED_HOSTS = [
+    'signeo.up.railway.app',
     'www.parle-avec-tes-mains.fr',
     'parle-avec-tes-mains.fr',
-    'signeo.up.railway.app',
     'localhost',
     '127.0.0.1'
 ]
@@ -92,6 +92,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+# Theme setting
+DEFAULT_THEME = os.getenv('DEFAULT_THEME', 'modern')
+
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = False
@@ -100,8 +103,8 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True # Disable for HTTP
+    CSRF_COOKIE_SECURE = True     # Disable for HTTP
     X_FRAME_OPTIONS = 'DENY'
 else:
     # Development settings - disable HTTPS requirements
