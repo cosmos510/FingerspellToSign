@@ -5,95 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reconnaissance dactylologique en temps réel avec notre outil intuitif et accessible. Apprenez et comprenez la langue des signes sans effort.">
-    <meta name="keywords" content="dactylologie, langue des signes, LSF, ASL, reconnaissance gestuelle, IA, apprentissage, accessibilité">
-    <meta name="author" content="Maxime Martin">
-    <meta property="og:title" content="Parle avec tes mains - Reconnaissance dactylologique">
-    <meta property="og:description" content="Découvre la dactylologie en temps réel avec ta caméra. Simple, rapide et précis.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.parle-avec-tes-mains.fr">
-    <meta property="og:image" content="{% static 'asl.jpg' %}">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr">
-    <title>Parle avec tes mains - Reconnaissance dactylologique en temps réel</title>
-    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>Signéo - Reconnaissance ASL en temps réel</title>
     
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Parle avec tes mains",
-        "description": "Application de reconnaissance dactylologique en temps réel utilisant l'intelligence artificielle pour traduire la langue des signes.",
-        "url": "https://www.parle-avec-tes-mains.fr",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-        },
-        "creator": {
-            "@type": "Person",
-            "name": "Maxime Martin",
-            "email": "maximemartin510@gmail.com",
-            "url": "https://www.linkedin.com/in/maxime-martin-090731aa/"
-        },
-        "featureList": [
-            "Reconnaissance temps réel",
-            "IA haute précision",
-            "Construction de mots",
-            "Accessible partout",
-            "Respect de la vie privée"
-        ],
-        "screenshot": "https://www.parle-avec-tes-mains.fr{% static 'asl.jpg' %}",
-        "softwareVersion": "1.0",
-        "datePublished": "2025-01-26",
-        "inLanguage": "fr",
-        "isAccessibleForFree": true,
-        "accessibilityFeature": [
-            "alternativeText",
-            "keyboardNavigation",
-            "highContrast"
-        ]
-    }
-    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <div id="three-bg"></div>
     
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Parle avec tes mains</h1>
+                <h1>Signéo</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
                 <a href="/predict">Prédiction</a>
                 <a href="/about">À propos</a>
             </nav>
-            <button class="cta-button" onclick="window.location.href='/predict'">Démarrer la traduction</button>
+            <button class="cta-button" onclick="window.location.href='/predict'">
+                Commencer 🚀
+            </button>
         </div>
     </header>
 
-    <main id="main-content">
+    <main>
         <section class="hero">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text fade-in-up">
                     <h1>Tes mains parlent, on traduit ! 👋</h1>
-                    <p>Découvre la dactylologie en temps réel avec ta caméra. Simple, rapide et précis.</p>
-                    <a href="/predict" class="cta-primary">C'est parti !</a>
+                    <p>Découvre la dactylologie en temps réel avec notre IA avancée. Simple, rapide et précis.</p>
+                    <a href="/predict" class="cta-primary">
+                        C'est parti ! ✨
+                    </a>
                 </div>
-                <div class="hero-video">
-                    <video autoplay muted loop playsinline class="demo-video">
-                        <source src="{% static 'asl_demo.mp4' %}" type="video/mp4">
-                        <img src="{% static 'asl.jpg' %}" alt="Démonstration de l'alphabet en langue des signes américaine" class="video-fallback">
-                    </video>
-                    <div class="video-overlay">
-                        <div class="play-indicator">
-                            <span class="play-icon">▶️</span>
-                            <span class="demo-text">Démo en direct</span>
-                        </div>
+                <div class="hero-visual fade-in-up">
+                    <div class="hero-card">
+                        <video autoplay muted loop playsinline style="width: 100%; border-radius: 0.5rem;">
+                            <source src="{% static 'asl_demo.mp4' %}" type="video/mp4">
+                            <img src="{% static 'asl.jpg' %}" alt="Démonstration ASL" style="width: 100%; border-radius: 0.5rem;">
+                        </video>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Précision</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">26</span>
+                    <span class="stat-label">Lettres</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0ms</span>
+                    <span class="stat-label">Latence</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Gratuit</span>
                 </div>
             </div>
         </section>
@@ -101,46 +82,36 @@
         <section class="features">
             <div class="container">
                 <h2>Fonctionnalités clés ✨</h2>
-                <div class="carousel-container">
-                    <div class="carousel-wrapper">
-                        <div class="carousel-track" id="carousel-track">
-                            <div class="feature-card active">
-                                <div class="feature-icon">📹</div>
-                                <h3>Reconnaissance temps réel</h3>
-                                <p>Détection instantanée de tes gestes dactylologiques avec feedback immédiat</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">🤖</div>
-                                <h3>IA haute précision</h3>
-                                <p>Modèle entraîné sur des milliers d'images pour 95% de réussite</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">📝</div>
-                                <h3>Construction de mots</h3>
-                                <p>Assemble tes lettres pour former des mots complets facilement</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">🌍</div>
-                                <h3>Accessible partout</h3>
-                                <p>Fonctionne sur tous tes appareils, aucune installation requise</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">🔒</div>
-                                <h3>Respect de la vie privée</h3>
-                                <p>Traitement local, aucune donnée envoyée sur nos serveurs</p>
-                            </div>
-                        </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📹</div>
+                        <h3>Reconnaissance temps réel</h3>
+                        <p>Détection instantanée de tes gestes dactylologiques avec feedback immédiat et précision maximale.</p>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev" id="prev-btn">❮</button>
-                        <div class="carousel-dots" id="carousel-dots">
-                            <span class="dot active" data-slide="0"></span>
-                            <span class="dot" data-slide="1"></span>
-                            <span class="dot" data-slide="2"></span>
-                            <span class="dot" data-slide="3"></span>
-                            <span class="dot" data-slide="4"></span>
-                        </div>
-                        <button class="carousel-btn next" id="next-btn">❯</button>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>IA haute précision</h3>
+                        <p>Modèle entraîné sur des milliers d'images pour 95% de réussite dans toutes les conditions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Construction de mots</h3>
+                        <p>Assemble tes lettres pour former des mots complets avec système de validation intelligent.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Accessible partout</h3>
+                        <p>Fonctionne sur tous tes appareils, aucune installation requise. Toujours disponible.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Respect de la vie privée</h3>
+                        <p>Traitement local, aucune donnée envoyée sur nos serveurs. Ta vie privée est protégée.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Ultra rapide</h3>
+                        <p>Reconnaissance instantanée sans latence. Performance optimisée pour une expérience fluide.</p>
                     </div>
                 </div>
             </div>
@@ -148,23 +119,23 @@
 
         <section class="compatibility">
             <div class="container">
-                <h2>Apprends où tu veux, quand tu veux 🌍</h2>
-                <p>Chez toi, dans le train, en pause... La langue des signes t'accompagne partout</p>
+                <h2>Apprends où tu veux, quand tu veux</h2>
+                <p class="compatibility-text">Chez toi, dans le train, en pause... La langue des signes t'accompagne partout</p>
                 <div class="devices-grid">
                     <div class="device">
-                        <div class="device-icon">💻</div>
+                        <div class="device-icon"></div>
                         <h3>Sur ton ordi</h3>
-                        <p>Grand écran, confort optimal pour apprendre</p>
+                        <p>Grand écran, confort optimal pour apprendre et pratiquer</p>
                     </div>
                     <div class="device">
-                        <div class="device-icon">📱</div>
+                        <div class="device-icon"></div>
                         <h3>Sur ton mobile</h3>
-                        <p>Pratique partout, même en déplacement</p>
+                        <p>Pratique partout, même en déplacement. Interface adaptée</p>
                     </div>
                     <div class="device">
-                        <div class="device-icon">🌐</div>
+                        <div class="device-icon"></div>
                         <h3>Aucun téléchargement</h3>
-                        <p>Directement dans ton navigateur, toujours à jour</p>
+                        <p>Directement dans ton navigateur, toujours à jour automatiquement</p>
                     </div>
                 </div>
             </div>
@@ -173,8 +144,10 @@
         <section class="cta-section">
             <div class="container">
                 <h2>Prêt à tester ? 🚀</h2>
-                <p>Rejoins ceux qui découvrent la dactylologie avec notre outil</p>
-                <a href="/predict" class="cta-primary">Je teste !</a>
+                <p>Rejoins ceux qui découvrent la dactylologie avec notre outil révolutionnaire</p>
+                <a href="/predict" class="cta-primary">
+                    Je teste maintenant ! 🎯
+                </a>
             </div>
         </section>
     </main>
@@ -187,9 +160,9 @@
             </div>
             <div class="footer-center">
                 <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">🐙</a>
                 </div>
                 <div class="accessibility-badge">
                     <span class="badge-icon">♿</span>
@@ -197,7 +170,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-copyright">&copy; 2025 Signéo</div>
                 <div class="footer-links">
                     <a href="/rgpd">RGPD</a>
                     <a href="/mentions-legales">Mentions légales</a>
@@ -205,6 +178,7 @@
             </div>
         </div>
     </footer>
-    <script src="{% static 'carousel.js' %}"></script>
+
+    <script src="{% static 'three-bg.js' %}"></script>
 </body>
 </html>

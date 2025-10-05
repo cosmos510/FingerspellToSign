@@ -5,92 +5,460 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez notre mission d'accessibilité, l'équipe et notre engagement pour l'inclusion dans la langue des signes.">
-    <meta name="keywords" content="mission, équipe, Maxime Martin, accessibilité, inclusion, langue des signes">
-    <meta name="author" content="Maxime Martin">
-    <meta property="og:title" content="À propos - Parle avec tes mains">
-    <meta property="og:description" content="On révolutionne l'apprentissage de la langue des signes pour tous, partout, maintenant !">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.parle-avec-tes-mains.fr/about">
-    <link rel="canonical" href="https://www.parle-avec-tes-mains.fr/about">
-    <title>À propos - Parle avec tes mains</title>
-    <link rel="stylesheet" href="{% static 'index.css' %}">
-    <link rel="stylesheet" href="{% static 'about.css' %}">
+    <title>À propos - Signéo</title>
     
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "À propos - Parle avec tes mains",
-        "description": "Découvrez notre mission d'accessibilité et notre engagement pour l'inclusion dans la langue des signes.",
-        "url": "https://www.parle-avec-tes-mains.fr/about",
-        "mainEntity": {
-            "@type": "Organization",
-            "name": "Parle avec tes mains",
-            "founder": {
-                "@type": "Person",
-                "name": "Maxime Martin",
-                "jobTitle": "Développeur & Fondateur",
-                "email": "maximemartin510@gmail.com",
-                "sameAs": [
-                    "https://www.linkedin.com/in/maxime-martin-090731aa/",
-                    "https://github.com/cosmos510"
-                ]
-            },
-            "mission": "Démocratiser l'apprentissage de la langue des signes en rendant la dactylologie accessible à tous",
-            "foundingDate": "2025",
-            "url": "https://www.parle-avec-tes-mains.fr"
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <style>
+        .about-hero {
+            background: var(--gradient-primary);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
-    }
-    </script>
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
+            background-size: 30px 30px;
+            animation: float 15s infinite linear;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mission-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .content-left h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .content-left p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .creator-section {
+            padding: 6rem 0;
+            background: var(--bg);
+        }
+        
+        .creator-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .creator-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .creator-avatar {
+            position: relative;
+        }
+        
+        .creator-avatar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid var(--primary);
+        }
+        
+        .creator-badge {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+        
+        .creator-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .creator-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .creator-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .creator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .creator-btn.email {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .creator-btn.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+        
+        .creator-btn.github {
+            background: #333;
+            color: white;
+        }
+        
+        .creator-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tech-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+        
+        .tech-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: var(--text);
+        }
+        
+        .tech-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .flow-step {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-secondary);
+        }
+        
+        .flow-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .flow-icon::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        .flow-step h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        .flow-step p {
+            color: var(--text-light);
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .cta-section {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .cta-primary,
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cta-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-primary:hover,
+        .cta-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .creator-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem;
+            }
+            
+            .creator-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .tech-flow {
+                flex-direction: column;
+                padding: 0 1rem;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <div id="three-bg"></div>
     
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1>Parle avec tes mains</h1>
+                <h1>Signéo</h1>
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/">Accueil</a>
                 <a href="/predict">Prédiction</a>
                 <a href="/about" aria-current="page">À propos</a>
             </nav>
-            <button class="cta-button" onclick="window.location.href='/predict'">Essayer maintenant</button>
+            <button class="cta-button" onclick="window.location.href='/predict'">
+                Essayer 🚀
+            </button>
         </div>
     </header>
 
-    <main id="main-content">
+    <main>
         <section class="about-hero">
             <div class="container">
-                <h1>On révolutionne l'apprentissage 🚀</h1>
+                <h1>On révolutionne l'apprentissage</h1>
                 <p>La langue des signes pour tous, partout, maintenant !</p>
             </div>
         </section>
 
-        <section class="mission-modern">
-            <div class="container">
-                <div class="split-content">
-                    <div class="content-left">
-                        <h2>Notre mission 🎯</h2>
-                        <p>Casser les barrières de communication en rendant la dactylologie accessible à tous.</p>
-                        <p>Ce projet ? C'est juste le début. On vise la LSF complète, pas que l'alphabet !</p>
-                    </div>
-                    <div class="content-right">
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-number">95%</div>
-                                <div class="stat-label">Précision</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-number">0€</div>
-                                <div class="stat-label">Toujours gratuit</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-number">24/7</div>
-                                <div class="stat-label">Disponible</div>
-                            </div>
+        <section class="mission-section">
+            <div class="split-content">
+                <div class="content-left">
+                    <h2>Notre mission</h2>
+                    <p>Casser les barrières de communication en rendant la dactylologie accessible à tous.</p>
+                    <p>Ce projet ? C'est juste le début. On vise la LSF complète, pas que l'alphabet !</p>
+                </div>
+                <div class="content-right">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Précision</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">0€</div>
+                            <div class="stat-label">Toujours gratuit</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Disponible</div>
                         </div>
                     </div>
                 </div>
@@ -102,20 +470,20 @@
                 <div class="creator-card">
                     <div class="creator-avatar">
                         <img src="{% static 'profile.png' %}" alt="Maxime Martin">
-                        <div class="creator-badge">🚀 Créateur</div>
+                        <div class="creator-badge">Créateur</div>
                     </div>
                     <div class="creator-content">
-                        <h2>Salut, moi c'est Maxime ! 👋</h2>
+                        <h2>Salut, moi c'est Maxime !</h2>
                         <p>Dév passionné par l'IA et l'accessibilité. J'ai créé cet outil parce que je crois que la tech peut vraiment changer les choses.</p>
                         <div class="creator-links">
                             <a href="mailto:maximemartin510@gmail.com" class="creator-btn email">
-                                ✉️ Me contacter
+                                Me contacter
                             </a>
                             <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" class="creator-btn linkedin">
-                                💼 LinkedIn
+                                LinkedIn
                             </a>
                             <a href="https://github.com/cosmos510" target="_blank" class="creator-btn github">
-                                🐙 GitHub
+                                GitHub
                             </a>
                         </div>
                     </div>
@@ -123,24 +491,24 @@
             </div>
         </section>
 
-        <section class="tech-modern">
+        <section class="tech-section">
             <div class="container">
-                <h2>La magie derrière l'écran ✨</h2>
+                <h2>La magie derrière l'écran</h2>
                 <div class="tech-flow">
                     <div class="flow-step">
-                        <div class="flow-icon">📹</div>
+                        <div class="flow-icon"></div>
                         <h3>Caméra</h3>
                         <p>Capture en live</p>
                     </div>
                     <div class="flow-arrow">➡️</div>
                     <div class="flow-step">
-                        <div class="flow-icon">🤖</div>
+                        <div class="flow-icon"></div>
                         <h3>IA</h3>
                         <p>Analyse instantanée</p>
                     </div>
                     <div class="flow-arrow">➡️</div>
                     <div class="flow-step">
-                        <div class="flow-icon">🎯</div>
+                        <div class="flow-icon"></div>
                         <h3>Résultat</h3>
                         <p>Lettre détectée</p>
                     </div>
@@ -148,15 +516,12 @@
             </div>
         </section>
 
-
-
         <section class="cta-section">
             <div class="container">
-                <h2>Prêt à découvrir la dactylologie ? 🚀</h2>
+                <h2>Prêt à découvrir la dactylologie ?</h2>
                 <p>Rejoins notre communauté et commence ton apprentissage dès maintenant</p>
                 <div class="cta-buttons">
-                    <a href="/predict" class="cta-primary">Commencer l'apprentissage</a>
-                    <a href="https://github.com/cosmos510/FingerspellToSign" target="_blank" rel="noopener" class="cta-secondary">Voir le code source</a>
+                    <a href="/predict" class="cta-primary">Commencer l'apprentissage ✨</a>
                 </div>
             </div>
         </section>
@@ -170,9 +535,9 @@
             </div>
             <div class="footer-center">
                 <div class="social-links">
-                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link email">✉️</a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">💼</a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">🐙</a>
+                    <a href="mailto:maximemartin510@gmail.com" aria-label="Email" class="social-link">✉️</a>
+                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">💼</a>
+                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">🐙</a>
                 </div>
                 <div class="accessibility-badge">
                     <span class="badge-icon">♿</span>
@@ -180,7 +545,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <div class="footer-copyright">&copy; 2025 Parle avec tes mains</div>
+                <div class="footer-copyright">&copy; 2025 Signéo</div>
                 <div class="footer-links">
                     <a href="/rgpd">RGPD</a>
                     <a href="/mentions-legales">Mentions légales</a>
@@ -188,5 +553,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="{% static 'three-bg.js' %}"></script>
 </body>
 </html>
