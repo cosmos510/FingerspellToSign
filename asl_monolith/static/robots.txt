@@ -9,13 +9,26 @@ Disallow: /admin/
 Disallow: /upload_frame/
 Disallow: /get_prediction/
 Disallow: /video_feed/
+Disallow: /*.json$
+Disallow: /static/models/
 
-# Allow important pages
+# Allow important pages for SEO
 Allow: /
 Allow: /predict
 Allow: /about
 Allow: /rgpd
 Allow: /mentions-legales
+Allow: /static/asl.jpg
+Allow: /static/detect.png
+Allow: /static/*.css
+Allow: /static/*.js
 
-# Crawl delay
+# Crawl optimization
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Crawl-delay: 0.5
+
+User-agent: Bingbot
 Crawl-delay: 1
