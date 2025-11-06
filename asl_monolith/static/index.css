@@ -292,6 +292,7 @@ header nav a:focus {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 .stat-card {
@@ -711,8 +712,22 @@ footer::after {
     }
     
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 0 1rem;
+        grid-template-columns: 1fr !important;
+        padding: 0 2rem;
+        gap: 1rem;
+        max-width: 400px;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
     }
     
     .devices-grid {
