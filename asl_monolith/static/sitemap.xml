@@ -4,6 +4,7 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
+    <!-- Page d'accueil - Traducteur LSF ASL -->
     <url>
         <loc>https://www.parle-avec-tes-mains.fr/</loc>
         <lastmod>2025-01-26</lastmod>
@@ -11,29 +12,32 @@
         <priority>1.0</priority>
     </url>
     
+    <!-- Page de prédiction - Outil principal -->
     <url>
-        <loc>https://www.parle-avec-tes-mains.fr/predict</loc>
+        <loc>https://www.parle-avec-tes-mains.fr/predict/</loc>
         <lastmod>2025-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
+    <!-- Page à propos -->
     <url>
-        <loc>https://www.parle-avec-tes-mains.fr/about</loc>
+        <loc>https://www.parle-avec-tes-mains.fr/about/</loc>
         <lastmod>2025-01-26</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     
+    <!-- Pages légales -->
     <url>
-        <loc>https://www.parle-avec-tes-mains.fr/rgpd</loc>
+        <loc>https://www.parle-avec-tes-mains.fr/rgpd/</loc>
         <lastmod>2025-01-26</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
     <url>
-        <loc>https://www.parle-avec-tes-mains.fr/mentions-legales</loc>
+        <loc>https://www.parle-avec-tes-mains.fr/mentions-legales/</loc>
         <lastmod>2025-01-26</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>

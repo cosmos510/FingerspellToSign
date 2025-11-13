@@ -789,3 +789,69 @@ footer::after {
         transition-duration: 0.01ms !important;
     }
 }
+.lsf-info {
+    padding: 4rem 4rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.lsf-info h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1e293b;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.lsf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+    gap: 2rem;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.lsf-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #4F46E5;
+}
+
+.lsf-card h3 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.lsf-card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.lsf-note {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 2rem auto 0;
+    color: #92400e;
+    font-size: 0.95rem;
+    max-width: 832px;
+}
+
+@media (max-width: 768px) {
+    .lsf-info {
+        padding: 3rem 2rem;
+    }
+    
+    .lsf-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .lsf-card {
+        padding: 1.5rem;
+    }
+}

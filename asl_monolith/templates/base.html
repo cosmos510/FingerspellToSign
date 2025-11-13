@@ -8,15 +8,15 @@
     <meta name="keywords" content="{% block keywords %}dactylologie, langue des signes, ASL, reconnaissance gestuelle, IA, apprentissage, accessibilité, gratuit, temps réel{% endblock %}">
     <meta name="author" content="Maxime Martin">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="{% block og_title %}Parle avec tes mains{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Outil de reconnaissance dactylologique en temps réel. Traduis l'alphabet des signes avec ta caméra. Gratuit et accessible partout.{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Traducteur LSF ASL - Parle avec tes mains{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA. Traduis l'alphabet des signes avec ta caméra.{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.parle-avec-tes-mains.fr{% block og_url %}{% endblock %}">
     <meta property="og:image" content="https://www.parle-avec-tes-mains.fr{% static 'asl.jpg' %}">
     <meta property="og:site_name" content="Parle avec tes mains">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}Parle avec tes mains{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}Outil de reconnaissance dactylologique en temps réel. Traduis l'alphabet des signes avec ta caméra. Gratuit et accessible partout.{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}Traducteur LSF ASL - Parle avec tes mains{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA. Traduis l'alphabet des signes avec ta caméra.{% endblock %}">
     <meta name="twitter:image" content="https://www.parle-avec-tes-mains.fr{% static 'asl.jpg' %}">
     <link rel="canonical" href="https://www.parle-avec-tes-mains.fr{% block canonical %}{% endblock %}">
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
@@ -43,11 +43,13 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Parle avec tes mains",
-        "description": "Outil gratuit de reconnaissance dactylologique en temps réel.",
+        "name": "Parle avec tes mains - Traducteur LSF ASL",
+        "alternateName": "Traducteur langue des signes",
+        "description": "Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec intelligence artificielle.",
         "url": "https://www.parle-avec-tes-mains.fr",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Web Browser",
+        "keywords": "traduction LSF, traducteur langue des signes, dactylologie ASL, ASL translator, traduction ASL, langue des signes française",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -60,24 +62,29 @@
             "url": "https://www.linkedin.com/in/maxime-martin-090731aa/"
         },
         "featureList": [
-            "Reconnaissance dactylologique temps réel",
-            "Bonne précision",
-            "Formation de mots",
-            "Fonctionne partout",
-            "Données privées",
-            "Gratuit et sans installation"
+            "Traduction dactylologie ASL temps réel",
+            "Reconnaissance gestuelle IA 95% précise",
+            "Formation de mots en langue des signes",
+            "Compatible LSF et ASL",
+            "Traducteur gratuit sans installation",
+            "Données privées et sécurisées"
         ],
         "screenshot": "https://www.parle-avec-tes-mains.fr{% static 'asl.jpg' %}",
-        "softwareVersion": "2.0",
+        "softwareVersion": "2.1",
         "datePublished": "2025-01-26",
-        "inLanguage": "fr",
+        "dateModified": "2025-01-26",
+        "inLanguage": ["fr", "en"],
         "isAccessibleForFree": true,
         "accessibilityFeature": [
             "alternativeText",
             "keyboardNavigation",
             "highContrast",
             "skipLinks"
-        ]
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Étudiants, sourds, malentendants, professeurs langue des signes"
+        }
     }
     </script>
 </head>
