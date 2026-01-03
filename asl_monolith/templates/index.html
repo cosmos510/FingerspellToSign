@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Traducteur LSF ASL - Dactylologie en temps réel | Parle avec tes mains{% endblock %}
-{% block description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA 95% précise. Traduis l'alphabet des signes avec ta caméra.{% endblock %}
+{% block title %}Traducteur LSF ASL - Dactylologie temps réel{% endblock %}
+{% block description %}Traducteur gratuit LSF et ASL. Reconnaissance dactylologique temps réel avec IA 95% précise. Traduis l'alphabet des signes avec ta caméra.{% endblock %}
 {% block keywords %}traduction LSF, traducteur langue des signes, dactylologie ASL, ASL translator, traduction ASL, langue des signes française, reconnaissance gestuelle, IA gratuite{% endblock %}
 {% block canonical %}/{% endblock %}
 
@@ -10,7 +10,7 @@
 <section class="hero">
     <div class="hero-content">
         <div class="hero-text fade-in-up">
-            <h1>Traducteur LSF ASL - Dactylologie en temps réel 👋</h1>
+            <h1>Traducteur LSF ASL - Dactylologie temps réel 👋</h1>
             <p>Traducteur gratuit de langue des signes LSF et ASL. Reconnaît l'alphabet dactylologique avec ta caméra. Parfait pour apprendre la traduction gestuelle.</p>
             <a href="/predict" class="cta-primary">
                 Essayer maintenant ✨
@@ -18,9 +18,9 @@
         </div>
         <div class="hero-visual fade-in-up">
             <div class="hero-card">
-                <video autoplay muted loop playsinline style="width: 100%; border-radius: 0.5rem;">
+                <video autoplay muted loop playsinline width="400" height="300" style="width: 100%; border-radius: 0.5rem;">
                     <source src="{% static 'asl_demo.mp4' %}" type="video/mp4">
-                    <img src="{% static 'asl.jpg' %}" alt="Démonstration ASL" style="width: 100%; border-radius: 0.5rem;">
+                    <img src="{% static 'asl.jpg' %}" alt="Démonstration ASL" width="400" height="300" style="width: 100%; border-radius: 0.5rem;">
                 </video>
             </div>
         </div>
