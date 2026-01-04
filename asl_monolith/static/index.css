@@ -318,6 +318,7 @@ header nav a:focus {
     font-weight: 900;
     margin-bottom: 0.5rem;
     display: block;
+    color: var(--primary);
 }
 
 .stat-label {
