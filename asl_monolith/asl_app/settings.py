@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'core.static_middleware.StaticFilesCSPMiddleware',  # Headers CSP pour fichiers statiques
     'core.middleware.SecurityHeadersMiddleware',  # AVANT CORS pour forcer les headers
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
