@@ -17,15 +17,25 @@ class SecurityHeadersMiddleware:
         if not response.get('Referrer-Policy'):
             response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
         
-        # CORRECTION: Content-Security-Policy Header manquant
+        # CORRECTION: Content-Security-Policy Header manquant (pour tous les fichiers)
         if not response.get('Content-Security-Policy'):
-            response['Content-Security-Policy'] = (
-                "default-src 'self'; "
-                "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; "
-                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-                "font-src 'self' https://fonts.gstatic.com; "
-                "img-src 'self' data:; "
-                "connect-src 'self';"
-            )
+            # CSP strict pour les fichiers statiques JS/CSS
+            if request.path.endswith(('.js', '.css')):
+                response['Content-Security-Policy'] = (
+                    "default-src 'none'; "
+                    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+                    "font-src 'self' https://fonts.gstatic.com;"
+                )
+            else:
+                # CSP pour les pages HTML
+                response['Content-Security-Policy'] = (
+                    "default-src 'self'; "
+                    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; "
+                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+                    "font-src 'self' https://fonts.gstatic.com; "
+                    "img-src 'self' data:; "
+                    "connect-src 'self';"
+                )
         
         return response
