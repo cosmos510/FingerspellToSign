@@ -48,14 +48,30 @@ _cached_hands = None
 def get_hands_detector():
     global _cached_hands
     if _cached_hands is None and MEDIAPIPE_AVAILABLE:
-        mp_hands = mp.solutions.hands
-        _cached_hands = mp_hands.Hands(
-            static_image_mode=True,
-            max_num_hands=1,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5
-        )
-        print("✅ Hands detector initialized")
+        try:
+            # Nouvelle API MediaPipe
+            from mediapipe.tasks import python
+            from mediapipe.tasks.python import vision
+            
+            base_options = python.BaseOptions(model_asset_path='hand_landmarker.task')
+            options = vision.HandLandmarkerOptions(base_options=base_options,
+                                                 num_hands=1)
+            _cached_hands = vision.HandLandmarker.create_from_options(options)
+            print("✅ Hands detector initialized (new API)")
+        except Exception as e:
+            try:
+                # Ancienne API MediaPipe (fallback)
+                mp_hands = mp.solutions.hands
+                _cached_hands = mp_hands.Hands(
+                    static_image_mode=True,
+                    max_num_hands=1,
+                    min_detection_confidence=0.5,
+                    min_tracking_confidence=0.5
+                )
+                print("✅ Hands detector initialized (legacy API)")
+            except Exception as e2:
+                print(f"❌ Failed to initialize hands detector: {e2}")
+                _cached_hands = None
     return _cached_hands
 
 global_predicted_character = "No prediction"
@@ -196,14 +212,31 @@ def upload_frame(request):
         
         hands = get_hands_detector()
         if hands is None:
-            return JsonResponse({'prediction': 'MediaPipe not available'})
+            return JsonResponse({'prediction': 'MediaPipe detector not available'})
         
         logger.info(f"Processing image shape: {frame_rgb.shape}")
-        results = hands.process(frame_rgb)
         
-        if results.multi_hand_landmarks:
-            landmarks = results.multi_hand_landmarks[0].landmark
+        try:
+            # Nouvelle API MediaPipe
+            import mediapipe as mp
+            mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
+            detection_result = hands.detect(mp_image)
             
+            if detection_result.hand_landmarks:
+                landmarks = detection_result.hand_landmarks[0]
+        except Exception as e:
+            # Ancienne API MediaPipe (fallback)
+            try:
+                results = hands.process(frame_rgb)
+                if results.multi_hand_landmarks:
+                    landmarks = results.multi_hand_landmarks[0].landmark
+                else:
+                    landmarks = None
+            except Exception as e2:
+                logger.error(f"Both MediaPipe APIs failed: {e}, {e2}")
+                return JsonResponse({'prediction': 'MediaPipe processing failed'})
+        
+        if 'landmarks' in locals() and landmarks:
             features = extract_advanced_features(landmarks)
             
             if features:
