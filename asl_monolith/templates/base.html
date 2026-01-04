@@ -105,10 +105,10 @@
             </div>
             <nav aria-label="Navigation principale">
                 <a href="/" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Accueil</a>
-                <a href="/predict" {% if request.resolver_match.url_name == 'predict' %}aria-current="page"{% endif %}>Prédiction</a>
-                <a href="/about" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %}>À propos</a>
+                <a href="/predict/" {% if request.resolver_match.url_name == 'predict' %}aria-current="page"{% endif %}>Prédiction</a>
+                <a href="/about/" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %}>À propos</a>
             </nav>
-            <button class="cta-button" onclick="window.location.href='/predict'">
+            <button class="cta-button" onclick="window.location.href='/predict/'">
                 {% block cta_text %}Commencer 🚀{% endblock %}
             </button>
         </div>
@@ -140,8 +140,8 @@
             
             <div class="footer-section footer-right">
                 <div class="footer-links">
-                    <a href="/rgpd">RGPD</a>
-                    <a href="/mentions-legales">Mentions légales</a>
+                    <a href="/rgpd/">RGPD</a>
+                    <a href="/mentions-legales/">Mentions légales</a>
                 </div>
                 <div class="accessibility-badge">
                     <span class="badge-text">Accessible WCAG 2.1</span>
