@@ -226,12 +226,6 @@ def video_feed(request):
     
     return StreamingHttpResponse(generate(), content_type='multipart/x-mixed-replace; boundary=frame')
 
-def header_view(request):
-    return render(request, 'header.html')
-
-def footer_view(request):
-    return render(request, 'footer.html')
-
 def rgpd(request):
     return render(request, 'rgpd.html')
 

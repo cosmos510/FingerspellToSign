@@ -30,8 +30,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'core.middleware.SecurityHeadersMiddleware',  # AVANT CORS pour forcer les headers
     'corsheaders.middleware.CorsMiddleware',
-    'core.middleware.SecurityHeadersMiddleware',  # CORRECTION SEO: Headers de sécurité
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -101,6 +101,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # CORRECTION SEO: Protection clickjacking
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+# Headers de sécurité supplémentaires
+SECURE_HSTS_SECONDS = 31536000 if 'parle-avec-tes-mains.fr' in os.getenv('RAILWAY_PUBLIC_DOMAIN', '') else 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 # SSL settings based on domain
 if 'parle-avec-tes-mains.fr' in os.getenv('RAILWAY_PUBLIC_DOMAIN', ''):

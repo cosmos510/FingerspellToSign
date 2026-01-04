@@ -9,33 +9,26 @@ class SecurityHeadersMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
         
-        # CORRECTION: X-Frame-Options Header manquant
-        if not response.get('X-Frame-Options'):
-            response['X-Frame-Options'] = 'SAMEORIGIN'
+        # FORCER les headers de sécurité (remplacer si existants)
+        response['X-Frame-Options'] = 'SAMEORIGIN'
+        response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
         
-        # CORRECTION: Referrer-Policy Header manquant
-        if not response.get('Referrer-Policy'):
-            response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
-        
-        # CORRECTION: Content-Security-Policy Header manquant (pour tous les fichiers)
-        if not response.get('Content-Security-Policy'):
-            # CSP strict pour les fichiers statiques JS/CSS
-            if request.path.endswith(('.js', '.css')):
-                response['Content-Security-Policy'] = (
-                    "default-src 'none'; "
-                    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
-                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-                    "font-src 'self' https://fonts.gstatic.com;"
-                )
-            else:
-                # CSP pour les pages HTML
-                response['Content-Security-Policy'] = (
-                    "default-src 'self'; "
-                    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; "
-                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-                    "font-src 'self' https://fonts.gstatic.com; "
-                    "img-src 'self' data:; "
-                    "connect-src 'self';"
-                )
+        # CSP pour tous les fichiers
+        if request.path.endswith(('.js', '.css')):
+            response['Content-Security-Policy'] = (
+                "default-src 'none'; "
+                "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+                "font-src 'self' https://fonts.gstatic.com;"
+            )
+        else:
+            response['Content-Security-Policy'] = (
+                "default-src 'self'; "
+                "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; "
+                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+                "font-src 'self' https://fonts.gstatic.com; "
+                "img-src 'self' data:; "
+                "connect-src 'self';"
+            )
         
         return response
