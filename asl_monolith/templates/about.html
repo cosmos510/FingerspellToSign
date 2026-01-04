@@ -8,9 +8,7 @@
 {% block cta_text %}Essayer 🚀{% endblock %}
 
 {% block extra_css %}
-<link rel="preload" href="{% static 'about.css' %}" as="style">
-<link rel="stylesheet" href="{% static 'about.css' %}" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="{% static 'about.css' %}"></noscript>
+<link rel="stylesheet" href="{% static 'about.css' %}">
 {% endblock %}
 
 {% block content %}

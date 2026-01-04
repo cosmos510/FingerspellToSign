@@ -8,14 +8,8 @@
 {% block cta_text %}Retour 🏠{% endblock %}
 
 {% block extra_css %}
-<link rel="preload" href="{% static 'predict.css' %}" as="style">
-<link rel="preload" href="{% static 'predict-extra.css' %}" as="style">
-<link rel="stylesheet" href="{% static 'predict.css' %}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{% static 'predict-extra.css' %}" media="print" onload="this.media='all'">
-<noscript>
 <link rel="stylesheet" href="{% static 'predict.css' %}">
 <link rel="stylesheet" href="{% static 'predict-extra.css' %}">
-</noscript>
 {% endblock %}
 
 {% block content %}
