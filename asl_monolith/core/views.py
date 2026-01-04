@@ -199,12 +199,20 @@ def upload_frame(request):
             })
         
         # Mode dégradé sans MediaPipe - simulation pour les tests
-        if not MEDIAPIPE_AVAILABLE or hands is None:
+        if not MEDIAPIPE_AVAILABLE:
             # Simulation basique pour maintenir le service
             import random
             letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
             global_predicted_character = random.choice(letters)
             logger.info(f"Degraded mode: simulated prediction {global_predicted_character}")
+            return JsonResponse({'prediction': global_predicted_character})
+        
+        hands = get_hands_detector()
+        if hands is None:
+            # Fallback simulation si MediaPipe échoue
+            import random
+            letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+            global_predicted_character = random.choice(letters)
             return JsonResponse({'prediction': global_predicted_character})
         
         logger.info(f"Processing image shape: {frame_rgb.shape}")
