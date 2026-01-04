@@ -9,7 +9,6 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'predict.css' %}">
-<link rel="stylesheet" href="{% static 'predict-extra.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,28 +16,6 @@
     <div class="container">
         <h1>Montre tes mains 👋</h1>
         <p>Place ta main devant la caméra pour que l'outil reconnaisse les lettres que tu signes.</p>
-    </div>
-</section>
-
-<section class="predict-info">
-    <div class="container">
-        <div class="info-grid">
-            <div class="info-card">
-                <h2>Comment utiliser l'outil de reconnaissance ASL</h2>
-                <p>Notre outil de reconnaissance dactylologique utilise l'intelligence artificielle pour identifier les lettres de l'alphabet ASL en temps réel. Voici comment procéder :</p>
-                <ul>
-                    <li><strong>Autorisez l'accès caméra :</strong> Cliquez sur "Démarrer" et acceptez l'autorisation</li>
-                    <li><strong>Positionnez votre main :</strong> Placez-la dans la zone bleue avec un bon éclairage</li>
-                    <li><strong>Maintenez la position :</strong> Gardez le geste 2-3 secondes pour une reconnaissance optimale</li>
-                    <li><strong>Construisez vos mots :</strong> Ajoutez chaque lettre reconnue pour former des mots complets</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h2>Précision et performance</h2>
-                <p>Notre modèle d'IA atteint une précision de 95% dans la reconnaissance des gestes dactylologiques ASL. Il a été entraîné sur des milliers d'exemples pour garantir une reconnaissance fiable dans diverses conditions d'éclairage.</p>
-                <p>L'outil fonctionne entièrement dans votre navigateur, garantissant la confidentialité de vos données. Aucune image n'est transmise à nos serveurs.</p>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -144,6 +121,28 @@
                         Effacer le mot
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="predict-info">
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-card">
+                <h2>Comment utiliser l'outil de reconnaissance ASL</h2>
+                <p>Notre outil de reconnaissance dactylologique utilise l'intelligence artificielle pour identifier les lettres de l'alphabet ASL en temps réel. Voici comment procéder :</p>
+                <ul>
+                    <li><strong>Autorisez l'accès caméra :</strong> Cliquez sur "Démarrer" et acceptez l'autorisation</li>
+                    <li><strong>Positionnez votre main :</strong> Placez-la dans la zone bleue avec un bon éclairage</li>
+                    <li><strong>Maintenez la position :</strong> Gardez le geste 2-3 secondes pour une reconnaissance optimale</li>
+                    <li><strong>Construisez vos mots :</strong> Ajoutez chaque lettre reconnue pour former des mots complets</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h2>Précision et performance</h2>
+                <p>Notre modèle d'IA atteint une précision de 95% dans la reconnaissance des gestes dactylologiques ASL. Il a été entraîné sur des milliers d'exemples pour garantir une reconnaissance fiable dans diverses conditions d'éclairage.</p>
+                <p>L'outil fonctionne entièrement dans votre navigateur, garantissant la confidentialité de vos données. Aucune image n'est transmise à nos serveurs.</p>
             </div>
         </div>
     </div>

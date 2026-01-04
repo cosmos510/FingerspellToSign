@@ -1,0 +1,192 @@
+/* Hero sections uniformes */
+.predict-hero,
+.about-hero {
+    background: var(--gradient-primary);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.predict-hero::before,
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
+    background-size: 30px 30px;
+    animation: float 15s infinite linear;
+}
+
+.predict-hero h1,
+.about-hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.predict-hero p,
+.about-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sections de contenu uniformes */
+.predict-info,
+.about-intro,
+.about-technology {
+    padding: 4rem 0;
+    background: var(--bg);
+}
+
+.predict-tips,
+.about-vision,
+.mission-section,
+.tech-section {
+    padding: 4rem 0;
+    background: var(--bg-light);
+}
+
+/* Grilles uniformes */
+.info-grid,
+.vision-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Cards uniformes */
+.info-card,
+.vision-point,
+.tip-item,
+.stat-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::before,
+.vision-point::before,
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+
+.tip-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-secondary);
+}
+
+/* Titres uniformes */
+.predict-tips h2,
+.about-vision .vision-content h2,
+.about-technology .tech-details h2,
+.tech-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: var(--text);
+    text-align: center;
+}
+
+.info-card h2,
+.vision-point h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.tip-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+/* Textes uniformes */
+.info-card p,
+.vision-point p,
+.tip-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Listes uniformes */
+.info-card ul {
+    margin: 1.5rem 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.info-card li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.info-card li:last-child {
+    border-bottom: none;
+}
+
+.info-card li strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Responsive uniforme */
+@media (max-width: 768px) {
+    .predict-hero h1,
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .info-grid,
+    .vision-points,
+    .tips-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .info-card,
+    .vision-point,
+    .tip-item {
+        padding: 1.5rem;
+    }
+}
