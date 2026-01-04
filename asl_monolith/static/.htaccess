@@ -1,0 +1,21 @@
+# Headers de sécurité pour tous les fichiers statiques
+<IfModule mod_headers.c>
+    # Headers pour tous les fichiers
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # CSP pour fichiers JavaScript
+    <FilesMatch "\.(js)$">
+        Header always set Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;"
+    </FilesMatch>
+    
+    # CSP pour fichiers CSS
+    <FilesMatch "\.(css)$">
+        Header always set Content-Security-Policy "default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+    </FilesMatch>
+    
+    # CSP pour images
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg)$">
+        Header always set Content-Security-Policy "default-src 'self';"
+    </FilesMatch>
+</IfModule>

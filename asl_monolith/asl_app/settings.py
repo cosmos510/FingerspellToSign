@@ -29,9 +29,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'core.static_middleware.StaticFilesCSPMiddleware',  # AVANT WhiteNoise
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'core.static_middleware.StaticFilesCSPMiddleware',  # Headers CSP pour fichiers statiques
-    'core.middleware.SecurityHeadersMiddleware',  # AVANT CORS pour forcer les headers
+    'core.middleware.SecurityHeadersMiddleware',  # Headers pour pages HTML
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,6 +108,15 @@ SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 SECURE_HSTS_SECONDS = 31536000 if 'parle-avec-tes-mains.fr' in os.getenv('RAILWAY_PUBLIC_DOMAIN', '') else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+
+# CORRECTION SEO: Headers CSP pour tous les fichiers
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"]
+CSP_STYLE_SRC = ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"]
+CSP_FONT_SRC = ["'self'", "https://fonts.gstatic.com"]
+CSP_IMG_SRC = ["'self'", "data:"]
+CSP_CONNECT_SRC = ["'self'"]
 
 # SSL settings based on domain
 if 'parle-avec-tes-mains.fr' in os.getenv('RAILWAY_PUBLIC_DOMAIN', ''):
