@@ -18,9 +18,19 @@ try:
 except ImportError as e:
     print(f"❌ OpenCV not available: {e}")
     CV2_AVAILABLE = False
+    # Fallback: utiliser PIL pour le décodage d'images
+    try:
+        from PIL import Image
+        import io
+        PIL_AVAILABLE = True
+        print("✅ PIL available as fallback")
+    except ImportError:
+        PIL_AVAILABLE = False
+        print("❌ PIL also not available")
 except Exception as e:
     print(f"❌ OpenCV error: {e}")
     CV2_AVAILABLE = False
+    PIL_AVAILABLE = False
 
 try:
     import mediapipe as mp
@@ -151,9 +161,9 @@ def upload_frame(request):
     
     logger.info(f"CV2_AVAILABLE: {CV2_AVAILABLE}, MEDIAPIPE_AVAILABLE: {MEDIAPIPE_AVAILABLE}")
     
-    if not CV2_AVAILABLE or not MEDIAPIPE_AVAILABLE:
+    if not MEDIAPIPE_AVAILABLE:
         return JsonResponse({
-            'prediction': 'Service temporarily unavailable - libraries not loaded'
+            'prediction': 'Service temporarily unavailable - MediaPipe not loaded'
         })
     
     if 'file' not in request.FILES:
@@ -166,13 +176,24 @@ def upload_frame(request):
     try:
         logger.info(f"Processing file size: {file.size} bytes")
         image_data = file.read()
-        np_arr = np.frombuffer(image_data, np.uint8)
-        img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
         
-        if img is None:
-            return JsonResponse({'status': 'failed', 'error': 'Invalid image'}, status=400)
+        # Décodage d'image avec fallback
+        if CV2_AVAILABLE:
+            np_arr = np.frombuffer(image_data, np.uint8)
+            img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+            if img is None:
+                return JsonResponse({'status': 'failed', 'error': 'Invalid image'}, status=400)
+            frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        elif 'PIL_AVAILABLE' in globals() and PIL_AVAILABLE:
+            from PIL import Image
+            import io
+            img_pil = Image.open(io.BytesIO(image_data))
+            frame_rgb = np.array(img_pil.convert('RGB'))
+        else:
+            return JsonResponse({
+                'prediction': 'Image processing not available - OpenCV and PIL missing'
+            })
         
-        frame_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         hands = get_hands_detector()
         if hands is None:
             return JsonResponse({'prediction': 'MediaPipe not available'})
