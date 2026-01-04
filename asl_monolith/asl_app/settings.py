@@ -102,22 +102,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 
-# CORRECTION SEO: Headers de sécurité pour fichiers statiques
-SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
-SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
-
-# CSP pour tous les fichiers
-CSP_DEFAULT_SRC = ["'self'"]
-CSP_SCRIPT_SRC = ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"]
-CSP_STYLE_SRC = ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"]
-CSP_FONT_SRC = ["'self'", "https://fonts.gstatic.com"]
-CSP_IMG_SRC = ["'self'", "data:"]
-CSP_CONNECT_SRC = ["'self'"]
-
-# Headers pour WhiteNoise (fichiers statiques)
-if not DEBUG:
-    WHITENOISE_ADD_HEADERS_FUNCTION = 'core.utils.add_security_headers'
-
 # SSL settings based on domain
 if 'parle-avec-tes-mains.fr' in os.getenv('RAILWAY_PUBLIC_DOMAIN', ''):
     SECURE_SSL_REDIRECT = True
