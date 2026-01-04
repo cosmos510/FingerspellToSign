@@ -72,7 +72,10 @@
                         </button>
                         <div class="dropdown-content" id="alphabet-detail">
                             <div class="alphabet-content">
-                                <img src="{% static 'asl.jpg' %}" alt="Alphabet dactylologique ASL" class="alphabet-chart-dropdown">
+                                <picture>
+                                    <source srcset="{% static 'asl.webp' %}" type="image/webp">
+                                    <img src="{% static 'asl.jpg' %}" alt="Alphabet dactylologique ASL" class="alphabet-chart-dropdown" width="400" height="300">
+                                </picture>
                             </div>
                         </div>
                     </div>
