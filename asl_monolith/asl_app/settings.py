@@ -100,7 +100,7 @@ DEFAULT_THEME = os.getenv('DEFAULT_THEME', 'modern')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # CORRECTION SEO: Protection clickjacking
 
 # SSL settings based on domain
 if 'parle-avec-tes-mains.fr' in os.getenv('RAILWAY_PUBLIC_DOMAIN', ''):
