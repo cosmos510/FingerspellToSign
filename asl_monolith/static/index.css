@@ -71,6 +71,15 @@ header {
     gap: 2rem;
 }
 
+.logo .site-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .logo h1 {
     font-size: 1.5rem;
     font-weight: 800;
