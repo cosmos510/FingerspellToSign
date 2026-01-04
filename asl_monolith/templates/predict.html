@@ -8,8 +8,14 @@
 {% block cta_text %}Retour 🏠{% endblock %}
 
 {% block extra_css %}
+<link rel="preload" href="{% static 'predict.css' %}" as="style">
+<link rel="preload" href="{% static 'predict-extra.css' %}" as="style">
+<link rel="stylesheet" href="{% static 'predict.css' %}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{% static 'predict-extra.css' %}" media="print" onload="this.media='all'">
+<noscript>
 <link rel="stylesheet" href="{% static 'predict.css' %}">
 <link rel="stylesheet" href="{% static 'predict-extra.css' %}">
+</noscript>
 {% endblock %}
 
 {% block content %}
@@ -95,7 +101,7 @@
                         </button>
                         <div class="dropdown-content" id="alphabet-detail">
                             <div class="alphabet-content">
-                                <img src="{% static 'asl.webp' %}" alt="Alphabet dactylologique ASL" class="alphabet-chart-dropdown" width="400" height="300">
+                                <img src="{% static 'asl.webp' %}" alt="Alphabet dactylologique ASL" class="alphabet-chart-dropdown" width="400" height="300" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
