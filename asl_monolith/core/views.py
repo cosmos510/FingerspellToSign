@@ -247,3 +247,40 @@ def robots(request):
         return HttpResponse(content, content_type='text/plain')
     except FileNotFoundError:
         return HttpResponse('User-agent: *\nAllow: /', content_type='text/plain')
+
+def serve_static_file(request, filename):
+    """Sert les fichiers statiques avec headers CSP"""
+    from django.http import HttpResponse, Http404
+    from django.conf import settings
+    import os
+    import mimetypes
+    
+    file_path = os.path.join(settings.BASE_DIR, 'static', filename)
+    
+    if not os.path.exists(file_path):
+        raise Http404("File not found")
+    
+    # Déterminer le type MIME
+    content_type, _ = mimetypes.guess_type(file_path)
+    if not content_type:
+        content_type = 'application/octet-stream'
+    
+    # Lire le fichier
+    with open(file_path, 'rb') as f:
+        content = f.read()
+    
+    response = HttpResponse(content, content_type=content_type)
+    
+    # Ajouter les headers de sécurité
+    response['X-Frame-Options'] = 'SAMEORIGIN'
+    response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    
+    # CSP spécifique selon le type de fichier
+    if filename.endswith('.js'):
+        response['Content-Security-Policy'] = "default-src 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;"
+    elif filename.endswith('.css'):
+        response['Content-Security-Policy'] = "default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+    else:
+        response['Content-Security-Policy'] = "default-src 'self';"
+    
+    return response
