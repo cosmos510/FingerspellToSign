@@ -123,12 +123,12 @@
 .stat-number {
     font-size: 2.5rem;
     font-weight: 900;
-    color: var(--text);
+    color: #8B5CF6;
     margin-bottom: 0.5rem;
 }
 
 .stat-label {
-    color: var(--text-light);
+    color: #8B5CF6;
     font-weight: 500;
 }
 
