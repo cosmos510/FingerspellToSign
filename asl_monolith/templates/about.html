@@ -5,7 +5,7 @@
 {% block description %}Découvrez notre mission : rendre la dactylologie ASL accessible à tous. Créé par Maxime Martin, développeur passionné d'IA et d'accessibilité.{% endblock %}
 {% block keywords %}mission accessibilité, Maxime Martin, créateur dactylologie, équipe langue des signes, engagement inclusion{% endblock %}
 {% block canonical %}https://www.parle-avec-tes-mains.fr/about/{% endblock %}
-{% block cta_text %}Essayer 🚀{% endblock %}
+{% block cta_text %}Essayer{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'about.css' %}">
@@ -14,42 +14,52 @@
 {% block content %}
 <section class="about-hero">
     <div class="container">
-        <h1>Un outil pour la dactylologie</h1>
-        <p>Traduire l'alphabet des signes, simplement</p>
+        <h1>Solution de reconnaissance dactylologique</h1>
+        <p>Technologie d'intelligence artificielle pour l'apprentissage de l'alphabet des signes</p>
     </div>
 </section>
 
 <section class="about-intro">
     <div class="container">
         <div class="intro-content">
-            <h2>Pourquoi cet outil existe</h2>
-            <p>La dactylologie, ou alphabet des signes, est un élément fondamental de la communication en langue des signes. Elle permet d'épeler des mots lettre par lettre, notamment pour les noms propres, les termes techniques ou les mots qui n'ont pas de signe spécifique.</p>
-            <p>Notre outil utilise l'intelligence artificielle pour reconnaître en temps réel les lettres de l'alphabet ASL (American Sign Language). Bien que nous nous concentrions actuellement sur l'ASL, notre vision à long terme inclut le support de la LSF (Langue des Signes Française).</p>
-            <p>Cet outil s'adresse aux étudiants, aux professeurs, aux interprètes en formation, et à toute personne souhaitant apprendre ou pratiquer la dactylologie de manière interactive et moderne.</p>
+            <h2>Pourquoi cette solution existe</h2>
+            <p>La dactylologie constitue la base technique pour développer une reconnaissance complète de la langue des signes. En maîtrisant d'abord l'alphabet, nous posons les fondations pour reconnaître ensuite des mots, puis des phrases entières.</p>
+            <p>Cette approche progressive nous permet de valider nos algorithmes d'intelligence artificielle avant de s'attaquer à la complexité de la LSF complète. Chaque lettre reconnue nous rapproche de l'objectif final : traduire la langue des signes dans son intégralité.</p>
+            <p>Ce projet de recherche et développement s'adresse aux chercheurs, développeurs, et à la communaurité sourde qui souhaite contribuer à l'avancement de ces technologies.</p>
         </div>
     </div>
 </section>
 
 <section class="mission-section">
-    <div class="split-content">
-        <div class="content-left">
-            <h2>Notre objectif</h2>
-            <p>Créer un outil accessible pour apprendre et utiliser la dactylologie.</p>
-            <p>C'est un premier pas vers des outils plus complets pour la langue des signes.</p>
-        </div>
-        <div class="content-right">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">Précision</div>
+    <div class="container">
+        <div class="mission-content">
+            <h2>Notre mission</h2>
+            <p>Développer une technologie de reconnaissance complète de la langue des signes, en commençant par la dactylologie.</p>
+            <p>Ce projet vise à terme la traduction intégrale de la LSF, pas seulement l'alphabet. La dactylologie n'est que la première étape.</p>
+            
+            <div class="roadmap">
+                <div class="roadmap-item current">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h3>Dactylologie ASL</h3>
+                        <p>Reconnaissance de l'alphabet - En cours</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">0€</div>
-                    <div class="stat-label">Toujours gratuit</div>
+                
+                <div class="roadmap-item future">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h3>Mots complets</h3>
+                        <p>Reconnaissance de mots signés - À venir</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Disponible</div>
+                
+                <div class="roadmap-item vision">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h3>LSF complète</h3>
+                        <p>Traduction intégrale - Objectif final</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,8 +74,8 @@
                 <div class="creator-badge">Créateur</div>
             </div>
             <div class="creator-content">
-                <h2>Salut, moi c'est Maxime !</h2>
-                <p>Je développe des applications avec l'intelligence artificielle. J'ai créé cet outil pour rendre la dactylologie plus accessible.</p>
+                <h2>Maxime Martin</h2>
+                <p>Développeur, spécialisé dans la reconnaissance gestuelle. Ce projet représente mes recherches pour développer une technologie de traduction complète de la langue des signes, en commençant par valider les concepts sur la dactylologie.</p>
                 <div class="creator-links">
                     <a href="mailto:contact@parle-avec-tes-mains.fr" class="creator-btn email">
                         Me contacter
@@ -82,30 +92,7 @@
     </div>
 </section>
 
-<section class="tech-section">
-    <div class="container">
-        <h2>Comment ça marche</h2>
-        <div class="tech-flow">
-            <div class="flow-step">
-                <div class="flow-icon"></div>
-                <h3>Caméra</h3>
-                <p>Capture tes gestes</p>
-            </div>
-            <div class="flow-arrow">➡️</div>
-            <div class="flow-step">
-                <div class="flow-icon"></div>
-                <h3>Analyse</h3>
-                <p>L'IA identifie la lettre</p>
-            </div>
-            <div class="flow-arrow">➡️</div>
-            <div class="flow-step">
-                <div class="flow-icon"></div>
-                <h3>Résultat</h3>
-                <p>Affiche la lettre reconnue</p>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <section class="about-vision">
     <div class="container">
@@ -114,16 +101,16 @@
             <p>L'accessibilité numérique est au cœur de notre démarche. Nous croyons que la technologie doit servir à réduire les barrières de communication, pas à les renforcer.</p>
             <div class="vision-points">
                 <div class="vision-point">
-                    <h3>🌍 Accessibilité universelle</h3>
-                    <p>Notre outil respecte les standards WCAG 2.1 pour être utilisable par tous, y compris les personnes utilisant des technologies d'assistance.</p>
+                    <h3>Recherche et développement</h3>
+                    <p>Ce projet explore les possibilités de l'IA pour la reconnaissance gestuelle. Chaque amélioration nous rapproche de la traduction complète de la langue des signes.</p>
                 </div>
                 <div class="vision-point">
-                    <h3>🔒 Confidentialité des données</h3>
-                    <p>Toutes les analyses se font localement dans votre navigateur. Aucune image ou donnée personnelle n'est transmise à nos serveurs.</p>
+                    <h3>Open source et collaboration</h3>
+                    <p>Le code et les modèles sont partagés pour permettre à la communauté de contribuer et d'améliorer la technologie ensemble.</p>
                 </div>
                 <div class="vision-point">
-                    <h3>🎆 Innovation continue</h3>
-                    <p>Nous améliorons constamment notre modèle d'IA et prévoyons d'ajouter le support de la LSF et d'autres langues des signes.</p>
+                    <h3>Objectif à long terme</h3>
+                    <p>Développer un système capable de traduire la LSF complète, pas seulement l'alphabet. La dactylologie n'est que le début.</p>
                 </div>
             </div>
         </div>
@@ -133,23 +120,23 @@
 <section class="about-technology">
     <div class="container">
         <div class="tech-details">
-            <h2>Technologie et innovation</h2>
-            <p>Notre solution combine plusieurs technologies de pointe pour offrir une expérience utilisateur optimale :</p>
+            <h2>Défis techniques</h2>
+            <p>La reconnaissance de la langue des signes présente des défis uniques que nous explorons à travers ce projet :</p>
             <ul>
-                <li><strong>MediaPipe :</strong> Bibliothèque de Google pour la détection des points de repère de la main en temps réel</li>
-                <li><strong>Machine Learning :</strong> Modèle entraîné sur des milliers d'exemples de gestes dactylologiques</li>
-                <li><strong>WebRTC :</strong> Accès caméra sécurisé directement dans le navigateur</li>
-                <li><strong>Progressive Web App :</strong> Fonctionne sur tous les appareils sans installation</li>
+                <li><strong>Variabilité gestuelle :</strong> Chaque personne signe différemment, notre modèle doit s'adapter à cette diversité</li>
+                <li><strong>Contexte spatial :</strong> Les signes LSF utilisent l'espace 3D, contrairement à la dactylologie 2D</li>
+                <li><strong>Expressions faciales :</strong> Essentielles en LSF, elles modifient le sens des signes</li>
+                <li><strong>Fluidité temporelle :</strong> Passer de lettres isolées à des phrases continues</li>
             </ul>
-            <p>Cette approche garantit une reconnaissance rapide et précise tout en préservant votre vie privée.</p>
+            <p>Chaque amélioration sur la dactylologie nous enseigne comment aborder ces défis plus complexes.</p>
         </div>
     </div>
 </section>
 
 <section class="cta-section">
     <div class="container">
-        <h2>Découvre la dactylologie</h2>
-        <p>Teste l'outil et apprends l'alphabet des signes</p>
+        <h2>Accéder à l'application</h2>
+        <p>Découvrez les capacités de notre solution de reconnaissance dactylologique</p>
         <div class="cta-buttons">
             <a href="/predict/" class="cta-primary">Commencer</a>
         </div>

@@ -5,7 +5,7 @@
 {% block description %}Outil gratuit de reconnaissance dactylologique ASL en temps réel. Précision 95%, interface accessible, construction de mots. Commencez maintenant !{% endblock %}
 {% block keywords %}reconnaissance dactylologique gratuite, outil ASL temps réel, caméra langue des signes, prédiction gestuelle{% endblock %}
 {% block canonical %}https://www.parle-avec-tes-mains.fr/predict/{% endblock %}
-{% block cta_text %}Retour 🏠{% endblock %}
+{% block cta_text %}Retour{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'predict.css' %}">
@@ -14,8 +14,8 @@
 {% block content %}
 <section class="predict-hero">
     <div class="container">
-        <h1>Montre tes mains 👋</h1>
-        <p>Place ta main devant la caméra pour que l'outil reconnaisse les lettres que tu signes.</p>
+        <h1>Interface de reconnaissance</h1>
+        <p>Positionnez votre main devant la caméra pour démarrer la reconnaissance dactylologique en temps réel.</p>
     </div>
 </section>
 
@@ -26,38 +26,38 @@
                 <div class="header-buttons">
                     <div class="instructions-dropdown">
                         <button class="dropdown-toggle" id="instructions-toggle">
-                            <span class="btn-icon">💡</span>
+                            <span class="btn-icon">i</span>
                             <span class="toggle-text">Instructions</span>
                             <span class="toggle-icon">▼</span>
                         </button>
                         <div class="dropdown-content" id="instructions-detail">
                             <div class="instructions-list">
                                 <div class="instruction-item">
-                                    <span class="instruction-icon">📹</span>
+                                    <span class="instruction-icon">1</span>
                                     <div>
-                                        <strong>Active ta caméra</strong>
-                                        <p>Clique "Démarrer" et autorise l'accès</p>
+                                        <strong>Activez votre caméra</strong>
+                                        <p>Cliquez "Démarrer" et autorisez l'accès</p>
                                     </div>
                                 </div>
                                 <div class="instruction-item">
-                                    <span class="instruction-icon">✋</span>
+                                    <span class="instruction-icon">2</span>
                                     <div>
-                                        <strong>Positionne ta main</strong>
+                                        <strong>Positionnez votre main</strong>
                                         <p>Dans la zone bleue avec un bon éclairage</p>
                                     </div>
                                 </div>
                                 <div class="instruction-item">
-                                    <span class="instruction-icon">⏱️</span>
+                                    <span class="instruction-icon">3</span>
                                     <div>
-                                        <strong>Maintiens la position</strong>
-                                        <p>2-3 secondes pour une bonne reconnaissance</p>
+                                        <strong>Maintenez la position</strong>
+                                        <p>2-3 secondes pour une reconnaissance optimale</p>
                                     </div>
                                 </div>
                                 <div class="instruction-item">
-                                    <span class="instruction-icon">✓</span>
+                                    <span class="instruction-icon">4</span>
                                     <div>
-                                        <strong>Ajoute la lettre</strong>
-                                        <p>Clique "Ajouter" pour construire ton mot</p>
+                                        <strong>Ajoutez la lettre</strong>
+                                        <p>Cliquez "Ajouter" pour construire votre mot</p>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                     
                     <div class="alphabet-dropdown">
                         <button class="dropdown-toggle" id="alphabet-toggle">
-                            <span class="btn-icon">🔤</span>
+                            <span class="btn-icon">A</span>
                             <span class="toggle-text">Alphabet ASL</span>
                             <span class="toggle-icon">▼</span>
                         </button>
@@ -80,8 +80,8 @@
             </div>
             
             <div class="hand-tip">
-                <span class="tip-icon">💡</span>
-                <span class="tip-text">Astuce : Utilisez votre main droite pour de meilleurs résultats !</span>
+                <span class="tip-icon">i</span>
+                <span class="tip-text">Conseil : Utilisez votre main droite pour de meilleurs résultats</span>
             </div>
             
             <div class="camera-container">
@@ -96,7 +96,7 @@
 
         <div class="results-section">
             <div class="prediction-card">
-                <h2>Lettre reconnue 🎯</h2>
+                <h2>Lettre reconnue</h2>
                 <div class="prediction-display">
                     <span id="prediction-text" class="prediction-letter">-</span>
                     <div class="confidence-bar">
@@ -107,7 +107,7 @@
             </div>
 
             <div class="word-builder-card">
-                <h2>Ton mot ✨</h2>
+                <h2>Votre mot</h2>
                 <div class="word-display">
                     <span id="current-word" class="current-word">Commencez à épeler...</span>
                 </div>
@@ -117,7 +117,7 @@
                         Ajouter la lettre
                     </button>
                     <button id="clear-word" class="control-btn danger">
-                        <span class="btn-icon">🗑️</span>
+                        <span class="btn-icon">×</span>
                         Effacer le mot
                     </button>
                 </div>
@@ -153,19 +153,19 @@
         <h2>Conseils pour une meilleure reconnaissance</h2>
         <div class="tips-grid">
             <div class="tip-item">
-                <h3>💡 Éclairage optimal</h3>
+                <h3>Éclairage optimal</h3>
                 <p>Utilisez un éclairage uniforme et évitez les contre-jours. La lumière naturelle ou un éclairage LED doux donnent les meilleurs résultats.</p>
             </div>
             <div class="tip-item">
-                <h3>✋ Position de la main</h3>
+                <h3>Position de la main</h3>
                 <p>Centrez votre main dans la zone de détection bleue. Gardez vos doigts bien visibles et évitez les mouvements brusques.</p>
             </div>
             <div class="tip-item">
-                <h3>🎯 Précision des gestes</h3>
+                <h3>Précision des gestes</h3>
                 <p>Formez clairement chaque lettre selon l'alphabet ASL. Consultez le guide alphabet pour vérifier la position correcte de vos doigts.</p>
             </div>
             <div class="tip-item">
-                <h3>⏱️ Temps de maintien</h3>
+                <h3>Temps de maintien</h3>
                 <p>Maintenez chaque geste pendant 2-3 secondes pour permettre à l'IA d'analyser correctement votre position de main.</p>
             </div>
         </div>

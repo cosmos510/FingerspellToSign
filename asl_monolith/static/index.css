@@ -1,28 +1,28 @@
 :root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --secondary: #06b6d4;
-    --accent: #8b5cf6;
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --secondary: #3b82f6;
+    --accent: #06b6d4;
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
-    --text: #0f172a;
-    --text-light: #64748b;
-    --text-muted: #94a3b8;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --text-muted: #9ca3af;
     --bg: #ffffff;
     --bg-light: #f8fafc;
-    --bg-dark: #0f172a;
+    --bg-dark: #1e3a8a;
     --surface: #ffffff;
-    --border: #e2e8f0;
+    --border: #e5e7eb;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --radius: 0.75rem;
-    --radius-lg: 1rem;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-    --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+    --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
 }
 
 * {
@@ -33,10 +33,11 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--text);
     background: var(--bg);
     overflow-x: hidden;
+    font-weight: 400;
 }
 
 /* Three.js Background */
@@ -52,13 +53,13 @@ body {
 
 /* Header */
 header {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: var(--shadow);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
 }
 
 .header-content {
@@ -116,15 +117,19 @@ header nav a:focus {
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: var(--radius);
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.875rem;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: var(--shadow);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 /* Hero Section */
@@ -147,20 +152,19 @@ header nav a:focus {
 
 .hero-text h1 {
     font-size: 3.5rem;
-    font-weight: 900;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: 700;
+    color: var(--text);
     margin-bottom: 1.5rem;
     line-height: 1.1;
+    letter-spacing: -0.025em;
 }
 
 .hero-text p {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--text-light);
     margin-bottom: 2rem;
     line-height: 1.6;
+    font-weight: 400;
 }
 
 .cta-primary {
@@ -171,16 +175,19 @@ header nav a:focus {
     color: white;
     text-decoration: none;
     padding: 1rem 2rem;
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    font-size: 1.1rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.875rem;
     transition: var(--transition);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
 }
 
 .cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-xl);
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .hero-visual {
@@ -218,10 +225,11 @@ header nav a:focus {
 
 .features h2 {
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2.25rem;
+    font-weight: 600;
     margin-bottom: 3rem;
     color: var(--text);
+    letter-spacing: -0.025em;
 }
 
 .features-grid {
@@ -235,9 +243,9 @@ header nav a:focus {
 
 .feature-card {
     background: var(--surface);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
     border: 1px solid var(--border);
     transition: var(--transition);
     position: relative;
@@ -251,7 +259,7 @@ header nav a:focus {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--gradient-primary);
+    background: var(--gradient-secondary);
     transform: scaleX(0);
     transition: var(--transition);
 }
@@ -261,25 +269,66 @@ header nav a:focus {
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
 .feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    display: block;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1.5rem;
+    background: var(--gradient-secondary);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.feature-icon::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 2px;
+}
+
+.feature-icon.camera::before {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>') no-repeat center;
+    mask-size: contain;
+}
+
+.feature-icon.ai::before {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>') no-repeat center;
+    mask-size: contain;
+}
+
+.feature-icon.text::before {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>') no-repeat center;
+    mask-size: contain;
+}
+
+.feature-icon.globe::before {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>') no-repeat center;
+    mask-size: contain;
+}
+
+.feature-icon.security::before {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>') no-repeat center;
+    mask-size: contain;
+}
+
+.feature-icon.performance::before {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>') no-repeat center;
+    mask-size: contain;
 }
 
 .feature-card h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text);
+    letter-spacing: -0.025em;
 }
 
 .feature-card p {
@@ -290,7 +339,7 @@ header nav a:focus {
 /* Stats Section */
 .stats {
     padding: 4rem 0;
-    background: var(--gradient-primary);
+    background: var(--bg-dark);
     color: white;
 }
 
@@ -307,24 +356,28 @@ header nav a:focus {
 .stat-card {
     text-align: center;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-number {
-    font-size: 3rem;
-    font-weight: 900;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
     display: block;
-    color: #8B5CF6;
+    color: var(--secondary);
+    letter-spacing: -0.025em;
 }
 
 .stat-label {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    color: #8B5CF6;
+    font-size: 0.875rem;
+    opacity: 0.8;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
 }
 
 /* Compatibility Section */
@@ -490,11 +543,11 @@ header nav a:focus {
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: var(--bg-dark);
     color: white;
-    padding: 4rem 0 2rem;
+    padding: 3rem 0 1.5rem;
     position: relative;
-    overflow: hidden;
+    border-top: 1px solid #374151;
 }
 
 footer::before {
@@ -503,21 +556,11 @@ footer::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background: var(--gradient-primary);
 }
 
-footer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.05"/></svg>');
-    background-size: 40px 40px;
-    pointer-events: none;
-}
+
 
 .footer-content {
     max-width: 1200px;
