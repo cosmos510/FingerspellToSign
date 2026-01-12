@@ -174,6 +174,57 @@
 {% endblock %}
 
 {% block extra_js %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Interface de Reconnaissance ASL - Parle avec tes mains",
+    "url": "https://www.parle-avec-tes-mains.fr/predict/",
+    "description": "Interface interactive de reconnaissance dactylologique ASL utilisant l'IA. Traduction des signes en lettres en temps réel via webcam.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser",
+    "isAccessibleForFree": "true",
+    "browserRequirements": "Requires camera access and modern web browser",
+    "author": {
+        "@type": "Person",
+        "name": "Maxime Martin",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Webamax",
+            "url": "https://www.webamax.fr",
+            "taxID": "99073315600014"
+        }
+    },
+    "featureList": [
+        "Reconnaissance dactylologique temps réel",
+        "Précision de 95%",
+        "Construction de mots interactive",
+        "Respect total de la vie privée (traitement local)"
+    ],
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+    },
+    "step": [
+        {
+            "@type": "HowToStep",
+            "text": "Autoriser l'accès à la caméra",
+            "position": 1
+        },
+        {
+            "@type": "HowToStep",
+            "text": "Positionner la main dans la zone de détection",
+            "position": 2
+        },
+        {
+            "@type": "HowToStep",
+            "text": "Maintenir le geste 2 secondes pour valider la lettre",
+            "position": 3
+        }
+    ]
+}
+</script>
 <script src="{% static 'predict.js' %}"></script>
 
 <script>

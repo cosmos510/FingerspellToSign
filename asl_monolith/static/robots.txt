@@ -4,21 +4,22 @@ Allow: /
 # Sitemap
 Sitemap: https://www.parle-avec-tes-mains.fr/sitemap.xml
 
-# Disallow admin and private areas
+# Disallow technical routes and private areas
 Disallow: /admin/
 Disallow: /upload_frame/
 Disallow: /get_prediction/
 Disallow: /video_feed/
-Disallow: /*.json$
+# On bloque spécifiquement les modèles, pas tous les .json par sécurité
 Disallow: /static/models/
+Disallow: /config/
 
-# Allow important pages for SEO
+# Allow important pages for SEO (avec les slashs de fin)
 Allow: /
-Allow: /predict
-Allow: /about
-Allow: /rgpd
-Allow: /mentions-legales
-Allow: /static/asl.jpg
+Allow: /predict/
+Allow: /about/
+Allow: /rgpd/
+Allow: /mentions-legales/
+Allow: /static/asl.webp
 Allow: /static/detect.png
 Allow: /static/*.css
 Allow: /static/*.js
@@ -28,7 +29,8 @@ Crawl-delay: 1
 
 # Specific bot instructions
 User-agent: Googlebot
-Crawl-delay: 0.5
+Disallow: /admin/
+Crawl-delay: 0
 
 User-agent: Bingbot
 Crawl-delay: 1

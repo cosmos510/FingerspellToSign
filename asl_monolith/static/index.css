@@ -693,6 +693,68 @@ footer::before {
     margin-top: 1rem;
 }
 
+.dev-signature {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+}
+
+.webamax-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.webamax-link:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.webamax-link:focus {
+    outline: 1px solid var(--secondary);
+    outline-offset: 2px;
+    color: var(--secondary);
+}
+
+.webamax-about-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.webamax-about-link:hover {
+    color: var(--primary-dark);
+    border-bottom-color: var(--primary);
+}
+
+/* Webamax Links Styling */
+.webamax-link,
+.webamax-footer-link {
+    color: #60a5fa;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.webamax-link:hover,
+.webamax-footer-link:hover {
+    color: #3b82f6;
+    transform: translateY(-1px);
+    text-decoration-color: #3b82f6;
+}
+
+.webamax-link:focus,
+.webamax-footer-link:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    color: #3b82f6;
+}
+
 .footer-links {
     display: flex;
     justify-content: flex-end;

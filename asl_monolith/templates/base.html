@@ -9,88 +9,84 @@
     <meta name="author" content="Maxime Martin">
     <meta name="robots" content="index, follow">
     
-    <!-- CORRECTION SEO: Headers de sécurité -->
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+    
     <meta property="og:title" content="{% block og_title %}Traducteur LSF ASL - Parle avec tes mains{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA. Traduis l'alphabet des signes avec ta caméra.{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA.{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.parle-avec-tes-mains.fr{% block og_url %}{% endblock %}">
     <meta property="og:image" content="https://www.parle-avec-tes-mains.fr{% static 'asl.webp' %}">
     <meta property="og:site_name" content="Parle avec tes mains">
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% block twitter_title %}Traducteur LSF ASL - Parle avec tes mains{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA. Traduis l'alphabet des signes avec ta caméra.{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec IA.{% endblock %}">
     <meta name="twitter:image" content="https://www.parle-avec-tes-mains.fr{% static 'asl.webp' %}">
+    
     <link rel="canonical" href="{% block canonical %}https://www.parle-avec-tes-mains.fr/{% endblock %}">
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <title>{% block title %}Parle avec tes mains{% endblock %}</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- DNS prefetch -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     
-    <!-- Styles -->
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'common.css' %}">
     {% block extra_css %}{% endblock %}
     
-    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Parle avec tes mains - Traducteur LSF ASL",
-        "alternateName": "Traducteur langue des signes",
-        "description": "Traducteur gratuit de langue des signes LSF et ASL. Reconnaissance dactylologique en temps réel avec intelligence artificielle.",
+        "name": "Parle avec tes mains",
+        "alternateName": ["Traducteur LSF ASL", "Dactylologie IA"],
+        "description": "Outil IA de reconnaissance dactylologique en temps réel développé par Webamax.",
         "url": "https://www.parle-avec-tes-mains.fr",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Web Browser",
-        "keywords": "traduction LSF, traducteur langue des signes, dactylologie ASL, ASL translator, traduction ASL, langue des signes française",
+        "author": {
+            "@type": "Person",
+            "name": "Maxime Martin",
+            "jobTitle": "Développeur IA & Fondateur",
+            "url": "https://www.webamax.fr",
+            "sameAs": [
+                "https://www.linkedin.com/in/maxime-martin-090731aa/",
+                "https://github.com/cosmos510",
+                "https://www.webamax.fr"
+            ],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Webamax",
+                "url": "https://www.webamax.fr",
+                "taxID": "99073315600014"
+            }
+        },
+        "creator": {
+            "@id": "https://www.webamax.fr"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "EUR"
         },
-        "creator": {
-            "@type": "Person",
-            "name": "Maxime Martin",
-            "email": "contact@parle-avec-tes-mains.fr",
-            "url": "https://www.linkedin.com/in/maxime-martin-090731aa/"
-        },
         "featureList": [
             "Traduction dactylologie ASL temps réel",
             "Reconnaissance gestuelle IA 95% précise",
-            "Formation de mots en langue des signes",
             "Compatible LSF et ASL",
-            "Traducteur gratuit sans installation",
-            "Données privées et sécurisées"
+            "Respect de la vie privée (traitement local)"
         ],
-        "screenshot": "https://www.parle-avec-tes-mains.fr{% static 'asl.webp' %}",
-        "softwareVersion": "2.1",
         "datePublished": "2025-01-26",
-        "dateModified": "2025-01-26",
+        "dateModified": "2026-01-12",
         "inLanguage": ["fr", "en"],
         "isAccessibleForFree": true,
-        "accessibilityFeature": [
-            "alternativeText",
-            "keyboardNavigation",
-            "highContrast",
-            "skipLinks"
-        ],
-        "audience": {
-            "@type": "Audience",
-            "audienceType": "Étudiants, sourds, malentendants, professeurs langue des signes"
-        }
+        "accessibilityFeature": ["alternativeText", "keyboardNavigation", "highContrast"]
     }
     </script>
-    
 </head>
 <body>
     
@@ -116,38 +112,46 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Maxime Martin</p>
-                <p class="role">Développeur & Fondateur</p>
+  <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Maxime Martin</p>
+            <p class="role">
+                Développeur & Fondateur de 
+                <a href="https://www.webamax.fr" target="_blank" rel="dofollow" title="Visiter le studio Webamax" class="webamax-footer-link">Webamax</a>
+            </p>
+        </div>
+        
+        <div class="footer-section footer-center">
+            <div class="footer-logo">
+                <h3>Parle avec tes mains</h3>
+                <p>La langue des signes accessible à tous</p>
             </div>
-            
-            <div class="footer-section footer-center">
-                <div class="footer-logo">
-                    <h3>Parle avec tes mains</h3>
-                    <p>La langue des signes accessible à tous</p>
-                </div>
-                <div class="social-links">
-                    <a href="mailto:contact@parle-avec-tes-mains.fr" aria-label="Email" class="social-link">Email</a>
-                    <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">LinkedIn</a>
-                    <a href="https://github.com/cosmos510" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">GitHub</a>
-                </div>
-            </div>
-            
-            <div class="footer-section footer-right">
-                <div class="footer-links">
-                    <a href="/rgpd/">RGPD</a>
-                    <a href="/mentions-legales/">Mentions légales</a>
-                </div>
-                <div class="accessibility-badge">
-                    <span class="badge-text">Accessible WCAG 2.1</span>
-                </div>
-                <div class="footer-copyright">&copy; 2026 Parle avec tes mains</div>
+            <div class="social-links">
+                <a href="mailto:contact@parle-avec-tes-mains.fr" aria-label="Email" class="social-link">Email</a>
+                <a href="https://www.linkedin.com/in/maxime-martin-090731aa/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">LinkedIn</a>
+                <a href="https://github.com/cosmos510" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">GitHub</a>
             </div>
         </div>
-    </footer>
+        
+        <div class="footer-section footer-right">
+            <div class="footer-links">
+                <a href="/rgpd/">RGPD</a>
+                <a href="/mentions-legales/">Mentions légales</a>
+            </div>
+            <div class="accessibility-badge">
+                <span class="badge-text">Accessible WCAG 2.1</span>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2026 Parle avec tes mains
+                <span class="dev-signature"> • Réalisé par 
+                    <a href="https://www.webamax.fr" target="_blank" rel="dofollow" title="Webamax - Agence web et développement" class="webamax-link">Webamax</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
 
     {% block extra_js %}{% endblock %}
 </body>

@@ -25,7 +25,7 @@
             <h2>Pourquoi cette solution existe</h2>
             <p>La dactylologie constitue la base technique pour développer une reconnaissance complète de la langue des signes. En maîtrisant d'abord l'alphabet, nous posons les fondations pour reconnaître ensuite des mots, puis des phrases entières.</p>
             <p>Cette approche progressive nous permet de valider nos algorithmes d'intelligence artificielle avant de s'attaquer à la complexité de la LSF complète. Chaque lettre reconnue nous rapproche de l'objectif final : traduire la langue des signes dans son intégralité.</p>
-            <p>Ce projet de recherche et développement s'adresse aux chercheurs, développeurs, et à la communaurité sourde qui souhaite contribuer à l'avancement de ces technologies.</p>
+            <p>Ce projet de recherche et développement s'adresse aux chercheurs, développeurs, et à la communauté sourde qui souhaite contribuer à l'avancement de ces technologies.</p>
         </div>
     </div>
 </section>
@@ -70,12 +70,22 @@
     <div class="container">
         <div class="creator-card">
             <div class="creator-avatar">
-                <img src="{% static 'profile.webp' %}" alt="Maxime Martin" width="150" height="150" loading="lazy" decoding="async">
+                <img src="{% static 'profile.webp' %}" alt="Maxime Martin" width="150" height="150" loading="lazy" decoding="async" style="border-radius: 50%; object-fit: cover;">
                 <div class="creator-badge">Créateur</div>
             </div>
             <div class="creator-content">
                 <h2>Maxime Martin</h2>
-                <p>Développeur, spécialisé dans la reconnaissance gestuelle. Ce projet représente mes recherches pour développer une technologie de traduction complète de la langue des signes, en commençant par valider les concepts sur la dactylologie.</p>
+                <p>
+                    Développeur, spécialisé dans la reconnaissance gestuelle et fondateur de 
+                    <a href="https://www.webamax.fr" 
+                       target="_blank" 
+                       rel="dofollow" 
+                       title="Visiter le studio Webamax" 
+                       class="webamax-about-link">
+                       Webamax
+                    </a>. 
+                    Ce projet représente mes recherches pour développer une technologie de traduction complète de la langue des signes, en commençant par valider les concepts sur la dactylologie.
+                </p>
                 <div class="creator-links">
                     <a href="mailto:contact@parle-avec-tes-mains.fr" class="creator-btn email">
                         Me contacter
@@ -91,7 +101,6 @@
         </div>
     </div>
 </section>
-
 
 
 <section class="about-vision">
@@ -142,4 +151,54 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_js %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Maxime Martin",
+    "jobTitle": "Développeur & Expert IA",
+    "description": "Développeur spécialisé dans la reconnaissance gestuelle et fondateur de Webamax. Créateur de l'outil Parle avec tes mains.",
+    "image": "https://www.parle-avec-tes-mains.fr{% static 'profile.webp' %}",
+    "url": "https://www.webamax.fr",
+    "sameAs": [
+      "https://www.linkedin.com/in/maxime-martin-090731aa/",
+      "https://github.com/cosmos510",
+      "https://www.webamax.fr"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Webamax",
+      "url": "https://www.webamax.fr",
+      "taxID": "99073315600014"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Webamax",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.parle-avec-tes-mains.fr{% static 'favicon.ico' %}"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://www.parle-avec-tes-mains.fr/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "À propos",
+      "item": "https://www.parle-avec-tes-mains.fr/about/"
+    }]
+  }
+}
+</script>
 {% endblock %}
