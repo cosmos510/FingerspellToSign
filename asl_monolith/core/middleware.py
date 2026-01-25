@@ -1,6 +1,3 @@
-"""
-Middleware de sécurité pour corriger les erreurs détectées par Screaming Frog
-"""
 
 class SecurityHeadersMiddleware:
     def __init__(self, get_response):
@@ -9,11 +6,9 @@ class SecurityHeadersMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
         
-        # FORCER les headers de sécurité (remplacer si existants)
         response['X-Frame-Options'] = 'SAMEORIGIN'
         response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
         
-        # CSP pour tous les fichiers
         if request.path.endswith(('.js', '.css')):
             response['Content-Security-Policy'] = (
                 "default-src 'none'; "

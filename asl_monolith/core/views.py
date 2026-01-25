@@ -18,7 +18,6 @@ try:
 except ImportError as e:
     print(f"❌ OpenCV not available: {e}")
     CV2_AVAILABLE = False
-    # Fallback: utiliser PIL pour le décodage d'images
     try:
         from PIL import Image
         import io
@@ -66,7 +65,6 @@ global_predicted_character = "No prediction"
 _cached_model = None
 
 def extract_advanced_features(landmarks):
-    """Extraction de features avancées - doit générer exactement 87 features"""
     try:
         wrist_x, wrist_y, wrist_z = landmarks[0].x, landmarks[0].y, landmarks[0].z
         coords = []
@@ -181,7 +179,6 @@ def upload_frame(request):
         logger.info(f"Processing file size: {file.size} bytes")
         image_data = file.read()
         
-        # Décodage d'image avec fallback
         if CV2_AVAILABLE:
             np_arr = np.frombuffer(image_data, np.uint8)
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
@@ -198,7 +195,6 @@ def upload_frame(request):
                 'prediction': 'Image processing not available - OpenCV and PIL missing'
             })
         
-        # Mode dégradé sans MediaPipe - simulation pour les tests
         if not MEDIAPIPE_AVAILABLE:
             # Simulation basique pour maintenir le service
             import random
@@ -209,7 +205,6 @@ def upload_frame(request):
         
         hands = get_hands_detector()
         if hands is None:
-            # Fallback simulation si MediaPipe échoue
             import random
             letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
             global_predicted_character = random.choice(letters)
@@ -287,7 +282,6 @@ def robots(request):
         return HttpResponse('User-agent: *\nAllow: /', content_type='text/plain')
 
 def serve_static_file(request, filename):
-    """Sert les fichiers statiques avec headers CSP"""
     from django.http import HttpResponse, Http404
     from django.conf import settings
     import os
@@ -298,22 +292,18 @@ def serve_static_file(request, filename):
     if not os.path.exists(file_path):
         raise Http404("File not found")
     
-    # Déterminer le type MIME
     content_type, _ = mimetypes.guess_type(file_path)
     if not content_type:
         content_type = 'application/octet-stream'
     
-    # Lire le fichier
     with open(file_path, 'rb') as f:
         content = f.read()
     
     response = HttpResponse(content, content_type=content_type)
     
-    # Ajouter les headers de sécurité
     response['X-Frame-Options'] = 'SAMEORIGIN'
     response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     
-    # CSP spécifique selon le type de fichier
     if filename.endswith('.js'):
         response['Content-Security-Policy'] = "default-src 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;"
     elif filename.endswith('.css'):
