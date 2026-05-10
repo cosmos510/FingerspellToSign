@@ -6,7 +6,7 @@ from django.views.static import serve
 from django.urls import re_path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),  # Désactivé - cible de bots
     path('', include('core.urls')),
 ]
 
