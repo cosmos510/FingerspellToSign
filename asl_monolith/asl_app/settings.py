@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'core.middleware.IPBlockMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'core.static_middleware.StaticFilesCSPMiddleware',  # AVANT WhiteNoise
     'whitenoise.middleware.WhiteNoiseMiddleware',
